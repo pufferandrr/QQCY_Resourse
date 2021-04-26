@@ -1,1 +1,3 @@
-<view>aaa</view>
+<view class="csk-upload">
+  <uploadPic></uploadPic>
+</view>

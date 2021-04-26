@@ -1,0 +1,15 @@
+<!--components/csk/uploadPic/uploadPic.wxml-->
+
+<view class="picList">
+  <block wx:key="picBox" wx:for="{{picBox}}">
+      <view class="pic">
+          <image class="picItem" src="{{item}}"></image>
+      </view>
+  </block>
+  <block>
+    <view class="pic" bindtap="addPic" wx:if="{{picBox.length<9}}"></view>
+  </block>
+</view>
+<button type="primary" bindtap="uploadPics" >上传图片</button>
+
+
