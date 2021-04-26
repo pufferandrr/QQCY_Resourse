@@ -1,19 +1,6 @@
 {
   "pages": [
-    "pages/keepaccounts/keepaccounts",
-    "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room"
+    "pages/keepaccounts/keepaccounts"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -21,6 +8,28 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "点滴生活",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color":"#E6E6EA",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/homepage.png",
+        "iconPath": "images/unhomepage.png",
+        "pagePath": "pages/index/index"
+      },
+      {
+        "selectedIconPath": "images/add.png",
+        "iconPath": "images/unadd.png",
+        "pagePath": "pages/logs/index"
+      },
+      {
+        "selectedIconPath": "images/myinform.png",
+        "iconPath": "images/unmyinform.png",
+        "pagePath": "pages/test/index"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
