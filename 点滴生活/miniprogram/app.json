@@ -1,6 +1,9 @@
 {
   "pages": [
-    "pages/keepaccounts/keepaccounts"
+    "pages/keepaccounts/keepaccounts",
+    "pages/community/community",
+    "pages/keepthing/keepthing",
+    "pages/mycenter/mycenter"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -15,19 +18,24 @@
     "borderStyle": "white",
     "list": [
       {
-        "selectedIconPath": "images/homepage.png",
-        "iconPath": "images/unhomepage.png",
-        "pagePath": "pages/index/index"
+        "selectedIconPath": "images/keepaccount.png",
+        "iconPath": "images/unkeepccount.png",
+        "pagePath": "pages/keepaccounts/keepaccounts"
       },
       {
-        "selectedIconPath": "images/add.png",
-        "iconPath": "images/unadd.png",
-        "pagePath": "pages/logs/index"
+        "selectedIconPath": "images/community.png",
+        "iconPath": "images/uncommunity.png",
+        "pagePath": "pages/community/community"
       },
       {
-        "selectedIconPath": "images/myinform.png",
-        "iconPath": "images/unmyinform.png",
-        "pagePath": "pages/test/index"
+        "selectedIconPath": "images/keepthing.png",
+        "iconPath": "images/unkeepthing.png",
+        "pagePath": "pages/keepthing/keepthing"
+      },
+      {
+        "selectedIconPath": "images/mycenter.png",
+        "iconPath": "images/unmycenter.png",
+        "pagePath": "pages/mycenter/mycenter"
       }
     ]
   },
