@@ -10,18 +10,18 @@
   border-radius: 14px;
 }
 
-#canUseText{
+.canUseText{
   margin-top: 106px;
   margin-left: 15px;
   font-size: 14px;
   color: #101010;
 }
-#limitText{
+.limitText{
   margin-left: 200px;
   color: #F58B7E;
   font-size: 12px;
 }
-#encourageText{
+.encourageText{
   margin: 12px auto;
   font-size: 12px;
   color:#909090;
