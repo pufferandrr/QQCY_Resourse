@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "limitprogress":"../../components/hb/limitprogress/limitprogress"
+  }
 }

@@ -1,0 +1,4 @@
+<!--components/hb/limitprogress.wxml-->
+<view><text id="canUseText">可用额度</text><text id="limitText">剩余：1000</text></view>
+<progress class="limitprogress" percent="{{percent}}" color="{{progresscolor}}" backgroundColor="gray" active="false" stroke-width="30px"></progress>
+<view id="encourageText">{{noticetext}}</view>
