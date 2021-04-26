@@ -1,11 +1,21 @@
 // pages/keepaccounts/keepaccounts.js
+
+const app = getApp()
+
+var isFirst = true;
+
+var isSiFirst = true;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    progresscolor : "#FFC8A1",
+    percent : 50,
+    noticetext : "还在计划之中，但也不要挥霍呀~",
+    isSi: true,
   },
 
   /**
@@ -14,6 +24,26 @@ Page({
   onLoad: function (options) {
 
   },
+  swInput: function (e) {
+
+    this.setData({
+    
+    sw: e.detail.value
+    
+    })
+    
+    },
+
+  pcInput: function (e) {
+
+    this.setData({
+    
+    pc: e.detail.value
+    
+    })
+    
+    },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

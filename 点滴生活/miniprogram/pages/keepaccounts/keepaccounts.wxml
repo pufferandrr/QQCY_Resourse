@@ -1,1 +1,4 @@
-<view>aaa</view>
+<view>可用额度</view><view>100/200</view>
+<progress class="limitprogress" percent="{{percent}}" color="{{progresscolor}}" backgroundColor="gray" active="false" stroke-width="30px"></progress>
+
+<view>{{noticetext}}</view>

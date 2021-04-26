@@ -1,0 +1,10 @@
+.limitprogress{
+  margin-left: 17px;
+  margin-right: 26px;
+  border-radius: 100px;
+  overflow:hidden
+}
+
+.wx-progress-inner-bar {
+  border-radius: 14px;
+}

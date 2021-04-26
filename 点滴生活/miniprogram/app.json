@@ -12,6 +12,7 @@
     "navigationBarTitleText": "点滴生活",
     "navigationBarTextStyle": "black"
   },
+ 
   "tabBar": {
     "color":"#E6E6EA",
     "selectedColor": "#11cd6e",
