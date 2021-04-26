@@ -1,0 +1,43 @@
+.maintain{
+  height: 190px;
+  width: 100%;
+  border:1px solid #CCC;
+  border-top-color: white;
+}
+.personal{
+  height: 150px;
+  width: 350px;
+  border:1px solid #CCC;
+  box-shadow: 5px 5px 5px #888888a9;
+  border-radius:25px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20px;
+  margin: auto;
+  z-index: 1;
+}
+.pic{
+  border-radius: 50%; 
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 70px;
+  height: 70px;
+  z-index: 2;
+}
+.name{
+  position: absolute;
+  width: 150px;
+  text-align:center;
+  left: 0;
+  right: 0;
+  top: 50px;
+  margin: auto;
+}
+.nums{
+  margin-top: 80px;
+  border:1px solid #CCC;
+  height: 50px;
+}
