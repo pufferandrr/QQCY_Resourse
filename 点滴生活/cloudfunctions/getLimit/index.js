@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
   })
   .get()
   .then(res=>{
-    limit = res.data.userlimit;
+    limit = res.data[0].userlimit
   })
   return limit
 }

@@ -13,7 +13,7 @@ Page({
    */
   data: {
     progresscolor : "#FFC8A1",
-    percent : 50,
+    percent : 0,
     noticetext : "还在计划之中，但也不要挥霍呀~",
     isSi: true,
   },
@@ -22,7 +22,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.cloud.callFunction({
+      name:'getLimit',
+    }).then(res=>{
+      this.setData({
+        percent : (res.result[1]/res.result[0])*100
+      })
+    })
   },
   swInput: function (e) {
 
@@ -49,7 +55,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+  
   },
 
   /**
