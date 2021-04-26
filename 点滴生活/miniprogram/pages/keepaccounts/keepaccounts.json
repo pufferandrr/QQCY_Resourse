@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "limitprogress":"../../components/hb/limitprogress/limitprogress"
+    "limitprogress":"../../components/hb/limitprogress/limitprogress",
+    "navbar":"../../components/navbar/navbar"
   }
 }
