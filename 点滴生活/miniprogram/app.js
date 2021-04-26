@@ -1,5 +1,10 @@
 //app.js
+//以下自定义顶部导航栏的代码(包含components/navbar)参考自https://blog.csdn.net/lhz_19/article/details/103159035。
+
 App({
+  globalData: {
+    height: 0,
+  },
   onLaunch: function () {
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -13,7 +18,11 @@ App({
         traceUser: true,
       })
     }
-
-    this.globalData = {}
+    //获取设备顶部窗口的高度（不同设备窗口高度不一样，根据这个来设置自定义导航栏的高度）
+    wx.getSystemInfo({
+      success: (res) => {
+        this.globalData.height = res.statusBarHeight
+      }
+    })
   }
 })

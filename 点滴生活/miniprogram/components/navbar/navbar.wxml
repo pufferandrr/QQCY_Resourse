@@ -1,0 +1,15 @@
+<cover-view class='nav-wrap' style='height: {{(height*2)*2}}rpx;'>
+  <!--默认为空白导航栏,如果没睡着就会加上属性来改变是否有编辑，后退这类功能-->
+  <cover-view class='nav-title' style='line-height: {{(height*2 + 35)*2}}rpx;'>
+    {{navbarData.title}}
+  </cover-view>
+  <cover-view class='nav-capsule'  wx:if='{{navbarData.showCapsule}}'>
+    <cover-image src='../../images/back.png' mode='aspectFit' class='back-pre'></cover-image>
+  </cover-view>
+  <cover-view class='nav-capsule'  wx:if='{{navbarData.showEdit}}'>
+    <cover-image src='../../images/edit.png' mode='aspectFit' class='edit'></cover-image>
+  </cover-view>
+  <cover-view class='nav-capsule'  wx:if='{{navbarData.showcancel}}'>
+    <cover-image src='../../images/cancel.png' mode='aspectFit' class='cancel'></cover-image>
+  </cover-view>
+</cover-view>

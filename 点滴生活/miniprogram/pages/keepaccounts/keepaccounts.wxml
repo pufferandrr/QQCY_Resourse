@@ -1,3 +1,8 @@
+// 'navbar-data'中navbar是自定义导航栏标题
+<navbar navbar-data='{{nvabarData}}'></navbar>
+
 <view class="limit_hb">
 <limitprogress></limitprogress>
 </view>
+<view class="datatable"></view>
+<view class="accountlist"></view>
