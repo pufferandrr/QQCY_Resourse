@@ -22,25 +22,6 @@ Page({
    */
   onLoad: function (options) {
   },
-  swInput: function (e) {
-
-    this.setData({
-    
-    sw: e.detail.value
-    
-    })
-    
-    },
-
-  pcInput: function (e) {
-
-    this.setData({
-    
-    pc: e.detail.value
-    
-    })
-    
-    },
 
 
   /**
