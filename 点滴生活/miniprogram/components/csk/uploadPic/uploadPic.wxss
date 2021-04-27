@@ -1,9 +1,5 @@
 /* components/csk/uploadPic/uploadPic.wxss */
-.pages{
-  width: 98%;
-  margin: auto;
-  overflow: hidden;
-}
+
 
 .picList{
   width: 100%;
