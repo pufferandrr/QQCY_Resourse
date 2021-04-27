@@ -19,18 +19,51 @@ Component({
   data: {
     progresscolor : "#FFC8A1",
     percent : 0,
-    noticetext : "还在计划之中，但也不要挥霍呀~",
+    noticetext : "还未获取数据",
     isSi: true,
+    remain: 0,
   },
-  attached: function (options) {
+  created: function (options) {
     wx.cloud.callFunction({
       name:'getLimit',
     }).then(res=>{
-      this.setData({
-        percent : (res.result[1]/res.result[0])*100
+      if((res.result[1]/res.result[0])*100 <=50){
+        this.setData({
+          percent : (res.result[1]/res.result[0])*100,
+          remain :(res.result[0]-res.result[1]).toFixed(2),
+          progresscolor : "#33FFCC",
+        })
+      }
+      else if((res.result[1]/res.result[0])*100<=75)
+      {
+        this.setData({
+        percent : (res.result[1]/res.result[0])*100,
+        remain :(res.result[0]-res.result[1]).toFixed(2),
+        progresscolor : "#FFC8A1",
+        noticetext : "额度已经过半，注意节约使用~"
       })
+      }
+      else if((res.result[1]/res.result[0])*100<100)
+      {
+        this.setData({
+          percent : (res.result[1]/res.result[0])*100,
+          remain :(res.result[0]-res.result[1]).toFixed(2),
+          progresscolor : "#F58B7E",
+          noticetext : "额度即将用完，请规划使用剩下额度~"
+        })
+      }
+      else{
+        this.setData({
+          percent : (res.result[1]/res.result[0])*100,
+          remain :(res.result[0]-res.result[1]).toFixed(2),
+          progresscolor : "#FF0000",
+          noticetext : "额度已经用完！"
+        })
+      }
+      
     })
   },
+ 
   /**
    * 组件的方法列表
    */

@@ -1,29 +1,29 @@
 .limitprogress{
-  margin-top: 11px;
-  margin-left: 17px;
-  margin-right: 26px;
-  border-radius: 100px;
+  margin-top: 11rpx;
+  margin-left: 17rpx;
+  margin-right: 26rpx;
+  border-radius: 100rpx;
   overflow:hidden
 }
 
 .wx-progress-inner-bar {
-  border-radius: 14px;
+  border-radius: 14rpx;
 }
 
 .canUseText{
-  margin-top: 106px;
-  margin-left: 15px;
-  font-size: 14px;
+  margin-top: 106rpx;
+  margin-left: 15rpx;
+  font-size: 30rpx;
   color: #101010;
   font-weight: bold;
 }
 .limitText{
-  margin-left: 200px;
+  margin-left: 400rpx;
   color: #F58B7E;
-  font-size: 12px;
+  font-size: 28rpx;
 }
 .encourageText{
-  margin: 12px auto;
-  font-size: 12px;
+  margin: 12rpx 200rpx;
+  font-size: 18px;
   color:#909090;
 }

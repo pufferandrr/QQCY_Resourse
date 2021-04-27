@@ -69,10 +69,6 @@ Component({
                   picId:this.data.picId.concat(res.fileID)
                 })
                 reslove();
-                wx.hideLoading();
-                wx.showToast({
-                  title: "上传成功",
-                })
               },
               fail: res=>{
                 wx.hideLoading();
@@ -84,6 +80,10 @@ Component({
           }))
         }
         Promise.all(promiseArr).then(res=>{
+          wx.hideLoading();
+          wx.showToast({
+            title: "上传成功",
+          })
           console.log(this.data.picId)
           this.setData({
             picBox: []//清空图片框
