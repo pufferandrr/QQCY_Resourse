@@ -1,47 +1,25 @@
-// pages/mycenter/mycenter.js
-
-const app = getApp()
+// miniprogram/pages/testpage/testpage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-   
-    height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
   },
-  swInput: function (e) {
-
-    this.setData({
-    
-    sw: e.detail.value
-    
-    })
-    
-    },
-
-  pcInput: function (e) {
-
-    this.setData({
-    
-    pc: e.detail.value
-    
-    })
-    
-    },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**

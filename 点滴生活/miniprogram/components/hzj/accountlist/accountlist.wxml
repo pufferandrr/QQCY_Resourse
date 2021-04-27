@@ -1,0 +1,16 @@
+<!--components/hzj/accountlist/accountlist.wxml-->
+<view class="accountlist" wx:for="{{accountlist}}">
+  <view class="accountgroup">
+    <view class="date">{{item.accountgroup.date}}</view>
+    <view class="verticalline"></view>
+    <view class="startmark"></view>
+    <view class="account">
+    <view class="onedayaccount" wx:for="{{item.accountgroup.account}}" wx:for-item="account">
+      <image src="{{account.type}}" class="typeimage"></image>
+      <view class="remark">{{account.remark}}</view>
+      <view class="num">-{{account.num}}</view>
+      <view class="bottomline"></view>
+    </view>
+  </view>
+  </view>
+</view>
