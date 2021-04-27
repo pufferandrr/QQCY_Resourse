@@ -1,10 +1,35 @@
 
-<view class="maintain">
-  <image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2231949345,768597699&fm=11&gp=0.jpg" class="pic"></image>
-  <view class="personal">
-    <view class="name">aaaaaaassss</view>
-    <view class="nums">
+<view class="all">
+  <view class="maintain">
+    <image src="https://pic4.zhimg.com/80/v2-79003af85f0a52e5f16b6568b7980a83_720w.jpg?source=1940ef5c" mode="aspectFill" class="pic"></image>
+    <view class="personal">
+      <view class="name">六元一斤X</view>
+      <view class="nums">
+        <view class="nums1">
+          <view class="continuationnum">20</view>
+          <view class="continuation">连续记账天数</view>
+        </view>
+        <view class="nums2">
+          <view class="continuationnum">45</view>
+          <view class="continuation">记账总天数</view>
+        </view>
+        <view class="nums3">
+          <view class="continuationnum">89</view>
+          <view class="continuation">记账总笔数</view>
+        </view>
+    </view>
+    </view>
   </view>
+  <view class="myquota">
+    <image src="../../images/quota.png" class="quota"></image>
+    <view class="quotatext">设置月消费额度</view>
+    <input class="quotainput" type="number"></input>
+    <view class="element">元</view>
+  </view>
+  <view class="myrelease_notification">
+    <image src="../../images/keepthing.png" class="release_notification"></image>
+    <view class="release_notificationtext">设置月消费额度</view>
+    <image src="../../images/goto.png" class="goto"></image>
   </view>
 </view>
 

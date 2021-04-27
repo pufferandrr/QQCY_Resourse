@@ -1,20 +1,25 @@
+/* .all{
+  background-color: rgb(250,250,250);
+  height: 1500rpx;
+} */
 .maintain{
-  padding-top: 40px;
-  height: 250px;
+  background-color: rgb(255,255,255);
+  margin-top: 166rpx;
+  height: 210px;
   width: 100%;
   border:1px solid #CCC;
   border-top-color: white;
 }
 .personal{
-  height: 150px;
-  width: 350px;
+  height: 310rpx;
+  width: 700rpx;
   border:1px solid #CCC;
   box-shadow: 5px 5px 5px #888888a9;
   border-radius:25px;
   position: absolute;
   left: 0;
   right: 0;
-  top: 80px;
+  top: 250rpx;
   margin: auto;
   z-index: 1;
 }
@@ -26,6 +31,7 @@
   margin: auto;
   width: 70px;
   height: 70px;
+  /* margin-top: 5px; */
   z-index: 2;
 }
 .name{
@@ -34,11 +40,114 @@
   text-align:center;
   left: 0;
   right: 0;
-  top: 50px;
+  top: 75rpx;
   margin: auto;
+  color:#101010 10000%;
 }
 .nums{
-  margin-top: 80px;
-  border:1px solid #CCC;
-  height: 50px;
+  margin-top: 150rpx;
+  /* border:1px solid #CCC; */
+  height: 90px;
+  
 }
+.nums1{
+  margin-left: 30rpx;
+  text-align:center;
+  /* border:1px solid #CCC; */
+  height: 150rpx;
+  width: 210rpx;
+  float: left;
+}
+.nums2{
+  text-align:center;
+  /* border:1px solid #CCC; */
+  height: 150rpx;
+  width: 210rpx;
+  float: left;
+}
+.nums3{
+  text-align:center;
+  /* border:1px solid #CCC; */
+  height: 150rpx;
+  width: 210rpx;
+  float: left;
+}
+.continuationnum{
+  font-size: 20px;
+  color: #101010 10000%;
+}
+.continuation{
+  /* border:1px solid #CCC; */
+  margin-top: 10px;
+  font-size: 12px;
+  color: #807E7E 10000%;
+}
+.myquota{
+  margin-top: 25rpx;
+  border:1px solid #CCC;
+  height: 86rpx;
+}
+.quota{
+  /* border:1px solid #CCC; */
+  margin-top: 15rpx;
+  margin-left: 34rpx;
+  width: 70rpx;
+  height: 63rpx;
+  float: left;
+}
+.quotatext{
+  /* border:1px solid #CCC; */
+  width: 225rpx;
+  height: 40rpx;
+  margin-left: 48rpx;
+  margin-top: 20rpx;
+  color:#101010 10000%;
+  font-family: PingFangSC-regular;
+  float: left;
+}
+.quotainput{
+    border:1px solid #CCC;
+    width: 200rpx;
+    height: 47rpx;
+    margin-left: 111rpx;
+    margin-top: 20rpx;
+    float: left;
+    border-radius: 15px 15px 15px 15px;
+    background-color: rgba(245, 139, 126, 16);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 100);
+}
+.element{
+  margin-top: 23rpx;
+}
+.myrelease_notification{
+  margin-top: 25rpx;
+  border:1px solid #CCC;
+  height: 86rpx;
+}
+.release_notification{
+  border:1px solid #CCC;
+  margin-top: 15rpx;
+  margin-left: 38rpx;
+  width: 50rpx;
+  height: 50rpx;
+  float: left;
+}
+.release_notificationtext{
+  width: 225rpx;
+  height: 40rpx;
+  margin-left: 66rpx;
+  /* border:1px solid #CCC; */
+  margin-top: 20rpx;
+  color:#101010 10000%;
+  font-family: PingFangSC-regular;
+  float: left;
+}
+.goto{
+  /* border:1px solid #CCC; */
+  margin-top: 15rpx;
+  margin-left: 300rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
