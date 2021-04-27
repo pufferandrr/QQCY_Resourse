@@ -1,3 +1,10 @@
 .limit_hb{
   margin-top:160rpx;
 }
+.accountlist_zj{
+  width:700rpx;
+  height:840rpx;
+  position:absolute;
+  left:28rpx;
+  top:1100rpx;
+}

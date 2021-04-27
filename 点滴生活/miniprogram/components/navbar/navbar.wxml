@@ -3,13 +3,13 @@
   <cover-view class='nav-title' style='line-height: {{(height*2 + 35)*2}}rpx;'>
     {{navbarData.title}}
   </cover-view>
-  <cover-view class='nav-capsule'  wx:if='{{navbarData.showCapsule}}'>
+  <cover-view class='nav-capsule'  wx:if='{{navbarData.showCapsule}}' bindtap='_navback'>
     <cover-image src='../../images/back.png' mode='aspectFit' class='back-pre'></cover-image>
   </cover-view>
-  <cover-view class='nav-capsule'  wx:if='{{navbarData.showEdit}}'>
+  <cover-view class='nav-capsule'  wx:if='{{navbarData.showEdit}}' bindtap="_navedit">
     <cover-image src='../../images/edit.png' mode='aspectFit' class='edit'></cover-image>
   </cover-view>
-  <cover-view class='nav-capsule'  wx:if='{{navbarData.showcancel}}'>
+  <cover-view class='nav-capsule'  wx:if='{{navbarData.showcancel}}' bindtap="_navcalcel">
     <cover-image src='../../images/cancel.png' mode='aspectFit' class='cancel'></cover-image>
   </cover-view>
 </cover-view>
