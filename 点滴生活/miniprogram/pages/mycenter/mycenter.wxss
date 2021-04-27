@@ -1,11 +1,11 @@
-/* .all{
-  background-color: rgb(250,250,250);
+.all{
+  background-color: #BBBBBB 700%;
   height: 1500rpx;
-} */
+}
 .maintain{
   background-color: rgb(255,255,255);
   margin-top: 166rpx;
-  height: 210px;
+  height: 420rpx;
   width: 100%;
   border:1px solid #CCC;
   border-top-color: white;
@@ -84,8 +84,10 @@
 }
 .myquota{
   margin-top: 25rpx;
-  border:1px solid #CCC;
   height: 86rpx;
+  margin-bottom: 25rpx;
+  line-height: 20px;
+  border: 1px solid rgba(187, 187, 187, 33);
 }
 .quota{
   /* border:1px solid #CCC; */
@@ -102,7 +104,7 @@
   margin-left: 48rpx;
   margin-top: 20rpx;
   color:#101010 10000%;
-  font-family: PingFangSC-regular;
+  font-size: 32rpx;
   float: left;
 }
 .quotainput{
@@ -121,22 +123,23 @@
   margin-top: 23rpx;
 }
 .myrelease_notification{
-  margin-top: 25rpx;
-  border:1px solid #CCC;
+  /* margin-top: 25rpx; */
+  border: 1px solid rgba(187, 187, 187, 33);
   height: 86rpx;
 }
 .release_notification{
-  border:1px solid #CCC;
-  margin-top: 15rpx;
+  /* border:1px solid #CCC; */
+  margin-top: 20rpx;
   margin-left: 38rpx;
   width: 50rpx;
   height: 50rpx;
   float: left;
 }
 .release_notificationtext{
+  font-size: 32rpx;
   width: 225rpx;
   height: 40rpx;
-  margin-left: 66rpx;
+  margin-left: 8%;
   /* border:1px solid #CCC; */
   margin-top: 20rpx;
   color:#101010 10000%;
@@ -149,5 +152,52 @@
   margin-left: 300rpx;
   width: 50rpx;
   height: 50rpx;
+}
+.myabout{
+  border: 1px solid rgba(187, 187, 187, 33);
+  height: 86rpx;
+  margin-top: 35px;
+}
+.about{
+  /* border:1px solid #CCC; */
+  margin-top: 8rpx;
+  margin-left: 25rpx;
+  width: 78rpx;
+  height: 80rpx;
+  float: left;
+}
+.abouttext{
+  font-size: 32rpx;
+  width: 225rpx;
+  height: 40rpx;
+  margin-left: 45rpx;
+  /* border:1px solid #CCC; */
+  margin-top: 20rpx;
+  color:#101010 10000%;
+  font-family: PingFangSC-regular;
+  float: left;
+}
+.myhelp{
+  border: 1px solid rgba(187, 187, 187, 33);
+  height: 86rpx;
+}
+.help{
+  /* border:1px solid #CCC; */
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+  width: 50rpx;
+  height: 55rpx;
+  float: left;
+}
+.helptext{
+  font-size: 32rpx;
+  width: 225rpx;
+  height: 40rpx;
+  margin-left: 58rpx;
+  /* border:1px solid #CCC; */
+  margin-top: 20rpx;
+  color:#101010 10000%;
+  font-family: PingFangSC-regular;
+  float: left;
 }
 
