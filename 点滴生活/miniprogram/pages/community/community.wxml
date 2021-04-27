@@ -1,2 +1,7 @@
 // 'navbar-data'中navbar是自定义导航栏标题
 <navbar navbar-data='{{nvabarData}}'></navbar>
+
+<view style="margin-top:500rpx">
+点击跳转去创建新账单界面，暂时用着
+<button type="primary" catchtap="createNew">++++</button>
+</view>

@@ -1,2 +1,17 @@
 <!--miniprogram/pages/makeaccount/makeaccount.wxml-->
-<text>miniprogram/pages/makeaccount/makeaccount.wxml</text>
+<navbar navbar-data='{{nvabarData}}'></navbar>
+<view class="border"></view>
+
+<text>请选择支出类型</text>
+<view class="typeList"> 
+  <view wx:for="{{type}}" wx:key="type">
+    <view class="type">
+      <image class="img" src="{{item.url}}">{{item.des}}</image>
+      <text class="txt">{{item.des}}</text>
+    </view>
+  </view>
+</view>
+
+
+-----------
+<button type="primary" catchtap="returnA" >返回</button>
