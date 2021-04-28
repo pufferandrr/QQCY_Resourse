@@ -6,5 +6,5 @@
 </view>
 <view class="datatable"></view>
 <view class="accountlist_zj">
-<accountlist accountlist='{{accountlist}}' account-type="0"></accountlist>
+<accountlist accountlist='{{costaccountlist}}' account-type="0"></accountlist>
 </view>

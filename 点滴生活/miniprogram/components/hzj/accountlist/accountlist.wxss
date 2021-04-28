@@ -1,9 +1,14 @@
 /* components/hzj/accountlist/accountlist.wxss */
+
 .accountlist{
 }
-.accountgroup{
-  width:700rpx;
+.accountgroup:nth-child(1){
   position: relative;
+  margin-top:0rpx;
+}
+.accountgroup:nth-child(n){
+  position: relative;
+  margin-top:30rpx;
 }
 .startmark{
   background-color:#FBDA7F ;
@@ -13,16 +18,18 @@
   position:absolute;
   top:36rpx;
   left:18rpx;
+  float: left;
 }
 .verticalline{
   width: 2rpx;
+  height:100rpx;
   position: absolute;
   top:60rpx;
   left:26rpx;
-  height: 400rpx;
   background-color:rgba(187, 187, 187, 39);
   filter:blur(2rpx);
   opacity: 39%;
+  float: left;
 }
 .date{
   font-family: sans-serif;
@@ -32,6 +39,7 @@
   position: absolute;
   top:26rpx;
   left:58rpx;
+  float: left;
 }
 .account{
   position:absolute;
@@ -49,6 +57,7 @@
   position: absolute;
   top:15rpx;
   left:24rpx;
+  float: left;
 }
 .remark{
   color:#909090;
@@ -56,6 +65,7 @@
   position:absolute;
   top:34rpx;
   left:124rpx;
+  float: left;
 }
 .num{
   color:#F58B7E;
@@ -64,6 +74,7 @@
   position: absolute;
   top:34rpx;
   left:556rpx;
+  float: left;
 }
 .bottomline{
   height:2rpx;
@@ -74,4 +85,5 @@
   position: absolute;
   top:118rpx;
   left:62rpx;
+  float: left;
 }

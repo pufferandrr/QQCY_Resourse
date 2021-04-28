@@ -14,9 +14,11 @@ Page({
       showcancel:0,//是否显示左上角关闭图标   1表示显示    0表示不显示
       title: '账本', //导航栏 中间的标题
     },
-    accountlist:[{//账单数据
+    costaccountlist:[{//账单数据
       accountgroup:{
         date:"1月5号",
+        vlheight:"340",
+        onedayaccountheight:"420",
         account:[
           {
             type:"cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/餐饮.png",
@@ -31,6 +33,25 @@ Page({
           {
             type:"cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/餐饮.png",
             num:"204",
+            remark:"奶茶2",
+          },
+        ]
+      },
+    },
+    {//账单数据
+      accountgroup:{
+        date:"1月6号",
+        vlheight:"220",
+        onedayaccountheight:"300",//每个区块的高度，这个可以根据脚本在数据库获取数据时，根据数据量动态设置高度 公式：
+        account:[
+          {
+            type:"cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/餐饮.png",
+            num:"200",
+            remark:"火锅",
+          },
+          {
+            type:"cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/餐饮.png",
+            num:"201",
             remark:"奶茶2",
           },
         ]
@@ -52,6 +73,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
   },
 
 
@@ -59,7 +81,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**
