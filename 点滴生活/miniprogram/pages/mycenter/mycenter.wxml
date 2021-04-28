@@ -31,7 +31,7 @@
     <view class="release_notificationtext">我的发布</view>
     <image src="../../images/goto.png" class="goto"></image>
   </view>
-  <view class="myrelease_notification">
+  <view class="myrelease_notification" bindtap="toNotification">
     <image src="../../images/notification.png" class="release_notification"></image>
     <view class="release_notificationtext">我的通知</view>
     <image src="../../images/goto.png" class="goto"></image>

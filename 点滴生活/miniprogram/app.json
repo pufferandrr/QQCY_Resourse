@@ -5,7 +5,9 @@
     "pages/keepthing/keepthing",
     "pages/mycenter/mycenter",
     "pages/makeaccount/makeaccount",
+    "pages/mycenter/notificationlist",
     "pages/testpage/testpage"
+
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
