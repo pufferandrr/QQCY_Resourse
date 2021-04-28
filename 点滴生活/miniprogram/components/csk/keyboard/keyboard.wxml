@@ -1,0 +1,11 @@
+<view class="keyboard">
+  <view class="remark">
+  <input class="textnormal" bindinput="name" value="{{name}}" placeholder="备注"></input>
+</view>
+<view class="keynum" wx:for="{{keyNumber}}" wx:key="keynum" data-value="{{item}}">
+  <view class="normal{{index%4}}" hover-class="normalhover{{index%4}}">
+    {{item}}
+  </view>
+</view>
+</view>
+

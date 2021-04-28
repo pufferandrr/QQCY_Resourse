@@ -2,12 +2,17 @@
 <navbar navbar-data='{{nvabarData}}'></navbar>
 <view class="border"></view>
 
-<text>请选择支出类型</text>
+
+
+
+<view class="text1-csk">
+  <text class="txt2-csk">请选择支出类型</text>
+</view>
 <view class="typeList"> 
   <view wx:for="{{type}}" wx:key="type">
     <view class="type">
-      <image class="img" src="{{item.url}}">{{item.des}}</image>
-      <text class="txt">{{item.des}}</text>
+      <image class="img" src="{{item.url}}"></image>
+      <text class="txt1-csk">{{item.des}}</text>
     </view>
   </view>
 </view>
@@ -15,3 +20,4 @@
 
 -----------
 <button type="primary" catchtap="returnA" >返回</button>
+<keyboard></keyboard>

@@ -17,15 +17,29 @@
 }
 .type{
   width: 108rpx;
-  height: 105rpx;
-  margin: 35rpx;
+  height: 119rpx;
+  margin-left: 17rpx;
+  margin-right: 60rpx;
+  margin-bottom: 60rpx;
   position: relative;
 }
-.txt{
+
+.txt1-csk{
   width: 100%;
   height: 10%;
+  font-style: initial;
+  font-size: 32rpx;
 }
 .img{
   width: 100%;
   height: 90%;
+}
+.text1-csk{
+  margin-bottom: 40rpx;
+  margin-left: 65rpx;
+}
+.txt2-csk{
+  font-style: normal;
+  font-size: 32rpx;
+  color:slategray;
 }
