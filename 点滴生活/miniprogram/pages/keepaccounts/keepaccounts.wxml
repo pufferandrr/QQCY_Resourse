@@ -4,7 +4,9 @@
 <view class="limit_hb">
 <limitprogress></limitprogress>
 </view>
-<view class="datatable"></view>
+<view class="datatable">
+  <ec-canvas id="mychart-dom" canvas-id="mychart" ec="{{ec}}"></ec-canvas>
+</view>
 <view class="accountlist_zj">
 <accountlist accountlist='{{costaccountlist}}' account-type="0"></accountlist>
 </view>

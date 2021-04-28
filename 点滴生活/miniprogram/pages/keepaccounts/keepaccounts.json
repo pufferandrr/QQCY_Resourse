@@ -2,6 +2,7 @@
   "usingComponents": {
     "limitprogress":"../../components/hb/limitprogress/limitprogress",
     "navbar":"../../components/navbar/navbar",
+    "ec-canvas":"../../components/hb/ec-canvas/ec-canvas",
     "accountlist":"../../components/hzj/accountlist/accountlist"
   }
 }

@@ -4,7 +4,17 @@
 .accountlist_zj{
   width:700rpx;
   height:840rpx;
-  position:absolute;
   left:28rpx;
   top:1100rpx;
+}
+.datatable{
+  width: 750rpx;
+  height: 500rpx;
+  left:28rpx;
+  top:300rpx;
+} 
+
+ec-canvas {
+  width: 100%;
+  height: 100%;
 }

@@ -1,12 +1,19 @@
 // pages/keepaccounts/keepaccounts.js
+import * as echarts from '../../components/hb/ec-canvas/echarts';
 
 const app = getApp()
+let chart =null;
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    ec: {
+      onInit: initChart
+    },
     // 组件所需的参数
     nvabarData: {
       showCapsule: 0, //是否显示左上角返回图标   1表示显示    0表示不显示
@@ -125,3 +132,34 @@ Page({
 
   }
 })
+
+function initChart(canvas, width, height, dpr) {
+  chart = echarts.init(canvas, null, {
+    width: width,
+    height: height,
+    devicePixelRatio: dpr // new
+  });
+  canvas.setChart(chart);
+
+  let option = getOption()  
+
+  chart.setOption(option)
+  return chart
+}
+
+function getOption(){
+  return {
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [20, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        smooth: true
+    }]
+}
+}
