@@ -1,3 +1,6 @@
+.mainblock{
+  position: relative;
+}
 .limit_hb{
   margin-top:160rpx;
 }
@@ -10,8 +13,7 @@
 .datatable{
   width: 750rpx;
   height: 500rpx;
-  left:28rpx;
-  top:300rpx;
+  margin-top:40rpx;
 } 
 
 ec-canvas {

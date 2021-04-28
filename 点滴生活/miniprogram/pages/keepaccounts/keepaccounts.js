@@ -21,7 +21,23 @@ Page({
       showcancel:0,//是否显示左上角关闭图标   1表示显示    0表示不显示
       title: '账本', //导航栏 中间的标题
     },
-    costaccountlist:[{//账单数据
+   
+    height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
+  },
+  accountedit(e){
+    console.log(e.detail+"  你触发了父组件的事件");
+    wx.navigateTo({//注，无法跳转到tabbar绑定的界面
+      url: '../testpage/testpage',
+      success: function(res){},
+      fail: function() {},
+      complete: function() {}
+    })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var i=[{//账单数据
       accountgroup:{
         date:"1月5号",
         vlheight:"340",
@@ -64,23 +80,9 @@ Page({
         ]
       },
     },
-  ],
-    height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
-  },
-  accountedit(e){
-    console.log(e.detail+"  你触发了父组件的事件");
-    wx.navigateTo({//注，无法跳转到tabbar绑定的界面
-      url: '../testpage/testpage',
-      success: function(res){},
-      fail: function() {},
-      complete: function() {}
-    })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    
+  ];
+  
+  this.setData({costaccountlist:i});
   },
 
 
