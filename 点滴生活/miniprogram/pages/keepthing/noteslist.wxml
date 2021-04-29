@@ -6,7 +6,7 @@
         <view class="note_item">
             <view class="line"></view>
             <view class="circle"></view>
-            <image  class="mood" src="{{item.note_mood}}" alt="alt" mode="scaleToFill"/>
+            <image class="mood" src="{{item.note_mood}}" alt="alt" mode="scaleToFill"/>
             <view class="day">{{item.note_day}}</view>
             <view class="week">{{item.note_weekday}}</view>
             <view class="year">{{item.note_year}}</view>

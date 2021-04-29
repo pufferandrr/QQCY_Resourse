@@ -31,16 +31,16 @@
 
 .mood {
     position: absolute;
-    left: 50rpx;
-    top: 60rpx;
-    width: 40rpx;
-    height: 40rpx;
+    left: 75rpx;
+    top: 15%;
+    width: 70rpx;
+    height: 70rpx;
 }
 
 .day {
     position: absolute;
     left: 60rpx;
-    top: 100rpx;
+    top: 110rpx;
     vertical-align: center;
     font-weight: bold;
     font-size: 15px;
@@ -48,7 +48,7 @@
 .week {
     position: absolute;
     left: 110rpx;
-    top: 100rpx;
+    top: 110rpx;
     vertical-align: center;
     font-size: 15px;
 }
@@ -56,7 +56,7 @@
 .year {
     position: absolute;
     left: 60rpx;
-    top: 150rpx;
+    top: 160rpx;
     vertical-align: center;
     font-size: 14px;
 }
