@@ -115,7 +115,7 @@
     margin-top: 20rpx;
     float: left;
     border-radius: 15px 15px 15px 15px;
-    background-color: rgba(245, 139, 126, 16);
+    background-color: #FBDCD8;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 100);
 }

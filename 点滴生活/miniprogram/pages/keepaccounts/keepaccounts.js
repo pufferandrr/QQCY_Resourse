@@ -4,6 +4,7 @@ import * as echarts from '../../components/hb/ec-canvas/echarts';
 const app = getApp()
 let chart =null;
 
+var pixelRatio1 = 750 / wx.getSystemInfoSync().windowWidth;   
 
 Page({
 
@@ -103,7 +104,6 @@ Page({
   },
   slidemove(){
     console.log("你点击了滑块",this.data.slideposition);
-    var pixelRatio1 = 750 / wx.getSystemInfoSync().windowWidth;
     var px1 = 106 / pixelRatio1;
     if(this.data.slideposition==0){
     this.animation.translate(px1).step()

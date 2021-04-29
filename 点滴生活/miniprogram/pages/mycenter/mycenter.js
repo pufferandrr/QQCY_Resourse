@@ -1,13 +1,16 @@
 // pages/mycenter/mycenter.js
 
 const app = getApp()
+const db = wx.cloud.database();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-   
+    list:[],
+    nickName:"aa",
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
   },
 
@@ -24,6 +27,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    db.collection('user').get()
+    .then(res=>{
+      console.log("成功",res)
+      this.setData({
+        list: res.data
+      }
+      )
+    })
+    .catch(err=>{
+      console.log("失败", err)
+    })
   },
   swInput: function (e) {
 

@@ -15,13 +15,37 @@ Page({
       title: '记账', //导航栏 中间的标题
     },
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
-    type:[],
+    switchType:1,
+    ctype:[{des:"餐饮",url: "../../typeimages/餐饮.png"},{des:"交通",url: "../../typeimages/交通.png"},
+          {des:"医疗",url: "../../typeimages/医疗.png"},{des:"服装",url: "../../typeimages/服装.png"},
+          {des:"娱乐",url: "../../typeimages/娱乐.png"},{des:"投资",url: "../../typeimages/投资.png"},
+          {des:"学业",url: "../../typeimages/学业.png"},{des:"捐赠",url: "../../typeimages/捐赠.png"},
+          {des:"购物",url: "../../typeimages/购物.png"},{des:"美妆",url: "../../typeimages/美妆.png"},
+          {des:"其他",url: "../../typeimages/其他.png"}],
+    rtype:[{des:"投资",url: "../../typeimages/投资.png"},{des:"工资",url: "../../typeimages/工资.png"},
+          {des:"其他",url: "../../typeimages/其他.png"}],
     keyNumber:[7,8,9,'日期',4,5,6,'+',1,2,3,'-','.',0,'删除','确认'],
     arrayn:[],
     numberText:'',
     isShow:false,
     selectedType:'',
     selectedTypeUrl:'',
+    date:'',
+    remark:'',
+  },
+  switchT:function(){
+    switch (this.data.switchType) {
+      case 1:
+        this.setData({
+          switchType:2
+        })
+        break;
+      default:
+        this.setData({
+          switchType:1
+        })
+        break;
+    }
   },
   hideKeyboard:function(){
     this.setData({
@@ -33,12 +57,22 @@ Page({
       isShow:true,
     })
   },
+  bindDateChange: function (e) {
+    this.setData({
+      date: e.detail.value
+    })
+  },
+  remarkChange:function(e){
+    this.setData({
+      remark:e.detail.value,
+    })
+  },
   returnA:function(){
-    var now = new Date();
-    var year = now.getFullYear();
-    var mouth = now.getMonth()+1;
-    var day = now.getDate();
-    console.log(year+'-'+mouth+'-'+day);
+    // var now = new Date();
+    // var year = now.getFullYear();
+    // var mouth = now.getMonth()+1;
+    // var day = now.getDate();
+    // console.log(year+'-'+mouth+'-'+day);
     wx.navigateBack();
   },
   selectType:function(e){
@@ -48,6 +82,35 @@ Page({
       selectedType:des,
       selectedTypeUrl:url,
     })
+  },
+  addbill:function(){
+    if(this.data.date==''){
+      var now = new Date();
+      var year = now.getFullYear();
+      var mouth = now.getMonth()+1;
+      var day = now.getDate();
+      this.setData({
+        date:year+'-'+mouth+'-'+day
+      })
+    }
+    console.log(this.data.numberText);
+    console.log(this.data.selectedTypeUrl);
+     console.log(this.data.remark);
+     console.log(this.data.date);
+    console.log(this.data.switchType);
+    wx.cloud.callFunction({
+      name:'addRecord',
+      data:{
+        'number':this.data.numberText,
+        'createTime':this.data.date,
+        'remark':this.data.remark,
+        'typeid':this.data.selectedTypeUrl,
+        'switchType':this.data.switchType,
+      }
+    }).then(res=>{
+      console.log(res);
+    })
+
   },
   keyboardTap:function(e){
     let val = e.currentTarget.dataset.value;
@@ -89,7 +152,19 @@ Page({
         }
         break;
       case '确认':
-        
+        if(this.data.selectedType==''){
+          wx.showToast({
+            title: '请选择支出类型',
+            icon:'error',
+          })
+        }else if(this.data.numberText==''){
+          wx.showToast({
+            title: '请输入记录金额',
+            icon:'error',
+          })
+        }else{
+          this.addbill();
+        }
         break;
       default:
         arrval.push(val)
@@ -109,16 +184,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.cloud.callFunction({
-      name:"getType",
-      data:{
-        "type": 1,
-      }
-    }).then(res=>{
-      this.setData({
-        type:res.result.data
-      })
-    })
+    // wx.cloud.callFunction({
+    //   name:"getType",
+    //   data:{
+    //     "type": 1,
+    //   }
+    // }).then(res=>{
+    //   this.setData({
+    //     type:res.result.data
+    //   })
+    //   console.log(this.data.type);
+    // })
   },
 
   /**
