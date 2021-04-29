@@ -172,3 +172,32 @@
   font-size: 34rpx;
   font-weight: 500;
 }
+.switch{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  margin-bottom: 30rpx;
+}
+.switch1{
+  position: relative;
+  background: linear-gradient(#FDBF9C 75%, #F0887B 100%);
+  font-size: 30rpx;
+  font-weight: 500;
+  width: 100rpx;
+  color:white;
+  padding: 25rpx;
+  border-radius: 48rpx;
+  text-align: center;
+}
+.switch2{
+  position: relative;
+  background:#FDF2F1 100%;
+  font-size: 30rpx;
+  font-weight: 500;
+  color:gray;
+  text-align: center;
+  width: 100rpx;
+  padding: 25rpx;
+  border-radius: 48rpx;
+}
