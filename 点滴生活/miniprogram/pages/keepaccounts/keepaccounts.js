@@ -204,6 +204,9 @@ function getOption(){
             color: '#d3d7d4'
         }
     },
+    axisLabel:{
+      interval: 0
+      },
         type: 'category',
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     },
