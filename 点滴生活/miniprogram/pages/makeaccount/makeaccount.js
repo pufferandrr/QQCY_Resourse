@@ -84,11 +84,6 @@ Page({
     })
   },
   addbill:function(){
-    // console.log(this.data.numberText);
-    // console.log(this.data.selectedTypeUrl);
-    // console.log(this.data.remark);
-    // console.log(this.data.date);
-    console.log(this.data.switchType);
     if(this.data.date==''){
       var now = new Date();
       var year = now.getFullYear();
@@ -98,6 +93,11 @@ Page({
         date:year+'-'+mouth+'-'+day
       })
     }
+    console.log(this.data.numberText);
+    console.log(this.data.selectedTypeUrl);
+     console.log(this.data.remark);
+     console.log(this.data.date);
+    console.log(this.data.switchType);
     wx.cloud.callFunction({
       name:'addRecord',
       data:{
