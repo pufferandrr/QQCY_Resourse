@@ -12,7 +12,7 @@
     </view>
     <image class="tablechange" src='../../images/tablechange.png' mode='aspectFit'  ></image>
   <view class="datatableblock">
-    <ec-canvas class="datatable"id="mychart-dom" canvas-id="mychart" ec="{{ec}}"></ec-canvas>
+    <ec-canvas force-use-old-canvas="true" class="datatable"id="mychart-dom" canvas-id="mychart" ec="{{ec}}"></ec-canvas>
   </view>
   <view class="accountlist_zj">
     <accountlist accountlist='{{costaccountlist}}' account-type="0"></accountlist>
