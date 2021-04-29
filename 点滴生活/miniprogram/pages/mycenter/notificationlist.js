@@ -1,4 +1,5 @@
 // pages/mycenter/notificationlist.js
+const db = wx.cloud.database();
 Page({
 
   /**
@@ -11,6 +12,7 @@ Page({
       showcancel: 0,//是否显示左上角关闭图标   1表示显示    0表示不显示
       title: '我的通知', //导航栏 中间的标题
     },
+    list: 0,
   },
 
   backToMycenter(){
@@ -21,7 +23,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    db.collection('user').get()
+      .then(res=>{
+        console.log("成功",res)
+        this.setData({
+          list: res.data
+        }
+        )
+      })
+      .catch(err=>{
+        console.log("失败", err)
+      })
   },
 
   /**

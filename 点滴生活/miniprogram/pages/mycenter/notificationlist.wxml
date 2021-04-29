@@ -2,4 +2,7 @@
 <navbar navbar-data='{{nvabarData}}' bindnavback='backToMycenter'></navbar>
 <view style="margin-top:100rpx">
   <text bindtap="backToMycenter">这里将是通知列表</text>
+  <view wx:for="list">
+  <text>{{item.userPic}}  {{index}}</text>
+  </view>
 </view>
