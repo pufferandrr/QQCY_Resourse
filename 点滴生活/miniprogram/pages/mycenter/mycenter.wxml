@@ -3,7 +3,7 @@
   <view class="maintain">
     <image src="https://pic4.zhimg.com/80/v2-79003af85f0a52e5f16b6568b7980a83_720w.jpg?source=1940ef5c" mode="aspectFill" class="pic"></image>
     <view class="personal">
-      <view class="name">六元一斤X</view>
+      <view class="name">{{list[0].userName}}</view>
       <view class="nums">
         <view class="nums1">
           <view class="continuationnum">20</view>
