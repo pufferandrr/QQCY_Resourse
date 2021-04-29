@@ -1,0 +1,3 @@
+<!--miniprogram/pages/mycenter/release.wxml-->
+<navbar navbar-data='{{nvabarData}}' bindnavback='backToMycenter'></navbar>
+

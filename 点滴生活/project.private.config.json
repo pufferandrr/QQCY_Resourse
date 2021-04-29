@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -20,6 +21,30 @@
         {
           "name": "pages/mycenter/mycenter",
           "pathName": "pages/mycenter/mycenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/keepthing/noteslist",
+          "pathName": "pages/keepthing/noteslist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/keepthing/notesdetails",
+          "pathName": "pages/keepthing/notesdetails",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/mycenter/notificationlist",
+          "pathName": "pages/mycenter/notificationlist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/mycenter/release",
+          "pathName": "pages/mycenter/release",
           "scene": null
         }
       ]
