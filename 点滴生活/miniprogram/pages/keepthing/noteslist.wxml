@@ -1,4 +1,19 @@
 <!--miniprogram/pages/keepthing/noteslist.wxml-->
 
 <navbar navbar-data='{{nvabarData}}' bindnavedit='toKeepthing'></navbar>
-<text style="font-size:50px;color:#000000">日记列表</text>
+<view class="list">
+    <block wx:for='{{noteslist}}' wx:key='list' wx:for-item="item">
+        <view class="note_item">
+            <view class="line"></view>
+            <view class="circle"></view>
+            <img  class="mood" src="{{item.note_mood}}" alt="alt" mode="scaleToFill"/>
+            <view class="day">{{item.note_day}}</view>
+            <view class="week">{{item.note_weekday}}</view>
+            <view class="year">{{item.note_year}}</view>
+            <view class="text">
+                <view class="title">{{item.note_title}}</view>
+                <view class="content">{{item.note_content}}</view>
+            </view>
+        </view>
+    </block>
+</view>

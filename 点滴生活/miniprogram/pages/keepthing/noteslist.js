@@ -1,5 +1,3 @@
-
-
 const app = getApp()
 Page({
 
@@ -15,6 +13,52 @@ Page({
       title: '小日常', //导航栏 中间的标题
     },
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
+
+    
+      noteslist:[
+        {
+          note_mood:'../../images/mood1@3x.png',
+          note_day:'08',
+          note_weekday:'周四',
+          note_year:'2021-04',
+          note_title:'这是一个严谨的标题',
+          note_content:'一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容...'
+        },
+        {
+          note_mood:'../../images/mood1@3x.png',
+          note_day:'08',
+          note_weekday:'周四',
+          note_year:'2021-04',
+          note_title:'这是一个严谨的标题',
+          note_content:'一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容...'
+        },
+        {
+          note_mood:'../../images/mood1@3x.png',
+          note_day:'08',
+          note_weekday:'周四',
+          note_year:'2021-04',
+          note_title:'这是一个严谨的标题',
+          note_content:'一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容...'
+        },
+        {
+          note_mood:'../../images/mood1@3x.png',
+          note_day:'08',
+          note_weekday:'周四',
+          note_year:'2021-04',
+          note_title:'这是一个严谨的标题',
+          note_content:'一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容...'
+        },
+        {
+          note_mood:'../../images/mood1@3x.png',
+          note_day:'08',
+          note_weekday:'周四',
+          note_year:'2021-04',
+          note_title:'这是一个严谨的标题',
+          note_content:'一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容...'
+        }
+      ]
+    
+
   },
 
   /**

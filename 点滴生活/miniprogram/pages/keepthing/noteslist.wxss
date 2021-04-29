@@ -1,1 +1,91 @@
 /* miniprogram/pages/keepthing/noteslist.wxss */
+
+.list {
+    position: relative;
+    top: 200rpx;
+}
+
+.note_item {
+    position: relative;
+    margin-top: 30rpx;
+}
+
+.circle {
+    position: absolute;
+    left: 20rpx;
+    top: 40rpx;
+    background-color: #FFC8A1;
+    width: 20rpx;
+    height: 20rpx;
+    border-radius:10px;
+}
+
+.line {
+    position: absolute;
+    left: 28rpx;
+    top: 40rpx;
+    background-color: rgba(187, 187, 187, 0.3);
+    width: 5rpx;
+    height: 80%;
+}
+
+.mood {
+    position: absolute;
+    left: 50rpx;
+    top: 60rpx;
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.day {
+    position: absolute;
+    left: 60rpx;
+    top: 100rpx;
+    vertical-align: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+.week {
+    position: absolute;
+    left: 110rpx;
+    top: 100rpx;
+    vertical-align: center;
+    font-size: 15px;
+}
+
+.year {
+    position: absolute;
+    left: 60rpx;
+    top: 150rpx;
+    vertical-align: center;
+    font-size: 14px;
+}
+
+.text {
+    position: relative;
+    left: 200rpx;
+    top: 5rpx;
+    width: 500rpx;
+    border-radius: 20px 20px 20px 20px;
+    background-color: rgba(255, 200, 161, 0.4);
+    box-shadow: 0rpx 0rpx 3rpx 0rpx rgba(81, 81, 81, 28);
+    padding: 5rpx;
+}
+
+.title {
+    position: relative;
+    left: 10rpx;
+    top: 10rpx;
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content {
+    position: relative;
+    left: 10rpx;
+    top: 5rpx;
+    margin: 10rpx;
+    font-size: 13px;
+    text-align: left;
+}
