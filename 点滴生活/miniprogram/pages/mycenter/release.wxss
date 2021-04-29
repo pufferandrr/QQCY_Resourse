@@ -1,1 +1,34 @@
 /* miniprogram/pages/mycenter/release.wxss */
+
+.in_pay_tapbar{
+  width: 242rpx;
+  height: 64rpx;
+  border-radius: 60rpx;
+  background-color:  rgba(253, 242, 241, 100);
+  position:absolute;
+  top:360rpx;
+  left:34rpx;
+}
+.income{
+  font-size:28rpx;
+  color:#909090;
+  pointer-events: none;/*解决文字遮挡点击事件的问题*/
+  position: absolute;
+  left:154rpx;
+  top:10rpx;
+}
+.expend{
+  font-size:28rpx;
+  color:#FFFFFF;
+  pointer-events: none;/*解决文字遮挡点击事件的问题*/
+  position:absolute;
+  left:40rpx;
+  top:10rpx;
+}
+
+.slide{
+  width: 136rpx;
+  height: 64rpx;
+  position: absolute;
+  left:0rpx;
+}

@@ -1,5 +1,7 @@
 // pages/mycenter/notificationlist.js
 const db = wx.cloud.database();
+const app = getApp()
+var pixelRatio1 = 750 / wx.getSystemInfoSync().windowWidth;   
 Page({
 
   /**
@@ -12,6 +14,9 @@ Page({
       showcancel: 0,//是否显示左上角关闭图标   1表示显示    0表示不显示
       title: '我的发布', //导航栏 中间的标题
     },
+    slideposition:"0",//0表示此时滑块在左边，1表示在右边
+    incomecolor:"",
+    expendcolor:"",
   },
 
   backToMycenter(){
@@ -40,6 +45,7 @@ Page({
    */
   onReady: function () {
 
+    this.animation = wx.createAnimation({duration:300});
   },
 
   /**
@@ -49,6 +55,20 @@ Page({
 
   },
 
+  slidemove(){
+    console.log("你点击了滑块",this.data.slideposition);
+    var px1 = 106 / pixelRatio1;
+    if(this.data.slideposition==0){
+    this.animation.translate(px1).step()
+    this.setData({animation: this.animation.export()})
+    this.setData({slideposition:1,incomecolor:"#FFFFFF",expendcolor:"#909090"})
+  }
+    else{
+      this.animation.translate(0).step()
+      this.setData({animation: this.animation.export()})
+      this.setData({slideposition:0,incomecolor:"#909090",expendcolor:"#FFFFFF"})
+    }
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
