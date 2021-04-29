@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "navbar":"../../components/navbar/navbar",
-    "keyboard":"../../components/csk/keyboard/keyboard"
+    "navbar":"../../components/navbar/navbar"
   }
 }
