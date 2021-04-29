@@ -1,12 +1,20 @@
 // 'navbar-data'中navbar是自定义导航栏标题
-<navbar navbar-data='{{nvabarData}}' bindnavedit="accountedit"></navbar><!--这个bindnavedit是一个属性，后面的值是绑定函数，函数用来跳转到对应的编辑界面-->
+<navbar navbar-data='{{nvabarData}}' bindnavedit="accountedit"></navbar>
+<!--这个bindnavedit是一个属性，后面的值是绑定函数，函数用来跳转到对应的编辑界面-->
 <view class="mainblock">
-<view class="limit_hb">
-<limitprogress></limitprogress>
+  <view class="limit_hb">
+    <limitprogress></limitprogress>
+  </view>
+    <view class="in_pay_tapbar">
+      <image class="slide" animation="{{animation}}"bindtap="slidemove" src="../../images/income.png" mode='scaleToFill' ></image>
+      <text class="income" style="color:{{incomecolor}}">收入</text>
+      <text class="expend" style="color:{{expendcolor}}">支出</text>
+    </view>
+    <image class="tablechange" src='../../images/tablechange.png' mode='aspectFit'  ></image>
+  <view class="datatableblock">
+    <ec-canvas class="datatable"id="mychart-dom" canvas-id="mychart" ec="{{ec}}"></ec-canvas>
+  </view>
+  <view class="accountlist_zj">
+    <accountlist accountlist='{{costaccountlist}}' account-type="0"></accountlist>
+  </view>
 </view>
-<view class="datatable">
-  <ec-canvas id="mychart-dom" canvas-id="mychart" ec="{{ec}}"></ec-canvas>
-</view>
-<view class="accountlist_zj">
-<accountlist accountlist='{{costaccountlist}}' account-type="0"></accountlist>
-</view></view>
