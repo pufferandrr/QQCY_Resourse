@@ -168,14 +168,95 @@ function initChart(canvas, width, height, dpr) {
 
 function getOption(){
   return {
+    tooltip:{ //点击tip弹窗样式更改
+      trigger:'axis',
+      backgroundColor:"white",
+      color: "white",
+      borderWidth: "1", //边框宽度设置1
+      borderColor: "white", //设置边框颜色
+      textStyle: {
+        color: "black" //设置文字颜色
+      },
+      formatter :function(params){
+        var tip="";
+        if(params !=null && params.length>0)
+        {
+          for(var i=0;i<params.length;i++)
+          {
+            tip+="总支出："+params[i].value;
+          }
+        }
+        return tip;
+      }
+    },
+    grid:{
+      y:10,
+      y2:20,
+      x:10,
+      x2:10,
+    },
     xAxis: {
+      axisTick: {
+        show: false,
+      },
+      axisLine: {
+        lineStyle: {
+            color: '#d3d7d4'
+        }
+    },
         type: 'category',
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     },
     yAxis: {
-        type: 'value'
+      axisTick: {
+        show: false,
+      },
+      axisLine:{       //y轴
+        show:false
+
+      },
+      axisLabel:{
+        show:false,
+      },
+      splitLine:{
+          lineStyle:{
+            type:"dashed",
+            color: '#d3d7d4'
+          }
+      },
+      type: 'value'
     },
     series: [{
+      itemStyle : {
+
+        normal : {
+        
+        color:'#d71345',
+        
+        lineStyle:{
+        width: 3.5,
+        color:'#f05b72'}
+        
+        }
+        
+        },
+        areaStyle:{//背景渐变色设置
+          normal:{
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+
+                  offset: 0,
+                  color: '#f05b72'
+              }, {
+                  offset: .34,
+                  color: '#f58f98'
+              },{
+                  offset: 1,
+                  color: '#feeeed'
+              }])
+
+          }
+      },
+      symbolSize: 10, 
         data: [20, 932, 901, 934, 1290, 1330, 1320],
         type: 'line',
         smooth: true
