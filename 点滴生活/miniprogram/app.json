@@ -6,8 +6,9 @@
     "pages/mycenter/mycenter",
     "pages/makeaccount/makeaccount",
     "pages/mycenter/notificationlist",
-    "pages/testpage/testpage"
-
+    "pages/testpage/testpage",
+    "pages/keepthing/notesdetails",
+    "pages/keepthing/noteslist"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -34,7 +35,7 @@
       {
         "selectedIconPath": "images/keepthing.png",
         "iconPath": "images/unkeepthing.png",
-        "pagePath": "pages/keepthing/keepthing"
+        "pagePath": "pages/keepthing/noteslist"
       },
       {
         "selectedIconPath": "images/mycenter.png",

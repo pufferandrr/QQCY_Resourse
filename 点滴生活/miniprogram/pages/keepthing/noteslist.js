@@ -9,8 +9,8 @@ Page({
   data: {
     // 组件所需的参数
     nvabarData: {
-      showCapsule: 1, //是否显示左上角返回图标   1表示显示    0表示不显示
-      showEdit:0,//是否显示左上角编辑图标   1表示显示    0表示不显示
+      showCapsule: 0, //是否显示左上角返回图标   1表示显示    0表示不显示
+      showEdit:1,//是否显示左上角编辑图标   1表示显示    0表示不显示
       showcancel:0,//是否显示左上角关闭图标   1表示显示    0表示不显示
       title: '小日常', //导航栏 中间的标题
     },
@@ -20,14 +20,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    wx.hideTabBar({
-      animation: true,    //隐藏底部导航栏
+  toKeepthing(){
+    wx.navigateTo({
+      url: '../keepthing/keepthing',
     })
-  },
-
-  backToNoteslist(){
-    wx.navigateBack();   //返回上一级
   },
 
   swInput: function (e) {

@@ -1,3 +1,5 @@
+/* pages/keepthing/notesdetails.wxss */
+
 .content{
   margin-top: 300rpx;
   margin-left: 35rpx;

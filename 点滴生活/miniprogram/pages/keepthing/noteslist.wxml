@@ -1,0 +1,4 @@
+<!--miniprogram/pages/keepthing/noteslist.wxml-->
+
+<navbar navbar-data='{{nvabarData}}' bindnavedit='toKeepthing'></navbar>
+<text style="font-size:50px;color:#000000">日记列表</text>

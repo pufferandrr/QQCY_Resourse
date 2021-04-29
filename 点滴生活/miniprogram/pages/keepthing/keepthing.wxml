@@ -1,5 +1,7 @@
-// 'navbar-data'中navbar是自定义导航栏标题
-<navbar navbar-data='{{nvabarData}}'></navbar>
-<view class="csk-upload">
-  <uploadPic></uploadPic>
+
+<navbar navbar-data='{{nvabarData}}' bindnavback='backToNoteslist'></navbar>
+<view class="content">
+    <input class="notes-titlt" type="text" placeholder="请输入标题"/>
+    <view class="line"></view>
+    <input class="notes-content" type="text" placeholder="记录下今天的日常吧……"/>
 </view>
