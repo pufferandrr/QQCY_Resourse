@@ -16,16 +16,21 @@ Page({
     },
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
     switchType:1,
-    ctype:[{des:"餐饮",url: "../../typeimages/餐饮.png"},{des:"交通",url: "../../typeimages/交通.png"},
-          {des:"医疗",url: "../../typeimages/医疗.png"},{des:"服装",url: "../../typeimages/服装.png"},
-          {des:"娱乐",url: "../../typeimages/娱乐.png"},{des:"投资",url: "../../typeimages/投资.png"},
-          {des:"学业",url: "../../typeimages/学业.png"},{des:"捐赠",url: "../../typeimages/捐赠.png"},
-          {des:"购物",url: "../../typeimages/购物.png"},{des:"美妆",url: "../../typeimages/美妆.png"},
-          {des:"其他",url: "../../typeimages/其他.png"}],
-    rtype:[{des:"投资",url: "../../typeimages/投资.png"},{des:"工资",url: "../../typeimages/工资.png"},
-          {des:"其他",url: "../../typeimages/其他.png"}],
+    ctype:[{des:"餐饮",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/餐饮.png"},
+           {des:"交通",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/交通.png"},
+          {des:"医疗",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/医疗.png"},
+          {des:"服装",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/服装.png"},
+          {des:"娱乐",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/娱乐.png"},
+          {des:"投资",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/投资.png"},
+          {des:"学业",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/学业.png"},
+          {des:"捐赠",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/捐赠.png"},
+          {des:"购物",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/购物.png"},
+          {des:"美妆",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/美妆.png"},
+          {des:"其他",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/其他.png"}],
+    rtype:[{des:"投资",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/投资.png"},
+          {des:"工资",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/工资.png"},
+          {des:"其他",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/其他.png"}],
     keyNumber:[7,8,9,'日期',4,5,6,'+',1,2,3,'-','.',0,'删除','确认'],
-    arrayn:[],
     numberText:'',
     isShow:false,
     selectedType:'',
@@ -37,13 +42,21 @@ Page({
     switch (this.data.switchType) {
       case 1:
         this.setData({
-          switchType:2
+          switchType:2,
+          selectedType:'',
+          selectedTypeUrl:'',
+          numberText:'',
         })
+        arrval = []
         break;
       default:
         this.setData({
-          switchType:1
+          switchType:1,
+          selectedType:'',
+          selectedTypeUrl:'',
+          numberText:'',
         })
+        arrval = []
         break;
     }
   },
@@ -95,9 +108,12 @@ Page({
     }
     console.log(this.data.numberText);
     console.log(this.data.selectedTypeUrl);
-     console.log(this.data.remark);
-     console.log(this.data.date);
+    console.log(this.data.remark);
+    console.log(this.data.date);
     console.log(this.data.switchType);
+    wx.showLoading({
+      title: '正在添加',
+    })
     wx.cloud.callFunction({
       name:'addRecord',
       data:{
@@ -108,6 +124,11 @@ Page({
         'switchType':this.data.switchType,
       }
     }).then(res=>{
+      wx.hideLoading({
+        success: (res) => {
+          wx.navigateBack()
+        },
+      })
       console.log(res);
     })
 
@@ -118,7 +139,6 @@ Page({
       case '删除':
         arrval.pop();
         this.setData({
-          arrayn:arrval,
           numberText:arrval.join('')
         })
         break;
@@ -128,7 +148,6 @@ Page({
         if(arrval.length==0){
           arrval.push(val);
           this.setData({
-            arrayn:arrval,
             numberText:arrval.join(''),
           })
         }
@@ -137,7 +156,6 @@ Page({
         if(arrval.length==0){
           arrval.push(val);
           this.setData({
-            arrayn:arrval,
             numberText:arrval.join(''),
           })
         }
@@ -146,7 +164,6 @@ Page({
         if(arrval.length!=0&&!arrval.includes('.')){
           arrval.push(val);
           this.setData({
-            arrayn:arrval,
             numberText:arrval.join(''),
           })
         }
@@ -171,7 +188,6 @@ Page({
         var reg = new RegExp("(^[-|+]?[0-9]{1,7}$)|(^[-|+]?[0-9]{1,7}[\.]{1}[0-9]{1,2}$)")
         if(reg.test(arrval.join(''))){
           this.setData({
-            arrayn:arrval,
             numberText:arrval.join('')
           })
         }else{
