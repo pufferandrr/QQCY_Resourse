@@ -2,7 +2,8 @@
 
 .list {
     position: relative;
-    top: 200rpx;
+    top: 180rpx;
+    background-color: #F7F7F7;
 }
 
 .note_item {
@@ -31,8 +32,8 @@
 
 .mood {
     position: absolute;
+   top: 50rpx;
     left: 75rpx;
-    top: 15%;
     width: 70rpx;
     height: 70rpx;
 }
@@ -40,7 +41,7 @@
 .day {
     position: absolute;
     left: 60rpx;
-    top: 110rpx;
+    top: 130rpx;
     vertical-align: center;
     font-weight: bold;
     font-size: 15px;
@@ -48,7 +49,7 @@
 .week {
     position: absolute;
     left: 110rpx;
-    top: 110rpx;
+    top: 130rpx;
     vertical-align: center;
     font-size: 15px;
 }
@@ -56,7 +57,7 @@
 .year {
     position: absolute;
     left: 60rpx;
-    top: 160rpx;
+    top: 180rpx;
     vertical-align: center;
     font-size: 14px;
 }
@@ -69,7 +70,8 @@
     border-radius: 20px 20px 20px 20px;
     background-color: rgba(255, 200, 161, 0.4);
     box-shadow: 0rpx 0rpx 3rpx 0rpx rgba(81, 81, 81, 28);
-    padding: 5rpx;
+    padding: 10rpx;
+    min-height: 250rpx;
 }
 
 .title {
@@ -83,9 +85,14 @@
 
 .content {
     position: relative;
-    left: 10rpx;
-    top: 5rpx;
-    margin: 10rpx;
+    top: 10rpx;
+    margin: 15rpx;
     font-size: 13px;
     text-align: left;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
 }

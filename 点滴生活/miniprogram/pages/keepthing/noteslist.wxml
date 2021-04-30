@@ -1,5 +1,4 @@
 <!--miniprogram/pages/keepthing/noteslist.wxml-->
-
 <navbar navbar-data='{{nvabarData}}' bindnavedit='toKeepthing'></navbar>
 <view class="list">
     <block wx:for='{{noteslist}}' wx:key='list' wx:for-item="item">
@@ -17,3 +16,4 @@
         </view>
     </block>
 </view>
+
