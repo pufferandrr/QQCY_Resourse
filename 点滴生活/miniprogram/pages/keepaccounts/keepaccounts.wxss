@@ -59,9 +59,6 @@
 .datatable{
   width:620rpx;
   height:334rpx;
-  border-style:solid;
-  border-width: 2rpx;
-  border-color:#686565;
   position: absolute;
   top: 100rpx;
   left:40rpx;
