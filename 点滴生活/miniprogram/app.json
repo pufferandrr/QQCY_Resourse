@@ -44,6 +44,9 @@
         "pagePath": "pages/mycenter/mycenter"
       }
     ]
+  }, 
+  "useExtendedLib": {
+    "weui": true
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

@@ -57,7 +57,7 @@ Page({
 
   slidemove(){
     console.log("你点击了滑块",this.data.slideposition);
-    var px1 = 106 / pixelRatio1;
+    var px1 = 126 / pixelRatio1;
     if(this.data.slideposition==0){
     this.animation.translate(px1).step()
     this.setData({animation: this.animation.export()})

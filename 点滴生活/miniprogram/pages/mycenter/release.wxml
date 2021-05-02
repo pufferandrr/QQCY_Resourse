@@ -1,7 +1,7 @@
 <!--miniprogram/pages/mycenter/release.wxml-->
 <navbar navbar-data='{{nvabarData}}' bindnavback='backToMycenter'></navbar>
-<view class="in_pay_tapbar">
-      <image class="slide" animation="{{animation}}"bindtap="slidemove" src="../../images/income.png" mode='scaleToFill' ></image>
+<view class="in_pay_tapbar" bindtap="slidemove" >
+      <image class="slide" animation="{{animation}}"src="../../images/income.png" mode='scaleToFill' ></image>
       <text class="income" style="color:{{incomecolor}}">已发布</text>
       <text class="expend" style="color:{{expendcolor}}">已入选</text>
     </view>

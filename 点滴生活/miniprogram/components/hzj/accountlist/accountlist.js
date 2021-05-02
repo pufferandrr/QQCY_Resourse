@@ -38,6 +38,16 @@ Component({
    */
   data: {
     vlheight:"",
+    slideButtons: [{
+      text: '普通',
+    },{
+      text: '普通',
+      extClass: 'test',
+    },{
+      type: 'warn',
+      text: '警示',
+      extClass: 'test',
+    }],
     accountlist: {
       accountgroup: [{
         date: "1M1d",
@@ -76,6 +86,7 @@ Component({
   lifetimes: {
     attached: function () {
       // 在组件实例进入页面节点树时执行
+      
     },
     detached: function () {
       // 在组件实例被从页面节点树移除时执行

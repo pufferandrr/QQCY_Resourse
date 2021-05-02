@@ -6,13 +6,13 @@
 } */
 .in_pay_tapbar{
   border:1px solid #CCC;
-  width: 242rpx;
+  width: 262rpx;
   height: 64rpx;
   border-radius: 60rpx;
   background-color:  rgba(253, 242, 241, 100);
   position:absolute;
   top:200rpx;
-  left:235rpx; 
+  left:215rpx; 
 }
 .income{
   font-size:28rpx;
@@ -27,7 +27,7 @@
   color:#FFFFFF;
   pointer-events: none;/*解决文字遮挡点击事件的问题*/
   position:absolute;
-  left:40rpx;
+  left:30rpx;
   top:10rpx;
 }
 
@@ -35,6 +35,7 @@
   width: 136rpx;
   height: 64rpx;
   position: absolute;
+  pointer-events: none;
   left:0rpx;
 }
 .content{

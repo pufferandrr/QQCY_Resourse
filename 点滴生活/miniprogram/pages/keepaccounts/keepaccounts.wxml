@@ -6,16 +6,24 @@
     <limitprogress></limitprogress>
   </view>
 
-    <view class="in_pay_tapbar">
-      <image class="slide" animation="{{animation}}"bindtap="slidemove" src="../../images/income.png" mode='scaleToFill' ></image>
-      <text class="income" style="color:{{incomecolor}}">收入</text>
-      <text class="expend" style="color:{{expendcolor}}">支出</text>
-    </view>
-    <image class="tablechange" src='{{imageSrc}}' mode='aspectFit'
-    bindtap="handleChartChange"></image>
+  <view class="in_pay_tapbar" bindtap="slidemove">
+    <image class="slide" animation="{{animation}}" src="../../images/income.png" mode='scaleToFill'></image>
+    <text class="income" style="color:{{incomecolor}}">收入</text>
+    <text class="expend" style="color:{{expendcolor}}">支出</text>
+  </view>
+  <image class="tablechange" src='{{imageSrc}}' mode='aspectFit' bindtap="handleChartChange"></image>
 
   <view class="datatableblock">
-    <ec-canvas force-use-old-canvas="true" class="datatable"id="mychart-dom" canvas-id="mychart" ec="{{ec}}"></ec-canvas>
+    <downlist></downlist>
+    <view class="year" bindtap="yearselect"
+      style="border-style:{{yearborder}};background-color:{{yearbackcolor}};color:{{yearcolor}}">年</view>
+    <view class="month" bindtap="monthselect"
+      style="border-style:{{monthborder}};background-color:{{monthbackcolor}};color:{{monthcolor}}">月</view>
+    <view class="week" bindtap="weekselect"
+      style="border-style:{{weekborder}};background-color:{{weekbackcolor}};color:{{weekcolor}}">周</view>
+
+    <ec-canvas force-use-old-canvas="true" class="datatable" id="mychart-dom" canvas-id="mychart" ec="{{ec}}">
+    </ec-canvas>
 
     <view class="statistic">
       <view class="total">

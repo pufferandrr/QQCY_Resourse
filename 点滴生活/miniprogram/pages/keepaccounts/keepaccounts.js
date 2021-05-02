@@ -27,8 +27,17 @@ Page({
     slideposition:"0",//0表示此时滑块在左边，1表示在右边
     incomecolor:"",
     expendcolor:"",
+    yearbackcolor:"",
+    yearcolor:"",
+    yearborder:"none",//默认选中年，年无边框
+    monthbackcolor:"",
+    monthcolor:"",
+    monthborder:"",
+    weekbackcolor:"",
+    weekcolor:"",
+    weekborder:"",
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
-  },
+  },  
   accountedit(e){
     console.log(e.detail+"  你触发了父组件的事件");
     wx.navigateTo({//注，无法跳转到tabbar绑定的界面
@@ -152,7 +161,50 @@ Page({
   onShareAppMessage: function () {
 
   },
-
+  yearselect(e){
+    console.log("你选择了逐年展示")
+    this.setData({
+      yearbackcolor:"#FFC8A1",
+      yearcolor:"#FFFFFF",
+      yearborder:"none",
+      monthbackcolor:"#FFFFFF",
+      monthcolor:"#909090",
+      monthborder:"solid",
+      weekbackcolor:"#FFFFFF",
+      weekcolor:"#909090",
+      weekborder:"solid",
+    })
+  },
+  
+  monthselect(e){
+    console.log("你选择了逐月展示")
+    this.setData({
+      yearbackcolor:"#FFFFFF",
+      yearcolor:"#909090",
+      yearborder:"solid",
+      monthbackcolor:"#FFC8A1",
+      monthcolor:"#FFFFFF",
+      monthborder:"none",
+      weekbackcolor:"#FFFFFF",
+      weekcolor:"#909090",
+      weekborder:"solid",
+    })
+  },
+  
+  weekselect(e){
+    console.log("你选择了逐年展示")
+    this.setData({
+      yearbackcolor:"#FFFFFF",
+      yearcolor:"#909090",
+      yearborder:"solid",
+      monthbackcolor:"#FFFFFF",
+      monthcolor:"#909090",
+      monthborder:"solid",
+      weekbackcolor:"#FFC8A1",
+      weekcolor:"#FFFFFF",
+      weekborder:"none",
+    })
+  },
   /**
    * 图表切换点击事件处理
    */
