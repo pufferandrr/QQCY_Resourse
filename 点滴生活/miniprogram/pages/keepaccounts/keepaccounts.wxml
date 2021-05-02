@@ -10,7 +10,8 @@
       <text class="income" style="color:{{incomecolor}}">收入</text>
       <text class="expend" style="color:{{expendcolor}}">支出</text>
     </view>
-    <image class="tablechange" src='../../images/tablechange.png' mode='aspectFit'  ></image>
+    <image class="tablechange" src='{{imageSrc}}' mode='aspectFit'
+    bindtap="handleChartChange"></image>
   <view class="datatableblock">
     <ec-canvas force-use-old-canvas="true" class="datatable"id="mychart-dom" canvas-id="mychart" ec="{{ec}}"></ec-canvas>
   </view>
