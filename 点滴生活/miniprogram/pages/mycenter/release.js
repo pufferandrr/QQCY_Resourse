@@ -17,6 +17,7 @@ Page({
     slideposition:"0",//0表示此时滑块在左边，1表示在右边
     incomecolor:"",
     expendcolor:"",
+    chosenList:[],
   },
 
   backToMycenter(){
@@ -27,17 +28,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    db.collection('user').get()
-      .then(res=>{
-        console.log("成功",res)
-        this.setData({
-          list: res.data
-        }
-        )
-      })
-      .catch(err=>{
-        console.log("失败", err)
-      })
+    
+    this.getChosen()
   },
 
   /**
@@ -68,6 +60,22 @@ Page({
       this.setData({animation: this.animation.export()})
       this.setData({slideposition:0,incomecolor:"#909090",expendcolor:"#FFFFFF"})
     }
+  },
+  getChosen(){
+    db.collection('post')
+    .where({
+      state:'1',
+    })
+    .get()
+    .then(res=>{
+      console.log('请求成功', res)
+      this.setData({
+        chosenList:res.data
+      })
+    })
+    .catch(err=>{
+      console.log('请求失败', err)
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏

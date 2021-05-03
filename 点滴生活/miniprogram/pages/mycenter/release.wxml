@@ -11,6 +11,14 @@
     <view class="content">
         sadasdasdasdasdadadasdas
     </view>
+    <view wx:for="{{chosenList}}">
+        <view class="content">
+            <text>时间:{{item.createTime}}\n</text>
+            <text>标题：{{item.title}}\n</text>
+            <text>内容:{{item.content}}</text>
+        </view>
+
+    </view>
     
     <!-- <view class="atent">
         sadasssadadasdas
