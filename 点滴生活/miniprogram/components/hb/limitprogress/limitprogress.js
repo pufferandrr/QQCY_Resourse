@@ -25,6 +25,11 @@ Component({
   },
   created: function (options) {
     wx.cloud.callFunction({
+      name:'getYearRecord',
+    }).then(res=>{
+      console.log(res.result)
+    })
+    wx.cloud.callFunction({
       name:'getLimit',
     }).then(res=>{
       if((res.result[1]/res.result[0])*100 <=50){
