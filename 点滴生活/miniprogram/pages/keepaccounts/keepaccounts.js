@@ -14,6 +14,19 @@ Page({
   data: {
     chartchange: true,  //图表改变判断，true为折线图，false为饼图
     imageSrc: '../../images/chartchange_pie.png',//图表切换图标的url
+    options: [         //下拉框的数据
+    {
+      time_id: '002',
+      time_name: '2月'
+    }, {
+      time_id: '003',
+      time_name: '3月'
+    }, {
+      time_id: '004',
+      time_name: '2021年'
+    }
+    ],
+    selected: {},       //下拉框选中的项
     ec: {
       onInit: initChart
     },
@@ -239,7 +252,7 @@ Page({
                     tarValue = data[i].value;
                 }
             }
-            let p = (tarValue / total * 100).toFixed(0);
+            let p = (tarValue / total * 100).toFixed(1);
             return name + ' ' + p + '%';
           },
         },
@@ -379,6 +392,27 @@ Page({
     })
     chart.setOption(option);
   },
+
+  /**
+   * 自定义事件bindchange的处理，select组件的数据传到这里
+   */
+  change (e) {
+    this.setData({
+      selected: { ...e.detail }
+    })
+    wx.showToast({//弹出对话框
+      title: `${this.data.selected.id} - ${this.data.selected.name}`,
+      icon: 'success',
+      duration: 1000
+    })
+  },
+  /**
+   * 点击其它地方时收起下拉框，绑定mainblock的点击事件
+   */
+  close () {
+    // 关闭select
+    this.selectComponent('#select').close()
+  }
 })
 
 function initChart(canvas, width, height, dpr) {

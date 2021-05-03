@@ -1,7 +1,7 @@
 // 'navbar-data'中navbar是自定义导航栏标题
 <navbar navbar-data='{{nvabarData}}' bindnavedit="accountedit"></navbar>
 <!--这个bindnavedit是一个属性，后面的值是绑定函数，函数用来跳转到对应的编辑界面-->
-<view class="mainblock">
+<view class="mainblock" catchtap="close">
   <view class="limit_hb">
     <limitprogress></limitprogress>
   </view>
@@ -14,7 +14,11 @@
   <image class="tablechange" src='{{imageSrc}}' mode='aspectFit' bindtap="handleChartChange"></image>
 
   <view class="datatableblock">
-    <downlist></downlist>
+
+    <view class="select_wrap">
+      <select id="select" options="{{options}}" key="time_id" text="time_name" bindchange="change"></select>
+    </view>
+
     <view class="year" bindtap="yearselect"
       style="border-style:{{yearborder}};background-color:{{yearbackcolor}};color:{{yearcolor}}">年</view>
     <view class="month" bindtap="monthselect"

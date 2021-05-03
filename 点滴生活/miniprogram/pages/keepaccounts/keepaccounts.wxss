@@ -127,13 +127,14 @@
   flex-direction: row;
   width: 400rpx;
   height: 150rpx;
-  top: 450rpx;
   justify-content:space-around;
   align-items: center;
   font-family: Bahnschrift;
   color:#4C4C4C;
   position: absolute;
-  left:150rpx
+  left:150rpx;
+  top: 450rpx;
+  margin: 0 auto;
 }
 .total{
   display: flex;
@@ -149,9 +150,22 @@
 }
 .num{
   margin-top: 10rpx;
+  /* color:#F05B72 */
 }
 .separete{
   background:#F58B7E;
   width:7rpx;
   height: 70rpx;
+}
+.container{
+  position: absolute;
+  height: 70rpx;
+  top: 10rpx;
+  left: 10rpx;
+}
+.select_wrap{
+  position: absolute;
+  top: 22rpx;
+  left: 50rpx;
+  width: 180rpx;
 }
