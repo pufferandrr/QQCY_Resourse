@@ -5,7 +5,7 @@ const app = getApp()
 let chart =null;
 
 var pixelRatio1 = 750 / wx.getSystemInfoSync().windowWidth;   
-
+var yeardata=[0,0,0,0,0,0,0,0,0,0,0,0]
 Page({
 
   /**
@@ -125,7 +125,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
   slidemove(){
     console.log("你点击了滑块",this.data.slideposition);
@@ -417,17 +417,35 @@ Page({
 })
 
 function initChart(canvas, width, height, dpr) {
-  chart = echarts.init(canvas, null, {
-    width: width,
-    height: height,
-    devicePixelRatio: dpr // new
-  });
-  canvas.setChart(chart);
+  wx.cloud.callFunction({
+    name:'getYearRecord',
+    data:{
+      Year:'2021',
+    }
+  }).then(res=>{
+    yeardata=res.result
+    console.log(yeardata)
+  })
+  wx.showLoading({
+    title: '图表正在飞速加载中',
+  })
+  setTimeout(function(){
+    chart = echarts.init(canvas, null, {
+      width: width,
+      height: height,
+      devicePixelRatio: dpr // new
+    });
+    canvas.setChart(chart);
+  
+    let option = getOption()  
+  
+    chart.setOption(option)
+    wx.hideLoading({
+      success: (res) => {},
+    })
+    return chart
+  },1500)
 
-  let option = getOption()  
-
-  chart.setOption(option)
-  return chart
 }
 
 function getOption(){
@@ -473,7 +491,7 @@ function getOption(){
       interval: 0
       },
         type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月','8月','9月','10月','11月','12月']
     },
     yAxis: {
       axisTick: {
@@ -525,7 +543,7 @@ function getOption(){
           }
       },
       symbolSize: 10, 
-        data: [20, 932, 901, 934, 1290, 1330, 1320],
+        data: yeardata,
         type: 'line',
         smooth: true
     }]
