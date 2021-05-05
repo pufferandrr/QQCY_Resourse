@@ -51,6 +51,12 @@
         {
           "name": "pages/makeaccount/makeaccount",
           "pathName": "pages/makeaccount/makeaccount",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/mycenter/release",
+          "pathName": "pages/mycenter/release",
           "scene": null
         }
       ]

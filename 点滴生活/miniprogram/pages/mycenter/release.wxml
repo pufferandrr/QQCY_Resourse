@@ -5,21 +5,15 @@
       <text class="income" style="color:{{incomecolor}}">已发布</text>
       <text class="expend" style="color:{{expendcolor}}">已入选</text>
     </view>
+    <block wx:for='{{releaselist}}' wx:key='list' wx:for-item="item">
+    <image src="../../images/modification.png" class="modification"></image>
     <view class="content">
-        sadasdasdasdasdadadasdas
+        <image src="../../images/beer.png" class="beer"></image>
+        <view class="time">{{item.time}}</view>
+        <view class="contenttype">{{item.type}}</view>
+        <view class="contenttext">{{item.content}}</view>
     </view>
-    <view class="content">
-        sadasdasdasdasdadadasdas
-    </view>
-    <view wx:for="{{chosenList}}">
-        <view class="content">
-            <text>时间:{{item.createTime}}\n</text>
-            <text>标题：{{item.title}}\n</text>
-            <text>内容:{{item.content}}</text>
-        </view>
-
-    </view>
-    
+</block>
     <!-- <view class="atent">
         sadasssadadasdas
     </view> -->
