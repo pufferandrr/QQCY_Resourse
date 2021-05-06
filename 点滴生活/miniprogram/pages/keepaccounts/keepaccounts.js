@@ -257,164 +257,7 @@ Page({
   handleChartChange(e) {
     let imagePie = '../../images/chartchange_pie.png';
     let imageLine = '../../images/chartchange_line.png';
-    let optionPie = {
-      color: ['#F6494C','#FEAE3F','#4E26B6','#6BDE8F','#457EF9'],
-      xAxis: {
-        show: false
-      },
-      tooltip: {
-          trigger: 'item' 
-      },
-      legend: {
-          textStyle: {
-            fontSize: 28/pixelRatio1,
-            fontFamily: 'Bahnschrift'
-          },
-          top: '15%',
-          right: '7%',
-          orient: 'vertical',
-          icon: 'circle',
-          formatter: function(name) {
-            // 获取legend显示内容
-            let data = option.series[0].data;
-            let total = 0;
-            let tarValue = 0;
-            for (let i = 0, l = data.length; i < l; i++) {
-                total += data[i].value;
-                if (data[i].name == name) {
-                    tarValue = data[i].value;
-                }
-            }
-            let p = (tarValue / total * 100).toFixed(1);
-            return name + ' ' + p + '%';
-          },
-        },
-      series: [
-          {
-              type: 'pie', 
-              radius: ['43%', '80%'],
-              center: ['30%','50%'],
-              avoidLabelOverlap: false,
-              itemStyle: {
-                borderWidth: 1,
-                borderColor:'#ffffff',
-              },
-              label: {
-                  show: false,
-                  position: 'center'
-              },
-              emphasis: {
-                  label: {
-                      show: true,
-                      fontSize: '20',
-                      fontWeight: '',
-                      formatter:'{c}\n(元)',
-                      color:'#EE7364',
-                      fontFamily: 'Bahnschrift'
-                  }
-              },
-              labelLine: {
-                  show: false
-              },
-              data: [
-                  {
-                    value: 969.564, 
-                    name: '搜索',
-                    itemStyle: {
-                      color: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 0,
-                        y2: 1,
-                        colorStops: [{
-                            offset: 0, color: '#F6494C' // 0% 处的颜色
-                        }, {
-                            offset: 0.6, color: '#FE9451' // 100% 处的颜色
-                        }],
-                        global: false // 缺省为 false
-                      }
-                    }},
-                  {
-                    value: 735, 
-                    name: '直接',
-                    itemStyle: {
-                      color: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 0,
-                        y2: 1,
-                        colorStops: [{
-                            offset: 0, color: '#FFFF20' // 0% 处的颜色
-                        }, {
-                            offset: 0.6, color: '#FCBF4C' // 100% 处的颜色
-                        }],
-                        global: false // 缺省为 false
-                      }
-                    }
-                  },
-                  {
-                    value: 580, 
-                    name: '邮件',
-                    itemStyle: {
-                      color: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 0,
-                        y2: 1,
-                        colorStops: [{
-                            offset: 0, color: '#4E26B6' // 0% 处的颜色
-                        }, {
-                            offset: 0.6, color: '#566EE8' // 100% 处的颜色
-                        }],
-                        global: false // 缺省为 false
-                      }
-                    }
-                  },
-                  {
-                    value: 484, 
-                    name: '联告',
-                    itemStyle: {
-                      color: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 0,
-                        y2: 1,
-                        colorStops: [{
-                            offset: 0, color: '#6BDE8F' // 0% 处的颜色
-                        }, {
-                            offset: 0.6, color: '#58EBD4' // 100% 处的颜色
-                        }],
-                        global: false // 缺省为 false
-                      }
-                    }
-                  },
-                  {
-                    value: 300, 
-                    name: '视频',
-                    itemStyle: {
-                      color: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 0,
-                        y2: 1,
-                        colorStops: [{
-                            offset: 0, color: '#457EF9' // 0% 处的颜色
-                        }, {
-                            offset: 0.6, color: '#53A2F2' // 100% 处的颜色
-                        }],
-                        global: false // 缺省为 false
-                      }
-                    }
-                  }
-              ]
-          }
-      ]
-    }
+    let optionPie = getOptionPie();
     let optionLine = getOption();
     let option;
     let {chartchange} = this.data;
@@ -568,7 +411,7 @@ function getOption(){
 }
 
 function getOptionPie(){
-  return {
+  let option = {
     color: ['#F6494C','#FEAE3F','#4E26B6','#6BDE8F','#457EF9'],
     xAxis: {
       show: false
@@ -726,4 +569,5 @@ function getOptionPie(){
         }
     ]
   }
+  return option;
 }
