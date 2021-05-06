@@ -144,7 +144,7 @@
   justify-content: center;
   border-color: darkgrey;
   border-radius: 32rpx 0rpx 0rpx 32rpx;
-  box-shadow: 6rpx 6rpx 5rpx #888888;
+  box-shadow: 3rpx 3rpx 3rpx #888888;
 }
 .csk-type{
   width: 15%;

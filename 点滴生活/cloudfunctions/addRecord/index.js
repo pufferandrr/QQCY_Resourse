@@ -13,9 +13,19 @@ exports.main = async (event, context) => {
     type = 'rRecord'
   }
   var num = parseFloat(event.number);
-  console.log(event.createTime);
-  console.log(event.number);
-  console.log(num);
+
+  var days = [0,31,59,90,120,151,181,212,243,273,304,334];
+  var today = new Date(event.createTime);
+  var first = new Date(today.getFullYear(),0,1);
+  var firstWeek = first.getDay();
+  var today_week;
+  var toYear = today.getFullYear();
+  if(((toYear%4==0&&toYear%100!=0)||toYear%400==0)&&today.getMonth()>1){
+    today_week = parseInt((days[today.getMonth()]+today.getDate()+1-8+firstWeek)/7+1);
+  }else{
+    today_week = parseInt((days[today.getMonth()]+today.getDate()-8+firstWeek)/7+1);
+  }
+  var week = today.getDay();
   return await db.collection(type).add({
     data:{
       number:num,
@@ -23,6 +33,8 @@ exports.main = async (event, context) => {
       remark:event.remark,
       typeid:event.typeid,
       userid:wxContext.OPENID,
+      weeks:today_week,
+      week:week,
     }
   })
 }

@@ -70,10 +70,27 @@ Page({
       isShow:true,
     })
   },
+
+  getWeeks:function(){
+    var days = [0,31,59,90,120,151,181,212,243,273,304,334];
+    var today = new Date(this.data.date);
+    var first = new Date(today.getFullYear(),0,1);
+    var firstWeek = first.getDay();
+    var today_week;
+    var toYear = today.getFullYear();
+    if(((toYear%4==0&&toYear%100!=0)||toYear%400==0)&&today.getMonth()>1){
+      today_week = parseInt((days[today.getMonth()]+today.getDate()+1-8+firstWeek)/7+1);
+      console.log("闰年");
+    }else{
+      today_week = parseInt((days[today.getMonth()]+today.getDate()-8+firstWeek)/7+1);
+    }
+  },
+
   bindDateChange: function (e) {
     this.setData({
       date: e.detail.value
     })
+    //this.getWeeks();
   },
   remarkChange:function(e){
     this.setData({
@@ -81,11 +98,11 @@ Page({
     })
   },
   returnA:function(){
-    // var now = new Date();
-    // var year = now.getFullYear();
-    // var mouth = now.getMonth()+1;
-    // var day = now.getDate();
-    // console.log(year+'-'+mouth+'-'+day);
+    this.setData({
+      numberText:'',
+      selectedType:'',
+    })
+    arrval = [];
     wx.navigateBack();
   },
   selectType:function(e){
@@ -102,9 +119,28 @@ Page({
       var year = now.getFullYear();
       var mouth = now.getMonth()+1;
       var day = now.getDate();
-      this.setData({
-        date:year+'-'+mouth+'-'+day
-      })
+      if(mouth<10){
+        if(day<10){
+          this.setData({
+            date:year+'-0'+mouth+'-0'+day
+          })
+        }else{
+          this.setData({
+            date:year+'-0'+mouth+'-'+day
+          })
+        }
+      }else{
+        if(day<10){
+          this.setData({
+            date:year+'-'+mouth+'-0'+day
+          })
+        }else{
+          this.setData({
+            date:year+'-'+mouth+'-'+day
+          })
+        }
+      }
+      
     }
     console.log(this.data.numberText);
     console.log(this.data.selectedTypeUrl);
