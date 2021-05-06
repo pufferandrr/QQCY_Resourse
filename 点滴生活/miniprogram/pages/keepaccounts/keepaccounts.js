@@ -3,7 +3,7 @@ import * as echarts from '../../components/hb/ec-canvas/echarts';
 
 const app = getApp()
 let chart =null;
-
+var pickyear="2021";
 var pixelRatio1 = 750 / wx.getSystemInfoSync().windowWidth;
 var yeardata=[0,0,0,0,0,0,0,0,0,0,0,0]
 var type='cRecord'
@@ -451,10 +451,11 @@ Page({
       yearselect:"none",
       weekselect:"none"
     })
+
   },
   
   weekselect(e){
-    console.log("你选择了逐年展示")
+    console.log("你选择了逐周展示")
     this.setData({
       yearbackcolor:"#FFFFFF",
       yearcolor:"#909090",
@@ -497,10 +498,27 @@ Page({
     })
     console.log({//弹出对话框
       title: `${this.data.selected.id} - ${this.data.selected.name}`,
-      icon: 'success',
-      duration: 1000
     })
+    if(this.data.selected.id.substr(0,1)=="w")//选择以某一周查看账单
+    {
+      console.log(pickyear+"年 "+this.data.selected.name);//pickyear表示选择的是哪一年
+    }
+    
+    if(this.data.selected.id.substr(0,1)=="m")//选择以某一月
+    {
+      console.log(pickyear+"年 "+this.data.selected.name);
+    }
+    
+    if(this.data.selected.id.substr(0,1)=="y")//选择以某一年
+    {
+      console.log(this.data.selected.name);
+      pickyear=this.data.selected.name.substr(0,4);
+    }
   },
+   /**
+   * 设置账单数据函数
+   */
+
   /**
    * 点击其它地方时收起下拉框，绑定mainblock的点击事件
    */
