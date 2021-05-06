@@ -1,6 +1,9 @@
 // pages/mycenter/notificationlist.js
 const db = wx.cloud.database();
 const app = getApp()
+
+// 发布浏览最长字数
+const maxLenth = 180
 var pixelRatio1 = 750 / wx.getSystemInfoSync().windowWidth;   
 Page({
 
@@ -50,7 +53,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     this.getChosen()
   },
 
@@ -91,9 +93,15 @@ Page({
     .get()
     .then(res=>{
       console.log('请求成功', res)
-      this.setData({
-        chosenList:res.data
-      })
+      var content
+      for(var i=0;i<res.data.length;i++){
+        content = res.data[i].content
+        content = content.length>maxLenth?content.slice(0,maxLenth)+"...":content
+        this.setData({
+          ["chosenList["+i+"].content"]:content,
+          ["chosenList["+i+"].time"]:res.data[i].createTime
+        })
+      }
     })
     .catch(err=>{
       console.log('请求失败', err)
