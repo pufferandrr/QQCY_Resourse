@@ -7,8 +7,6 @@ Component({
     defaultOption: {
       type: Object,
       value: {
-        id: '001',
-        name: '2222月'
       }
     },
     key: {

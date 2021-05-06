@@ -4,7 +4,7 @@
     <text class="current-name">{{current.name}}</text>
   </view>
 
-  <view class="option-list" wx:if="{{isShow}}" catchtap="optionTap">
+  <scroll-view scroll-y='true' style="height:280rpx;"class="option-list" wx:if="{{isShow}}" catchtap="optionTap">
     <text class="option"
       data-id="{{defaultOption.id}}"
       data-name="{{defaultOption.name}}">{{defaultOption.name}}
@@ -15,5 +15,5 @@
       data-id="{{item.id}}"
       data-name="{{item.name}}">{{item.name}}
     </text>
-  </view>
+  </scroll-view>
 </view>

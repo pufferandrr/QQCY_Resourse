@@ -15,8 +15,16 @@
 
   <view class="datatableblock">
 
-    <view class="select_wrap">
-      <select id="select" options="{{options}}" key="time_id" text="time_name" bindchange="change"></select>
+    <view class="select_wrap" style="display:{{yearselect}}">
+      <select id="select" defaultOption="{{yeardefaultoption}}"options="{{yearoptions}}" key="time_id" text="time_name" bindchange="change"></select>
+    </view>
+
+    <view class="select_wrap" style="display:{{monthselect}}">
+      <select id="select" defaultOption="{{monthdefaultoption}}"options="{{monthoptions}}" key="time_id" text="time_name" bindchange="change"></select>
+    </view>
+
+    <view class="select_wrap" style="display:{{weekselect}}">
+      <select id="select" defaultOption="{{weekdefaultoption}}"options="{{weekoptions}}" key="time_id" text="time_name" bindchange="change"></select>
     </view>
 
     <view class="year" bindtap="yearselect"

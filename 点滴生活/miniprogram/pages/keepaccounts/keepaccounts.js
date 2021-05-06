@@ -15,16 +15,223 @@ Page({
   data: {
     chartchange: true,  //图表改变判断，true为折线图，false为饼图
     imageSrc: '../../images/chartchange_pie.png',//图表切换图标的url
-    options: [         //下拉框的数据
+    yeardefaultoption:{
+      id:"y001",
+      name:"2021年"
+    },
+    yearoptions: [         //下拉框的数据
     {
-      time_id: '002',
+      time_id: 'y002',
+      time_name: '2020年'
+    }, {
+      time_id: 'y003',
+      time_name: '2019年'
+    }, {
+      time_id: 'y004',
+      time_name: '2018年'
+    }
+    ],
+    monthdefaultoption:{
+      id:"m001",
+      name:"1月"
+    },
+    monthoptions: [         //下拉框的数据
+    {
+      time_id: 'm002',
       time_name: '2月'
     }, {
-      time_id: '003',
+      time_id: 'm003',
       time_name: '3月'
     }, {
-      time_id: '004',
-      time_name: '2021年'
+      time_id: 'm004',
+      time_name: '4月'
+    }, {
+      time_id: 'm005',
+      time_name: '5月'
+    }, {
+      time_id: 'm006',
+      time_name: '6月'
+    }, {
+      time_id: 'm007',
+      time_name: '7月'
+    }, {
+      time_id: 'm008',
+      time_name: '8月'
+    }, {
+      time_id: 'm009',
+      time_name: '9月'
+    }, {
+      time_id: 'm010',
+      time_name: '10月'
+    }, {
+      time_id: 'm011',
+      time_name: '11月'
+    }, {
+      time_id: 'm012',
+      time_name: '12月'
+    }
+    ],
+    weekdefaultoption:{
+      id:"w001",
+      name:"第1周"
+    },
+    weekoptions: [         //下拉框的数据
+    {
+      time_id: 'w002',
+      time_name: '第2周'
+    }, {
+      time_id: 'w003',
+      time_name: '第3周'
+    }, {
+      time_id: 'w004',
+      time_name: '第4周'
+    }, {
+      time_id: 'w005',
+      time_name: '第5周'
+    }, {
+      time_id: 'w006',
+      time_name: '第6周'
+    }, {
+      time_id: 'w007',
+      time_name: '第7周'
+    }, {
+      time_id: 'w008',
+      time_name: '第8周'
+    }, {
+      time_id: 'w009',
+      time_name: '第9周'
+    }, {
+      time_id: 'w010',
+      time_name: '第10周'
+    }, {
+      time_id: 'w011',
+      time_name: '第11周'
+    }, {
+      time_id: 'w012',
+      time_name: '第12周'
+    }, {
+      time_id: 'w013',
+      time_name: '第13周'
+    }, {
+      time_id: 'w014',
+      time_name: '第14周'
+    }, {
+      time_id: 'w015',
+      time_name: '第15周'
+    }, {
+      time_id: 'w016',
+      time_name: '第16周'
+    }, {
+      time_id: 'w017',
+      time_name: '第17周'
+    }, {
+      time_id: 'w018',
+      time_name: '第18周'
+    }, {
+      time_id: 'w019',
+      time_name: '第19周'
+    }, {
+      time_id: 'w020',
+      time_name: '第20周'
+    }, {
+      time_id: 'w021',
+      time_name: '第21周'
+    }, {
+      time_id: 'w022',
+      time_name: '第22周'
+    }, {
+      time_id: 'w023',
+      time_name: '第23周'
+    }, {
+      time_id: 'w024',
+      time_name: '第24周'
+    }, {
+      time_id: 'w025',
+      time_name: '第25周'
+    }, {
+      time_id: 'w026',
+      time_name: '第26周'
+    }, {
+      time_id: 'w027',
+      time_name: '第27周'
+    }, {
+      time_id: 'w028',
+      time_name: '第28周'
+    }, {
+      time_id: 'w029',
+      time_name: '第29周'
+    }, {
+      time_id: 'w030',
+      time_name: '第30周'
+    }, {
+      time_id: 'w031',
+      time_name: '第31周'
+    }, {
+      time_id: 'w032',
+      time_name: '第32周'
+    }, {
+      time_id: 'w033',
+      time_name: '第33周'
+    }, {
+      time_id: 'w034',
+      time_name: '第34周'
+    }, {
+      time_id: 'w035',
+      time_name: '第35周'
+    }, {
+      time_id: 'w036',
+      time_name: '第36周'
+    }, {
+      time_id: 'w037',
+      time_name: '第37周'
+    }, {
+      time_id: 'w038',
+      time_name: '第38周'
+    }, {
+      time_id: 'w039',
+      time_name: '第39周'
+    }, {
+      time_id: 'w040',
+      time_name: '第40周'
+    }, {
+      time_id: 'w041',
+      time_name: '第41周'
+    }, {
+      time_id: 'w042',
+      time_name: '第42周'
+    }, {
+      time_id: 'w043',
+      time_name: '第43周'
+    }, {
+      time_id: 'w044',
+      time_name: '第44周'
+    }, {
+      time_id: 'w045',
+      time_name: '第45周'
+    }, {
+      time_id: 'w046',
+      time_name: '第46周'
+    }, {
+      time_id: 'w047',
+      time_name: '第47周'
+    }, {
+      time_id: 'w048',
+      time_name: '第48周'
+    }, {
+      time_id: 'w049',
+      time_name: '第49周'
+    }, {
+      time_id: 'w050',
+      time_name: '第50周'
+    }, {
+      time_id: 'w051',
+      time_name: '第51周'
+    }, {
+      time_id: 'w052',
+      time_name: '第52周'
+    }, {
+      time_id: 'w053',
+      time_name: '第53周'
     }
     ],
     selected: {},       //下拉框选中的项
@@ -50,6 +257,9 @@ Page({
     weekbackcolor:"",
     weekcolor:"",
     weekborder:"",
+    yearselect:"block",
+    monthselect:"none",
+    weekselect:"none",
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
   },  
   accountedit(e){
@@ -219,6 +429,9 @@ Page({
       weekbackcolor:"#FFFFFF",
       weekcolor:"#909090",
       weekborder:"solid",
+      yearselect:"block",
+      monthselect:"none",
+      weekselect:"none"
     })
   },
   
@@ -234,6 +447,9 @@ Page({
       weekbackcolor:"#FFFFFF",
       weekcolor:"#909090",
       weekborder:"solid",
+      monthselect:"block",
+      yearselect:"none",
+      weekselect:"none"
     })
   },
   
@@ -249,6 +465,9 @@ Page({
       weekbackcolor:"#FFC8A1",
       weekcolor:"#FFFFFF",
       weekborder:"none",
+      weekselect:"block",
+      monthselect:"none",
+      yearselect:"none"
     })
   },
   /**
@@ -276,7 +495,7 @@ Page({
     this.setData({
       selected: { ...e.detail }
     })
-    wx.showToast({//弹出对话框
+    console.log({//弹出对话框
       title: `${this.data.selected.id} - ${this.data.selected.name}`,
       icon: 'success',
       duration: 1000
