@@ -149,6 +149,18 @@ Page({
     else{
       type='cRecord'
     }//还需要重新获取数据
+    wx.cloud.callFunction({
+      name:'getYearRecord',
+      data:{
+        type:type,
+        Year:'2021',
+      }
+    }).then(res=>{
+      yeardata=res.result
+      chart.setOption(getOption())
+      console.log(yeardata)
+    })
+
     var px1 = 106 / pixelRatio1;
     if(this.data.slideposition==0){
     this.animation.translate(px1).step()

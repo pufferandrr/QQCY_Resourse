@@ -38,7 +38,7 @@ exports.main = async (event, context) => {
   })
 }
 for(i=10;i<=12;i++){
-  await db.collection("cRecord").where($.and([
+  await db.collection(type).where($.and([
     {
       userid:wxContext.OPENID,
     },
