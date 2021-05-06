@@ -6,6 +6,7 @@ let chart =null;
 
 var pixelRatio1 = 750 / wx.getSystemInfoSync().windowWidth;   
 var yeardata=[0,0,0,0,0,0,0,0,0,0,0,0]
+var type='cRecord'
 Page({
 
   /**
@@ -64,6 +65,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.cloud.callFunction({
+      name:'getYearRecord',
+      data:{
+        type:type,
+        Year:'2021',
+      }
+    }).then(res=>{
+      yeardata=res.result
+      chart.setOption(getOption())
+      console.log(yeardata)
+    })
+  
     var i=[{//账单数据
       accountgroup:{
         date:"1月5号",
@@ -129,6 +142,13 @@ Page({
   },
   slidemove(){
     console.log("你点击了滑块",this.data.slideposition);
+    if(type=='cRecord')
+    {
+      type='rRecord'
+    }
+    else{
+      type='cRecord'
+    }//还需要重新获取数据
     var px1 = 106 / pixelRatio1;
     if(this.data.slideposition==0){
     this.animation.translate(px1).step()
@@ -417,19 +437,6 @@ Page({
 })
 
 function initChart(canvas, width, height, dpr) {
-  wx.cloud.callFunction({
-    name:'getYearRecord',
-    data:{
-      Year:'2021',
-    }
-  }).then(res=>{
-    yeardata=res.result
-    console.log(yeardata)
-  })
-  wx.showLoading({
-    title: '图表正在飞速加载中',
-  })
-  setTimeout(function(){
     chart = echarts.init(canvas, null, {
       width: width,
       height: height,
@@ -440,11 +447,9 @@ function initChart(canvas, width, height, dpr) {
     let option = getOption()  
   
     chart.setOption(option)
-    wx.hideLoading({
-      success: (res) => {},
-    })
+
     return chart
-  },1500)
+
 
 }
 

@@ -8,6 +8,7 @@ const $ = db.command.aggregate;
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
+  var type=event.type
   var Year=event.Year;
   var data=new Array();
   for(i=0;i<12;i++)
@@ -16,7 +17,7 @@ exports.main = async (event, context) => {
   }
   console.log(wxContext.OPENID)
   for(i=1;i<=9;i++){
-  await db.collection("cRecord").where($.and([
+  await db.collection(type).where($.and([
     {
       userid:wxContext.OPENID,
     },
