@@ -609,6 +609,7 @@ Page({
     
     if(this.data.selected.id.substr(0,1)=="m")//选择以某一月
     {
+      this.setData({listcurrentmonth:{name:this.data.selected.name}})
       console.log(pickyear+"年 "+this.data.selected.name);
       var s=this.data.selected.name
       var num=s.replace(/[^0-9]/ig,"")
