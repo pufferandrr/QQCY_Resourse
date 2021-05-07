@@ -5,7 +5,7 @@
       <text class="income" style="color:{{incomecolor}}">已发布</text>
       <text class="expend" style="color:{{expendcolor}}">已入选</text>
     </view>
-    <block wx:for='{{chosenList}}' wx:key='content' wx:for-item="item">
+    <block wx:for='{{chosenList}}' wx:key='id' wx:for-item="item">
     <image src="../../images/modification.png" class="modification"></image>
     <view class="content">
         <image src="../../images/beer.png" class="beer"></image>
