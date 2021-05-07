@@ -7,6 +7,22 @@ var pickyear="2021";
 var pixelRatio1 = 750 / wx.getSystemInfoSync().windowWidth;
 var yeardata=[0,0,0,0,0,0,0,0,0,0,0,0]
 var type='cRecord'
+
+var days = [0,31,59,90,120,151,181,212,243,273,304,334];
+var timestamp =Date.parse(new Date())
+var date =new Date(timestamp);
+var nowYear = date.getFullYear().toString()
+var today = new Date(timestamp);
+var first = new Date(today.getFullYear(),0,1);
+var firstWeek = first.getDay();
+var today_week
+var toYear = today.getFullYear();
+if(((toYear%4==0&&toYear%100!=0)||toYear%400==0)&&today.getMonth()>1){
+  today_week = parseInt((days[today.getMonth()]+today.getDate()+1-8+firstWeek)/7+1);
+}else{
+  today_week = parseInt((days[today.getMonth()]+today.getDate()-8+firstWeek)/7+1);
+}
+
 Page({
 
   /**
@@ -279,7 +295,7 @@ Page({
       name:'getYearRecord',
       data:{
         type:type,
-        Year:'2021',
+        Year:nowYear,
       }
     }).then(res=>{
       yeardata=res.result
