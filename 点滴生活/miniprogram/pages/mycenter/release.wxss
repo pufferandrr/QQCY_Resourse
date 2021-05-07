@@ -72,7 +72,7 @@
   /* border:1px solid #CCC; */
   position: absolute;
   height: 40rpx;
-  width: 254rpx;
+  width: 280rpx;
   top: 60rpx;
   left: 156rpx;
   color: #444444 10000%;
@@ -81,20 +81,7 @@ text-align: left;
 font-family: PingFangSC-bold;
   float: left;
 }
-.contenttype{
-  /* border:1px solid #CCC; */
-  position: absolute;
-  height: 40rpx;
-  width: 84rpx;
-  top: 42rpx;
-  right:42rpx;
-  color: rgba(242, 118, 103, 100);
-font-size: 28rpx;
-text-align: left;
-font-family: PingFangSC-regular;
-  float: left;
-  
-}
+
 .contenttext{
   position: relative;
   font-size: 28rpx;
