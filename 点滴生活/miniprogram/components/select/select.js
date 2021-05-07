@@ -16,6 +16,12 @@ Component({
     text: {
       type: String,
       value: 'name'
+    },
+    current: {
+      type:JSON,
+      value:{
+        name:""
+      }
     }
   },
   data: {
@@ -26,11 +32,11 @@ Component({
   methods: {
     optionTap(e) {
       let dataset = e.target.dataset
+      console.log("当前选择"+dataset)
       this.setData({
         current: dataset,
         isShow: false
       });
-
       // 调用父组件方法，并传参
       this.triggerEvent("change", { ...dataset })
     },

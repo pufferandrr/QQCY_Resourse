@@ -264,6 +264,56 @@ Page({
     ec: {
       onInit: initChart
     },
+    mpdefaultoption:{
+      id:"mp001",
+      name:"1月"
+    },
+    mpoptions:[
+      {
+        time_id:"mp002",
+        time_name:"2月",
+      },
+      {
+        time_id:"mp003",
+        time_name:"3月",
+      },
+      {
+        time_id:"mp004",
+        time_name:"4月",
+      },
+      {
+        time_id:"mp005",
+        time_name:"5月",
+      },
+      {
+        time_id:"mp006",
+        time_name:"6月",
+      },
+      {
+        time_id:"mp007",
+        time_name:"7月",
+      },
+      {
+        time_id:"mp008",
+        time_name:"8月",
+      },
+      {
+        time_id:"mp009",
+        time_name:"9月",
+      },
+      {
+        time_id:"mp010",
+        time_name:"10月",
+      },
+      {
+        time_id:"mp011",
+        time_name:"11月",
+      },
+      {
+        time_id:"mp012",
+        time_name:"12月",
+      },
+    ],
     // 组件所需的参数
     nvabarData: {
       showCapsule: 0, //是否显示左上角返回图标   1表示显示    0表示不显示
@@ -271,6 +321,7 @@ Page({
       showcancel:0,//是否显示左上角关闭图标   1表示显示    0表示不显示
       title: '账本', //导航栏 中间的标题
     },
+    listcurrentmonth:{name:""},
     slideposition:"0",//0表示此时滑块在左边，1表示在右边
     incomecolor:"",
     expendcolor:"",
@@ -441,6 +492,11 @@ Page({
   onShareAppMessage: function () {
 
   },
+  makeaccount(){
+    wx.navigateTo({
+      url: '../makeaccount/makeaccount',
+    })
+  },
   yearselect(e){
     console.log("你选择了逐年展示")
     this.setData({
@@ -517,6 +573,7 @@ Page({
    * 自定义事件bindchange的处理，select组件的数据传到这里
    */
   change (e) {
+    console.log(e)
     this.setData({
       selected: { ...e.detail }
     })
@@ -608,6 +665,15 @@ Page({
     }
   },
 
+  mpchange (e) {
+    this.setData({
+      selected: { ...e.detail }
+    })
+    console.log({//弹出对话框
+      title: `${this.data.selected.id} - ${this.data.selected.name}`,
+    })
+      console.log(pickyear+"年 "+this.data.selected.name);
+  },
    /**
    * 设置账单数据函数
    */
