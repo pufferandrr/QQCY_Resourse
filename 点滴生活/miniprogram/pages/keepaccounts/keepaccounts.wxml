@@ -40,19 +40,21 @@
     <view class="statistic">
       <view class="total">
         <view style="font-weight:bold">总计</view>
-        <view class="num">199900</view>
+        <view class="num">{{totalAccount}}</view>
       </view>
       <view class="separete"></view>
       <view class="average">
         <view style="font-weight:bold">平均</view>
-        <viwe class="num">9966600</viwe>
+        <viwe class="num">{{avgAccount}}</viwe>
       </view>
     </view>
 
   </view>
-
+  <view class="monthpicker">
+    <select id="select" current="{{listcurrentmonth}}" defaultOption="{{mpdefaultoption}}" options="{{monthoptions}}" key="time_id" text="time_name" bindchange="mpchange"></select>
+  </view>
   <view class="accountlist_zj">
     <accountlist accountlist='{{costaccountlist}}' account-type="0"></accountlist>
   </view>
-
+  <cover-image bindtap="makeaccount"class="makeaccount" src="../../images/makeaccount.png" mode='scaleToFill'></cover-image>
 </view>

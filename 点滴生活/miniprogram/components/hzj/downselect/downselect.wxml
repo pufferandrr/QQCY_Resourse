@@ -1,7 +1,0 @@
-<!--components/hzj/downselect/downselect.wxml-->
-<view class="downselect">
-  <view class="selectview" bindtap="selecttap">点我</view>
-  <view class="selectlist" style="display:{{showlist}}"wx:for="{{selectlist}}">
-    <view class="selectitem">{{item.text}}</view>
-  </view>
-</view>

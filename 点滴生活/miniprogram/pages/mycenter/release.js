@@ -1,6 +1,7 @@
 // pages/mycenter/notificationlist.js
 const db = wx.cloud.database();
-const app = getApp()
+const app = getApp();
+
 
 // 发布浏览最长字数
 const maxLenth = 180
@@ -99,7 +100,8 @@ Page({
         content = content.length>maxLenth?content.slice(0,maxLenth)+"...":content
         this.setData({
           ["chosenList["+i+"].content"]:content,
-          ["chosenList["+i+"].time"]:res.data[i].createTime
+          ["chosenList["+i+"].time"]:res.data[i].createTime,
+          ["chosenList["+i+"].id"]:res.data[i]._id
         })
       }
     })

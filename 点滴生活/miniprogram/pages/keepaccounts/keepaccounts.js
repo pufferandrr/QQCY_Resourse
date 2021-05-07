@@ -6,6 +6,13 @@ let chart =null;
 var pickyear="2021";
 var pixelRatio1 = 750 / wx.getSystemInfoSync().windowWidth;
 var yeardata=[0,0,0,0,0,0,0,0,0,0,0,0]
+var xYeardata=['1月', '2月', '3月', '4月', '5月', '6月', '7月','8月','9月','10月','11月','12月']
+var xWeekdata=['星期日','星期一','星期二','星期三','星期四','星期五','星期六']
+var xMonthdata1=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31']
+var xMonthdata2=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30']
+var xMonthdata3=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29']
+var xMonthdata4=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28']
+var xdata=xYeardata
 var type='cRecord'
 
 var days = [0,31,59,90,120,151,181,212,243,273,304,334];
@@ -29,6 +36,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    totalAccount:0,
+    avgAccount:0,
     chartchange: true,  //图表改变判断，true为折线图，false为饼图
     imageSrc: '../../images/chartchange_pie.png',//图表切换图标的url
     yeardefaultoption:{
@@ -250,10 +259,63 @@ Page({
       time_name: '第53周'
     }
     ],
-    selected: {},       //下拉框选中的项
+    selected: {
+      id:"y001",
+      name:"2021年"
+    },       //下拉框选中的项
     ec: {
       onInit: initChart
     },
+    mpdefaultoption:{
+      id:"mp001",
+      name:"1月"
+    },
+    mpoptions:[
+      {
+        time_id:"mp002",
+        time_name:"2月",
+      },
+      {
+        time_id:"mp003",
+        time_name:"3月",
+      },
+      {
+        time_id:"mp004",
+        time_name:"4月",
+      },
+      {
+        time_id:"mp005",
+        time_name:"5月",
+      },
+      {
+        time_id:"mp006",
+        time_name:"6月",
+      },
+      {
+        time_id:"mp007",
+        time_name:"7月",
+      },
+      {
+        time_id:"mp008",
+        time_name:"8月",
+      },
+      {
+        time_id:"mp009",
+        time_name:"9月",
+      },
+      {
+        time_id:"mp010",
+        time_name:"10月",
+      },
+      {
+        time_id:"mp011",
+        time_name:"11月",
+      },
+      {
+        time_id:"mp012",
+        time_name:"12月",
+      },
+    ],
     // 组件所需的参数
     nvabarData: {
       showCapsule: 0, //是否显示左上角返回图标   1表示显示    0表示不显示
@@ -261,6 +323,7 @@ Page({
       showcancel:0,//是否显示左上角关闭图标   1表示显示    0表示不显示
       title: '账本', //导航栏 中间的标题
     },
+    listcurrentmonth:{name:""},
     slideposition:"0",//0表示此时滑块在左边，1表示在右边
     incomecolor:"",
     expendcolor:"",
@@ -298,6 +361,18 @@ Page({
         Year:nowYear,
       }
     }).then(res=>{
+      yeardata=res.result
+      var total=0
+      var avg=0
+      for(i=0;i<yeardata.length;i++)
+      {
+          total+=yeardata[i]
+      }
+      avg=(total/yeardata.length).toFixed(2)
+      this.setData({
+        totalAccount:total,
+        avgAccount:avg,
+      })
       yeardata=res.result
       chart.setOption(getOption())
       console.log(yeardata)
@@ -375,19 +450,10 @@ Page({
     else{
       type='cRecord'
     }//还需要重新获取数据
+
     if(this.data.chartchange==true)
     {
-      wx.cloud.callFunction({
-      name:'getYearRecord',
-      data:{
-        type:type,
-        Year:'2021',
-      }
-    }).then(res=>{
-      yeardata=res.result
-      chart.setOption(getOption())
-      console.log(yeardata)
-    })
+      this.changeLineTable();
     }
     else{
       //这里写饼图的收入支出切换。
@@ -439,6 +505,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  makeaccount(){
+    wx.navigateTo({
+      url: '../makeaccount/makeaccount',
+    })
   },
   yearselect(e){
     console.log("你选择了逐年展示")
@@ -516,27 +587,147 @@ Page({
    * 自定义事件bindchange的处理，select组件的数据传到这里
    */
   change (e) {
+    console.log(e)
     this.setData({
       selected: { ...e.detail }
     })
     console.log({//弹出对话框
       title: `${this.data.selected.id} - ${this.data.selected.name}`,
     })
+    if(this.data.chartchange==true)
+    {
+      this.changeLineTable();
+    }
+    else{
+      //这里填写饼图的数据切换
+    }
+    
+  },
+
+  changeLineTable() {
     if(this.data.selected.id.substr(0,1)=="w")//选择以某一周查看账单
     {
       console.log(pickyear+"年 "+this.data.selected.name);//pickyear表示选择的是哪一年
+      var s=this.data.selected.name
+      var num=s.replace(/[^0-9]/ig,"")
+      console.log(num)
+      
+      wx.cloud.callFunction({
+        name:'getWeekRecord',
+        data:{
+          type:type,
+          Year:pickyear,
+          Week:num
+        }
+      }).then(res=>{
+        xdata=xWeekdata
+        yeardata=res.result
+        var total=0
+      var avg=0
+      for(var k=0;k<yeardata.length;k++)
+      {
+          total+=yeardata[k]
+      }
+      avg=(total/yeardata.length).toFixed(2)
+      this.setData({
+        totalAccount:total,
+        avgAccount:avg,
+      })
+        chart.setOption(getOption())
+        console.log(yeardata)
+      })
+  
     }
     
     if(this.data.selected.id.substr(0,1)=="m")//选择以某一月
     {
+      this.setData({listcurrentmonth:{name:this.data.selected.name}})
       console.log(pickyear+"年 "+this.data.selected.name);
+      var s=this.data.selected.name
+      var num=s.replace(/[^0-9]/ig,"")
+      console.log(num)
+  
+      wx.cloud.callFunction({
+        name:'getMonthRecord',
+        data:{
+          type:type,
+          Year:pickyear,
+          Month:num
+        }
+      }).then(res=>{
+        if(num==1||num==3||num==5||num==7||num==8||num==10||num==12)
+        {
+          xdata=xMonthdata1
+        }
+        else if(num==4||num==6||num==9||num==11)
+        {
+          xdata=xMonthdata2
+        }
+        else{
+          if((nowYear%4==0&&nowYear%100!=0)||nowYear%400==0)
+          {
+            xdata=xMonthdata3
+          }
+          else{
+            xdata=xMonthdata4
+          }
+        }
+        yeardata=res.result
+        var total=0
+      var avg=0
+      for(var k=0;k<yeardata.length;k++)
+      {
+          total+=yeardata[k]
+      }
+      avg=(total/yeardata.length).toFixed(2)
+      this.setData({
+        totalAccount:total,
+        avgAccount:avg,
+      })
+        chart.setOption(getOption())
+        console.log(yeardata)
+      })
     }
     
     if(this.data.selected.id.substr(0,1)=="y")//选择以某一年
     {
       console.log(this.data.selected.name);
       pickyear=this.data.selected.name.substr(0,4);
+  
+      wx.cloud.callFunction({
+        name:'getYearRecord',
+        data:{
+          type:type,
+          Year:pickyear
+        }
+      }).then(res=>{
+        xdata=xYeardata
+        yeardata=res.result
+        var total=0
+      var avg=0
+      for(var k=0;k<yeardata.length;k++)
+      {
+          total+=yeardata[k]
+      }
+      avg=(total/yeardata.length).toFixed(2)
+      this.setData({
+        totalAccount:total,
+        avgAccount:avg,
+      })
+        chart.setOption(getOption())
+        console.log(yeardata)
+      })
     }
+  },
+
+  mpchange (e) {
+    this.setData({
+      selected: { ...e.detail }
+    })
+    console.log({//弹出对话框
+      title: `${this.data.selected.id} - ${this.data.selected.name}`,
+    })
+      console.log(pickyear+"年 "+this.data.selected.name);
   },
    /**
    * 设置账单数据函数
@@ -550,6 +741,7 @@ Page({
     this.selectComponent('#select').close()
   }
 })
+
 
 function initChart(canvas, width, height, dpr) {
     chart = echarts.init(canvas, null, {
@@ -608,10 +800,10 @@ function getOption(){
         }
     },
     axisLabel:{
-      interval: 0
+      interval: 0,
       },
         type: 'category',
-        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月','8月','9月','10月','11月','12月']
+        data: xdata
     },
     yAxis: {
       axisTick: {
@@ -666,7 +858,20 @@ function getOption(){
         data: yeardata,
         type: 'line',
         smooth: true
-    }]
+    }],
+    dataZoom: [{
+      type: 'slider',
+      show: false,
+      start: 0,
+      end: 70,
+      handleSize: 2
+    },
+    {
+      type: 'inside',
+      start: 0,
+      end: 50
+    }
+  ],
 }
 }
 

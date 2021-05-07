@@ -2,6 +2,7 @@
 const app = getApp()
 const db = wx.cloud.database();
 let arrval = [];
+var pixelRatio1 = 750 / wx.getSystemInfoSync().windowWidth;   
 Page({
 
   /**
@@ -37,6 +38,9 @@ Page({
     selectedTypeUrl:'',
     date:'',
     remark:'',
+    slideposition:"0",//0表示此时滑块在左边，1表示在右边
+    incomecolor:"",
+    expendcolor:"",
   },
   switchT:function(){
     switch (this.data.switchType) {
@@ -160,8 +164,14 @@ Page({
         'switchType':this.data.switchType,
       }
     }).then(res=>{
+  
       wx.hideLoading({
         success: (res) => {
+          arrval = [];
+          this.setData({
+            numberText:'',
+          })
+
           wx.navigateBack()
         },
       })
@@ -232,6 +242,23 @@ Page({
     }
   },
 
+  slidemove(){
+    console.log("你点击了滑块",this.data.slideposition);
+    var px1 = 126 / pixelRatio1;
+    if(this.data.slideposition==0){
+    this.animation.translate(px1).step()
+    this.switchT();
+    this.setData({animation: this.animation.export()})
+    this.setData({slideposition:1,incomecolor:"#FFFFFF",expendcolor:"#909090"})
+  }
+    else{
+      this.animation.translate(0).step()
+      this.switchT();
+      this.setData({animation: this.animation.export()})
+      this.setData({slideposition:0,incomecolor:"#909090",expendcolor:"#FFFFFF"})
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -253,7 +280,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.animation = wx.createAnimation({duration:300});
   },
 
   /**
