@@ -257,7 +257,10 @@ Page({
       time_name: '第53周'
     }
     ],
-    selected: {},       //下拉框选中的项
+    selected: {
+      id:"y001",
+      name:"2021年"
+    },       //下拉框选中的项
     ec: {
       onInit: initChart
     },
@@ -382,19 +385,10 @@ Page({
     else{
       type='cRecord'
     }//还需要重新获取数据
+
     if(this.data.chartchange==true)
     {
-      wx.cloud.callFunction({
-      name:'getYearRecord',
-      data:{
-        type:type,
-        Year:'2021',
-      }
-    }).then(res=>{
-      yeardata=res.result
-      chart.setOption(getOption())
-      console.log(yeardata)
-    })
+      this.changeLineTable();
     }
     else{
       //这里写饼图的收入支出切换。
@@ -529,22 +523,91 @@ Page({
     console.log({//弹出对话框
       title: `${this.data.selected.id} - ${this.data.selected.name}`,
     })
+    this.changeLineTable();
+  },
+
+  changeLineTable() {
     if(this.data.selected.id.substr(0,1)=="w")//选择以某一周查看账单
     {
       console.log(pickyear+"年 "+this.data.selected.name);//pickyear表示选择的是哪一年
+      var s=this.data.selected.name
+      var num=s.replace(/[^0-9]/ig,"")
+      console.log(num)
+      
+      wx.cloud.callFunction({
+        name:'getWeekRecord',
+        data:{
+          type:type,
+          Year:pickyear,
+          Week:num
+        }
+      }).then(res=>{
+        xdata=xWeekdata
+        yeardata=res.result
+        chart.setOption(getOption())
+        console.log(yeardata)
+      })
+  
     }
     
     if(this.data.selected.id.substr(0,1)=="m")//选择以某一月
     {
       console.log(pickyear+"年 "+this.data.selected.name);
+      var s=this.data.selected.name
+      var num=s.replace(/[^0-9]/ig,"")
+      console.log(num)
+  
+      wx.cloud.callFunction({
+        name:'getMonthRecord',
+        data:{
+          type:type,
+          Year:pickyear,
+          Month:num
+        }
+      }).then(res=>{
+        if(num==1||num==3||num==5||num==7||num==8||num==10||num==12)
+        {
+          xdata=xMonthdata1
+        }
+        else if(num==4||num==6||num==9||num==11)
+        {
+          xdata=xMonthdata2
+        }
+        else{
+          if((nowYear%4==0&&nowYear%100!=0)||nowYear%400==0)
+          {
+            xdata=xMonthdata3
+          }
+          else{
+            xdata=xMonthdata4
+          }
+        }
+        yeardata=res.result
+        chart.setOption(getOption())
+        console.log(yeardata)
+      })
     }
     
     if(this.data.selected.id.substr(0,1)=="y")//选择以某一年
     {
       console.log(this.data.selected.name);
       pickyear=this.data.selected.name.substr(0,4);
+  
+      wx.cloud.callFunction({
+        name:'getYearRecord',
+        data:{
+          type:type,
+          Year:pickyear
+        }
+      }).then(res=>{
+        xdata=xYeardata
+        yeardata=res.result
+        chart.setOption(getOption())
+        console.log(yeardata)
+      })
     }
   },
+
    /**
    * 设置账单数据函数
    */
@@ -557,6 +620,7 @@ Page({
     this.selectComponent('#select').close()
   }
 })
+
 
 function initChart(canvas, width, height, dpr) {
     chart = echarts.init(canvas, null, {
