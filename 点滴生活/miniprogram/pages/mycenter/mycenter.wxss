@@ -24,6 +24,7 @@
   z-index: 1;
 }
 .pic{
+  border:1px solid #CCC;
   border-radius: 50%; 
   position: absolute;
   left: 0;
@@ -31,6 +32,7 @@
   margin: auto;
   width: 70px;
   height: 70px;
+  overflow:hidden;
   /* margin-top: 5px; */
   z-index: 2;
 }
@@ -101,7 +103,7 @@
   /* border:1px solid #CCC; */
   width: 225rpx;
   height: 40rpx;
-  margin-left: 48rpx;
+  margin-left: 45rpx;
   margin-top: 20rpx;
   color:#101010 10000%;
   font-size: 32rpx;
