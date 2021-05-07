@@ -375,7 +375,9 @@ Page({
     else{
       type='cRecord'
     }//还需要重新获取数据
-    wx.cloud.callFunction({
+    if(this.data.chartchange==true)
+    {
+      wx.cloud.callFunction({
       name:'getYearRecord',
       data:{
         type:type,
@@ -386,6 +388,11 @@ Page({
       chart.setOption(getOption())
       console.log(yeardata)
     })
+    }
+    else{
+      //这里写饼图的收入支出切换。
+    }
+    
 
     var px1 = 106 / pixelRatio1;
     if(this.data.slideposition==0){
