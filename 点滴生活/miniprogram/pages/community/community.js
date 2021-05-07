@@ -16,12 +16,6 @@ Page({
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
   },
 
-  createNew:function (){ 
-    wx.navigateTo({
-      url: '../makeaccount/makeaccount',
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */

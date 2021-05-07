@@ -167,6 +167,11 @@ Page({
   
       wx.hideLoading({
         success: (res) => {
+          arrval = [];
+          this.setData({
+            numberText:'',
+          })
+
           wx.navigateBack()
         },
       })
