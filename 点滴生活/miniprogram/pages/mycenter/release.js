@@ -88,7 +88,7 @@ Page({
   getChosen(){
     db.collection('post')
     .where({
-      state:'1',
+      
     })
     .get()
     .then(res=>{
