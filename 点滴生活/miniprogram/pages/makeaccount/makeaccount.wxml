@@ -2,10 +2,12 @@
 <navbar navbar-data='{{nvabarData}}' bindnavback="returnA"></navbar>
 <view class="border"></view>
 
-<view class="switch">
-  <view class="switch{{switchType}}" catchtap="switchT">支出</view>
-  <view class="switch{{switchType==1?2:1}}" catchtap="switchT">收入</view>
+<view class="in_pay_tapbar" bindtap="slidemove" >
+      <image class="slide" animation="{{animation}}"src="../../images/income.png" mode='scaleToFill' ></image>
+      <text class="income" style="color:{{incomecolor}}">支出</text>
+      <text class="expend" style="color:{{expendcolor}}">收入</text>
 </view>
+<view class="border1"></view>
 
 <view catchtap="hideKeyboard">
 <view class="csk-number-border">
