@@ -36,6 +36,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    totalAccount:0,
+    avgAccount:0,
     chartchange: true,  //图表改变判断，true为折线图，false为饼图
     imageSrc: '../../images/chartchange_pie.png',//图表切换图标的url
     yeardefaultoption:{
@@ -360,6 +362,18 @@ Page({
       }
     }).then(res=>{
       yeardata=res.result
+      var total=0
+      var avg=0
+      for(i=0;i<yeardata.length;i++)
+      {
+          total+=yeardata[i]
+      }
+      avg=(total/yeardata.length).toFixed(2)
+      this.setData({
+        totalAccount:total,
+        avgAccount:avg,
+      })
+      yeardata=res.result
       chart.setOption(getOption())
       console.log(yeardata)
     })
@@ -580,7 +594,14 @@ Page({
     console.log({//弹出对话框
       title: `${this.data.selected.id} - ${this.data.selected.name}`,
     })
-    this.changeLineTable();
+    if(this.data.chartchange==true)
+    {
+      this.changeLineTable();
+    }
+    else{
+      //这里填写饼图的数据切换
+    }
+    
   },
 
   changeLineTable() {
@@ -601,6 +622,17 @@ Page({
       }).then(res=>{
         xdata=xWeekdata
         yeardata=res.result
+        var total=0
+      var avg=0
+      for(var k=0;k<yeardata.length;k++)
+      {
+          total+=yeardata[k]
+      }
+      avg=(total/yeardata.length).toFixed(2)
+      this.setData({
+        totalAccount:total,
+        avgAccount:avg,
+      })
         chart.setOption(getOption())
         console.log(yeardata)
       })
@@ -641,6 +673,17 @@ Page({
           }
         }
         yeardata=res.result
+        var total=0
+      var avg=0
+      for(var k=0;k<yeardata.length;k++)
+      {
+          total+=yeardata[k]
+      }
+      avg=(total/yeardata.length).toFixed(2)
+      this.setData({
+        totalAccount:total,
+        avgAccount:avg,
+      })
         chart.setOption(getOption())
         console.log(yeardata)
       })
@@ -660,6 +703,17 @@ Page({
       }).then(res=>{
         xdata=xYeardata
         yeardata=res.result
+        var total=0
+      var avg=0
+      for(var k=0;k<yeardata.length;k++)
+      {
+          total+=yeardata[k]
+      }
+      avg=(total/yeardata.length).toFixed(2)
+      this.setData({
+        totalAccount:total,
+        avgAccount:avg,
+      })
         chart.setOption(getOption())
         console.log(yeardata)
       })

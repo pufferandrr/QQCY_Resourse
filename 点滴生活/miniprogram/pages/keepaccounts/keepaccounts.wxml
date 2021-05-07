@@ -40,12 +40,12 @@
     <view class="statistic">
       <view class="total">
         <view style="font-weight:bold">总计</view>
-        <view class="num">199900</view>
+        <view class="num">{{totalAccount}}</view>
       </view>
       <view class="separete"></view>
       <view class="average">
         <view style="font-weight:bold">平均</view>
-        <viwe class="num">9966600</viwe>
+        <viwe class="num">{{avgAccount}}</viwe>
       </view>
     </view>
 
