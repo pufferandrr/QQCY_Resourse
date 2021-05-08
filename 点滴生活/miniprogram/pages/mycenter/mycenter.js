@@ -77,14 +77,16 @@ Page({
     wx.cloud.callFunction({
       name: 'getUser',
     }).then(res=>{
-      userInfo = res.result
+      console.log(res.result)
+      userInfo = res.result.user
       console.log(userInfo)
-      console.log(userInfo.accounts)
-      this.setData({
-        'userData.total': userInfo.userTotalDays,
-        'userData.continuous': userInfo.userDuration,
-        'userData.accounts': userInfo.accounts
-      })
+      if(userInfo!=null){
+        this.setData({
+          'userData.total': userInfo.userTotalDays,
+          'userData.continuous': userInfo.userDuration,
+          'userData.accounts': res.result.accounts
+        })
+      }
     })
     
   },

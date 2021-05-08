@@ -8,25 +8,30 @@ const db = cloud.database();
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  var openid = wxContext.OPENID
+  var openid = 'test01'
+  //wxContext.OPENID
   var rest
   var sum
   await db.collection('user')
   .where({
-    userid:'test01'  //测试用，后面test01要改成openid
+    userid:openid  //测试用，后面test01要改成openid
   })
   .get()
   .then(res=>{
     rest = res.data[0]
   })
+  //获取记账总笔数
   await db.collection('rRecord')
   .where({
-    userid:'oxmoK5sBbtkc-ijLn6R2pkbcvSs4'  //测试用，后面userid的值要改成openid
+    userid: openid //测试用，后面userid的值要改成openid
   })
   .count()
   .then(res=>{
     sum = res.total
   })
-  rest.accounts = sum
-  return rest
+  var data={
+    user: rest,
+    accounts: sum,
+  }
+  return data
 }
