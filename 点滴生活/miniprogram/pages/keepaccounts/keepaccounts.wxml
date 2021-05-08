@@ -55,6 +55,8 @@
   </view>
   <view class="accountlist_zj">
     <accountlist accountlist='{{costaccountlist}}' account-type="0"></accountlist>
+  
   </view>
   <cover-image bindtap="makeaccount"class="makeaccount" src="../../images/makeaccount.png" mode='scaleToFill'></cover-image>
+  
 </view>

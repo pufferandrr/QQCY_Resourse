@@ -124,10 +124,10 @@
 }
 .accountlist_zj{
   width:700rpx;
-  height:840rpx;
   position: absolute;
   top:1050rpx;
   left:25rpx;
+  padding: 0rpx 0rpx 200rpx 0rpx;
 }
 .statistic{
   display: flex;
@@ -183,4 +183,5 @@
   right:32rpx;
   width:152rpx;
   height:158rpx;
+  z-index:99;
 }

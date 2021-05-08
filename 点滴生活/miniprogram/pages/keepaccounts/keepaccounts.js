@@ -364,7 +364,7 @@ Page({
       yeardata=res.result
       var total=0
       var avg=0
-      for(i=0;i<yeardata.length;i++)
+      for(var i=0;i<yeardata.length;i++)
       {
           total+=yeardata[i]
       }
@@ -377,8 +377,19 @@ Page({
       chart.setOption(getOption())
       console.log(yeardata)
     })
-  
-    var i=[{//账单数据
+
+
+    wx.cloud.callFunction({
+      name:'getyearrecordlist',
+      data:{
+        type:type,
+        year:nowYear,
+      }
+    }).then(res=>{
+      console.log(res.result)
+      this.setData({costaccountlist:res.result})
+    })
+    /*var i=[{//账单数据
       accountgroup:{
         date:"1月5号",
         vlheight:"340",
@@ -422,8 +433,8 @@ Page({
       },
     },
   ];
-  
-  this.setData({costaccountlist:i});
+  console.log(i);
+  this.setData({costaccountlist:i});*/
   },
 
 
