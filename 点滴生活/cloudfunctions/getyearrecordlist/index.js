@@ -46,8 +46,8 @@ exports.main = async (event, context) => {
           data.push({
             accountgroup: {
               date: createTime,
-              vlheight:-20,
-              onedayaccountheight:60
+              vlheight: -20,
+              onedayaccountheight: 60
             }
           })
         }
@@ -55,8 +55,8 @@ exports.main = async (event, context) => {
           data.push({
             accountgroup: {
               date: createTime,
-              vlheight:-20,
-              onedayaccountheight:60
+              vlheight: -20,
+              onedayaccountheight: 60
             }
           })
           data_index++;
@@ -70,52 +70,58 @@ exports.main = async (event, context) => {
         createTime = parseFloat(time[1]) + "月" + parseFloat(time[2]) + "日";
 
         if (createTime == data[data_index].accountgroup.date) {
-          if (data[data_index].accountgroup.hasOwnProperty('account'))
-            {data[data_index].accountgroup.account.push({
+          if (data[data_index].accountgroup.hasOwnProperty('account')) {
+            data[data_index].accountgroup.account.push({
               type: res.data[i].typeid,
               num: res.data[i].number,
               remark: res.data[i].remark,
+              selecttype: res.data[i].selectType
             })
-            var a=120;
-            data[data_index].accountgroup.vlheight+=parseInt(a);
-            data[data_index].accountgroup.onedayaccountheight+=parseInt(a)
+            var a = 120;
+            data[data_index].accountgroup.vlheight += parseInt(a);
+            data[data_index].accountgroup.onedayaccountheight += parseInt(a)
           }
           else {
-            data[data_index].accountgroup.account=
+            data[data_index].accountgroup.account =
               [{
+
                 type: res.data[i].typeid,
                 num: res.data[i].number,
                 remark: res.data[i].remark,
+                selecttype: res.data[i].selectType
               }]
-            var a=120;
-            data[data_index].accountgroup.vlheight+=parseInt(a);
-            data[data_index].accountgroup.onedayaccountheight+=parseInt(a)
+            var a = 120;
+            data[data_index].accountgroup.vlheight += parseInt(a);
+            data[data_index].accountgroup.onedayaccountheight += parseInt(a)
             console.log(data[data_index].accountgroup.date)
             console.log(data[data_index].accountgroup.vlheight)
           }
         }
         else {
           data_index++;
-          if (data[data_index].accountgroup.hasOwnProperty('account'))
-            {data[data_index].accountgroup.account.push({
+          if (data[data_index].accountgroup.hasOwnProperty('account')) {
+            data[data_index].accountgroup.account.push({
+
               type: res.data[i].typeid,
               num: res.data[i].number,
               remark: res.data[i].remark,
+              selecttype: res.data[i].selectType
             })
-            var a=120;
-            data[data_index].accountgroup.vlheight+=parseInt(a);
-            data[data_index].accountgroup.onedayaccountheight+=parseInt(a)
+            var a = 120;
+            data[data_index].accountgroup.vlheight += parseInt(a);
+            data[data_index].accountgroup.onedayaccountheight += parseInt(a)
           }
           else {
-            data[data_index].accountgroup.account=
+            data[data_index].accountgroup.account =
               [{
                 type: res.data[i].typeid,
                 num: res.data[i].number,
                 remark: res.data[i].remark,
+                selecttype: res.data[i].selectType
               }]
-              var a=120;
-              data[data_index].accountgroup.vlheight+=parseInt(a);
-              data[data_index].accountgroup.onedayaccountheight+=parseInt(a)
+            var a = 120;
+            data[data_index].accountgroup.vlheight += parseInt(a);
+            data[data_index].accountgroup.onedayaccountheight += parseInt(a)
           }
         }
       }

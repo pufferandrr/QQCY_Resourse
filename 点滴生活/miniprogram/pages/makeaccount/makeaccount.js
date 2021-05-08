@@ -146,6 +146,8 @@ Page({
       }
       
     }
+    console.log("csk")
+    console.log(this.data.selectedType)
     console.log(this.data.numberText);
     console.log(this.data.selectedTypeUrl);
     console.log(this.data.remark);
@@ -161,6 +163,7 @@ Page({
         'createTime':this.data.date,
         'remark':this.data.remark,
         'typeid':this.data.selectedTypeUrl,
+        'selectType':this.data.selectedType,
         'switchType':this.data.switchType,
         'selectType':this.data.selectedType,
       }

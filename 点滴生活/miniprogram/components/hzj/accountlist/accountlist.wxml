@@ -7,7 +7,7 @@
     <view class="account">
       <view class="onedayaccount" wx:for="{{item.accountgroup.account}}" wx:for-item="account">
         <image src="{{account.type}}" class="typeimage"></image>
-        <view class="remark">{{account.remark}}</view>
+        <view class="remark">{{account.selecttype}}</view>
         <view class="num">{{account.num}}</view>
         <view class="bottomline"></view>
       </view>
