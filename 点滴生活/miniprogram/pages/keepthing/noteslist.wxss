@@ -3,7 +3,6 @@
 .list {
     position: relative;
     top: 180rpx;
-    background-color: #F7F7F7;
 }
 
 .note_item {
@@ -81,6 +80,12 @@
     font-size: 14px;
     text-align: left;
     font-weight: bold;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .content {

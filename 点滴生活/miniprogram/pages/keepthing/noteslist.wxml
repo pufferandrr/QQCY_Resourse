@@ -5,13 +5,13 @@
         <view class="note_item">
             <view class="line"></view>
             <view class="circle"></view>
-            <image class="mood" src="{{item.note_mood}}" alt="alt" mode="scaleToFill"/>
-            <view class="day">{{item.note_day}}</view>
-            <view class="week">{{item.note_weekday}}</view>
-            <view class="year">{{item.note_year}}</view>
+            <image class="mood" src="{{item.mood}}" alt="alt" mode="scaleToFill"/>
+            <view class="day">{{item.day}}</view>
+            <view class="week">{{item.week}}</view>
+            <view class="year">{{item.year}}-{{item.month}}</view>
             <view class="text">
-                <view class="title">{{item.note_title}}</view>
-                <view class="content">{{item.note_content}}</view>
+                <view class="title">{{item.title}}</view>
+                <view class="content">{{item.content}}</view>
             </view>
         </view>
     </block>
