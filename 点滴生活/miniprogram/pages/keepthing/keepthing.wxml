@@ -1,7 +1,18 @@
-
 <navbar navbar-data='{{nvabarData}}' bindnavback='backToNoteslist'></navbar>
-<view class="content">
-    <input class="notes-titlt" type="text" placeholder="请输入标题"/>
-    <view class="line"></view>
-    <input class="notes-content" type="text" placeholder="记录下今天的日常吧……"/>
+<view class="main">
+
+    <view class="content">
+        <input class="notes-titlt" type="text" placeholder="请输入标题"/>
+        <view class="line"></view>
+        <input class="notes-content" type="text" placeholder="记录下今天的日常吧……" bindfocus="inputFocus" bindblur="inputBlur"/>
+    </view>
+    
+    <uploadPic id="uplode"></uploadPic>
+
+    <view class="bottom_menu" style="bottom:{{inputBottom}}rpx">
+        <image src="/images/image.png" class="img" id="picture" bindtap="selectImg"></image>
+        <image src="/images/moodmenu.png" class="img" id="mood" bindtap="click_mood"></image>  
+        <button class="bt_submit" bindtap="toNoteslist">发布</button>
+    </view>
+        
 </view>

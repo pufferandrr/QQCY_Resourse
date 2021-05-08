@@ -1,0 +1,42 @@
+/* components/notesNavbar/notesnavbar.wxss */
+.nav-wrap {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: #FFFFFF;
+  color: #fff;
+  z-index: 9999999;
+  display: flex; 
+  box-sizing: border-box;
+}
+/* 标题要居中 */
+.nav-title {
+  position: absolute;
+  width: 50%;
+  text-align: center;
+  overflow: hidden;
+  margin-top: 95rpx;
+  margin-left: 25%;
+}
+
+.nav-icon{
+  position: relative;
+  display: flex;
+  align-content: center;
+  text-align: center;
+  width: 30%;
+  height: auto;
+  margin-left: 35%;
+  margin-top: 2rpx;
+}
+.nav-date{
+  color: #000000;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.back-pre {
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 85rpx;
+  padding: 20rpx;
+}
