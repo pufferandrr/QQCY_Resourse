@@ -24,3 +24,11 @@
   width: 100%;
   height: 100%;
 }
+.img-delect{
+  width:50rpx;
+  height:50rpx;
+  border-radius:50%;
+  position:absolute;
+  right:-20rpx;
+  top:-20rpx;
+}

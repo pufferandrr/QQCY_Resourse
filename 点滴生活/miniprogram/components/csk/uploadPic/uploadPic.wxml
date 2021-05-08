@@ -3,7 +3,10 @@
 <view class="picList" hidden="{{hide}}">
   <block wx:key="picBox" wx:for="{{picBox}}">
       <view class="pic">
-          <image class="picItem" src="{{item}}"></image>
+          <image class="picItem" src="{{item}}" bindtap="preview" data-src="{{item}}"></image>
+          <view class='img-delect' data-index='{{index}}' bindtap='imgDelete1'>
+            ⛔
+          </view>
       </view>
   </block>
   <!-- <block>

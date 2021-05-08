@@ -21,6 +21,24 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    
+    preview:function(e){
+      var url = e.currentTarget.dataset.src;
+      wx.previewImage({
+        current:url,
+        urls: this.data.picBox,
+      })
+    },
+
+    imgDelete1: function (e) {
+      let that = this;
+      let index = e.currentTarget.dataset.index;
+      let picBox = this.data.picBox;
+      picBox.splice(index, 1)
+      that.setData({
+        picBox: picBox
+      });
+    },
     addPic:function(e){
       var Box = this.data.picBox;//创建用于添加暂存图片的数组
       var n = 9;//设置默认可以上传的图片数
