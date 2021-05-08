@@ -33,6 +33,7 @@ exports.main = async (event, context) => {
       remark:event.remark,
       typeid:event.typeid,
       userid:wxContext.OPENID,
+      selectType:event.selectType,
       weeks:today_week,
       week:week,
     }

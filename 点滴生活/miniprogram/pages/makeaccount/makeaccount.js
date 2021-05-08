@@ -162,6 +162,7 @@ Page({
         'remark':this.data.remark,
         'typeid':this.data.selectedTypeUrl,
         'switchType':this.data.switchType,
+        'selectType':this.data.selectedType,
       }
     }).then(res=>{
   
