@@ -6,15 +6,15 @@
       <view class="name"><open-data type="userNickName" lang="zh_CN"></open-data></view>
       <view class="nums">
         <view class="nums1">
-          <view class="continuationnum">20</view>
+          <view class="continuationnum">{{userData.continuous}}</view>
           <view class="continuation">连续记账天数</view>
         </view>
         <view class="nums2">
-          <view class="continuationnum">45</view>
+          <view class="continuationnum">{{userData.total}}</view>
           <view class="continuation">记账总天数</view>
         </view>
         <view class="nums3">
-          <view class="continuationnum">89</view>
+          <view class="continuationnum">{{userData.accounts}}</view>
           <view class="continuation">记账总笔数</view>
         </view>
     </view>
