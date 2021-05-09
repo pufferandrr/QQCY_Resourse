@@ -23,6 +23,18 @@ Page({
     },
   },
 
+  setLimit:function(e){//设置月消费额度
+    console.log(e.detail.value);
+    wx.cloud.callFunction({
+      name:'setLimit',
+      data:{
+        limit:e.detail.value
+      }
+    }).then(res=>{
+      console.log(res);
+    })
+  },
+
   onLoad(option){
     
   },
