@@ -23,7 +23,7 @@
   <view class="myquota">
     <image src="../../images/quota.png" class="quota"></image>
     <view class="quotatext">设置月消费额度</view>
-    <input class="quotainput" type="number"></input>
+    <input class="quotainput" type="number" bindblur="setLimit"></input>
     <view class="element">元</view>
   </view>
   <view class="myrelease_notification" bindtap="toRelease" style="border-bottom:white;">
