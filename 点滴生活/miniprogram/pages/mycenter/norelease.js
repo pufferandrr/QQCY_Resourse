@@ -87,27 +87,8 @@ Page({
     }
   },
   getChosen(){
-    db.collection('post')
-    .where({
-      
-    })
-    .get()
-    .then(res=>{
-      console.log('请求成功', res)
-      var content
-      for(var i=0;i<res.data.length;i++){
-        content = res.data[i].content
-        content = content.length>maxLenth?content.slice(0,maxLenth)+"...":content
-        this.setData({
-          ["chosenList["+i+"].content"]:content,
-          ["chosenList["+i+"].time"]:res.data[i].createTime,
-          ["chosenList["+i+"].id"]:res.data[i]._id
-        })
-      }
-    })
-    .catch(err=>{
-      console.log('请求失败', err)
-    })
+    
+    
   },
   /**
    * 生命周期函数--监听页面隐藏

@@ -25,8 +25,9 @@ Page({
     condition:true,
     condition1:false,
     chosenList:[],
-    releaselist:[
+    releaseList:[
       {
+        id:'001',
         time:"2021-04-08 12.12",
         type:"未审核",
         content:"省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招"
@@ -89,26 +90,23 @@ Page({
     }
   },
   getChosen(){
-    db.collection('post')
-    .where({
-      
-    })
-    .get()
-    .then(res=>{
-      console.log('请求成功', res)
+    wx.cloud.callFunction({
+      name:'getChosen',
+    }).then(res=>{
+      console.log('入选请求成功', res)
       var content
-      for(var i=0;i<res.data.length;i++){
-        content = res.data[i].content
+      for(var i=0;i<res.result.length;i++){
+        content = res.result[i].content
         content = content.length>maxLenth?content.slice(0,maxLenth)+"...":content
         this.setData({
           ["chosenList["+i+"].content"]:content,
-          ["chosenList["+i+"].time"]:res.data[i].createTime,
-          ["chosenList["+i+"].id"]:res.data[i]._id
+          ["chosenList["+i+"].time"]:res.result[i].createTime,
+          ["chosenList["+i+"].id"]:res.result[i]._id
         })
       }
     })
     .catch(err=>{
-      console.log('请求失败', err)
+      console.log('已入选请求失败', err)
     })
   },
   /**

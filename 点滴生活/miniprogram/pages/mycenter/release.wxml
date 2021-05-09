@@ -2,7 +2,7 @@
 <navbar navbar-data='{{nvabarData}}' bindnavback='backToMycenter'></navbar>
 <view class="in_pay_tapbar" bindtap="slidemove" >
       <image class="slide" animation="{{animation}}"src="../../images/income.png" mode='scaleToFill' ></image>
-      <text class="income" style="color:{{incomecolor}}">未入选</text>
+      <text class="income" style="color:{{incomecolor}}">已发布</text>
       <text class="expend" style="color:{{expendcolor}}">已入选</text>
     </view>
 <block wx:if="{{condition}}" wx:for='{{chosenList}}' wx:key='id' wx:for-item="item">
@@ -14,12 +14,12 @@
         <view class="contenttext">{{item.content}}</view>
     </view>
 </block>
-<block wx:if="{{condition1}}" wx:for='{{chosenList}}' wx:key='id' wx:for-item="item">
+<block wx:if="{{condition1}}" wx:for='{{releaseList}}' wx:key='id' wx:for-item="item">
     <image src="../../images/modification.png" class="modification"></image>
     <view class="content">
         <image src="../../images/right.png" class="right"></image>
         <view class="time">{{item.time}}</view>
-        <view class="contenttype">已审核</view>
+        <view class="contenttype">{{item.type}}</view>
         <view class="contenttext">{{item.content}}</view>
     </view>
 </block>
