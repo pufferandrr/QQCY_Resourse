@@ -176,11 +176,21 @@
   left: 50rpx;
   width: 180rpx;
 }
-
+.movearea{
+  position:fixed;
+  pointer-events: none;
+  width:750rpx;
+  top:179rpx;
+}
+.moveview{
+  position: absolute;
+  pointer-events: none;
+  top:1086rpx;
+  left:600rpx;
+  width:152rpx;
+  height:158rpx;
+}
 .makeaccount{
-  position: fixed;
-  top:1296rpx;
-  right:32rpx;
   width:152rpx;
   height:158rpx;
   z-index:99;

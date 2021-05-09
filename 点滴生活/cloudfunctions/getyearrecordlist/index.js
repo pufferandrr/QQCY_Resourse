@@ -39,6 +39,7 @@ exports.main = async (event, context) => {
       var data_index = 0;
       for (var i = 0; i < res.data.length; i++) {//完成按日期分组的功能
         var createTime = res.data[i].createTime;
+        var weeks=res.data[i].weeks;
         var time = new Array();
         time = createTime.split('-');
         createTime = parseFloat(time[1]) + "月" + parseFloat(time[2]) + "日";
@@ -46,6 +47,7 @@ exports.main = async (event, context) => {
           data.push({
             accountgroup: {
               date: createTime,
+              week:weeks,
               vlheight: -20,
               onedayaccountheight: 60
             }
@@ -55,6 +57,7 @@ exports.main = async (event, context) => {
           data.push({
             accountgroup: {
               date: createTime,
+              week:weeks,
               vlheight: -20,
               onedayaccountheight: 60
             }

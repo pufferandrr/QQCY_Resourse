@@ -384,6 +384,12 @@ Page({
       console.log(yeardata)
     })
     this.getaccountlist(pickyear)
+    var heights=wx.getSystemInfoSync().windowHeight
+    var widths=wx.getSystemInfoSync().windowWidth
+    var k=750/widths
+    heights=heights-this.data.height
+    this.setData({moveareaheight:heights*k})
+
   },
 
 
@@ -395,7 +401,7 @@ Page({
   },
 
    getaccountlist(py){
-    
+    listdata=[]
      wx.cloud.callFunction({
       name:'getyearrecordlist',
       data:{
@@ -419,8 +425,20 @@ Page({
     {
       var k=listdata[i].accountgroup.date;
       k=k.split('月');
-      console.log()
       if(k[0]==num)
+      {
+        accountdata.push(listdata[i]);
+      }
+    }
+    this.setData({costaccountlist:accountdata})
+  },
+  
+  setaccountlistbyweek(num){
+    var accountdata=[];
+    for(var i=0;i<listdata.length;i++)
+    {
+      var k=listdata[i].accountgroup.week;
+      if(k==num)
       {
         accountdata.push(listdata[i]);
       }
@@ -538,7 +556,7 @@ Page({
       monthselect:"block",
       yearselect:"none",
       weekselect:"none",
-      listselectshow:"block",
+      listselectshow:"none",
       listselect:"none"
     })
 
@@ -601,7 +619,6 @@ Page({
     }
     
   },
-
   changeLineTable() {
     if(this.data.selected.id.substr(0,1)=="w")//选择以某一周查看账单
     {
@@ -609,6 +626,7 @@ Page({
       var s=this.data.selected.name
       var num=s.replace(/[^0-9]/ig,"")
       console.log(num)
+      this.setaccountlistbyweek(num)
       wx.cloud.callFunction({
         name:'getWeekRecord',
         data:{
@@ -690,6 +708,8 @@ Page({
       console.log(this.data.selected.name);
       pickyear=this.data.selected.name.substr(0,4);
       this.getaccountlist(pickyear);
+      nowmonth=1;
+      this.setData({listcurrentmonth:{name:"1月"}})
       wx.cloud.callFunction({
         name:'getYearRecord',
         data:{

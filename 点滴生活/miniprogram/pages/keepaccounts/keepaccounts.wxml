@@ -16,15 +16,18 @@
   <view class="datatableblock">
 
     <view class="select_wrap" style="display:{{yearselect}}">
-      <select id="select" defaultOption="{{yeardefaultoption}}"options="{{yearoptions}}" key="time_id" text="time_name" bindchange="change"></select>
+      <select id="select" defaultOption="{{yeardefaultoption}}" options="{{yearoptions}}" key="time_id" text="time_name"
+        bindchange="change"></select>
     </view>
 
     <view class="select_wrap" style="display:{{monthselect}}">
-      <select id="select" defaultOption="{{monthdefaultoption}}"options="{{monthoptions}}" key="time_id" text="time_name" bindchange="change"></select>
+      <select id="select" defaultOption="{{monthdefaultoption}}" options="{{monthoptions}}" key="time_id"
+        text="time_name" bindchange="change"></select>
     </view>
 
     <view class="select_wrap" style="display:{{weekselect}}">
-      <select id="select" defaultOption="{{weekdefaultoption}}"options="{{weekoptions}}" key="time_id" text="time_name" bindchange="change"></select>
+      <select id="select" defaultOption="{{weekdefaultoption}}" options="{{weekoptions}}" key="time_id" text="time_name"
+        bindchange="change"></select>
     </view>
 
     <view class="year" bindtap="yearselect"
@@ -51,12 +54,16 @@
 
   </view>
   <view class="monthpicker" style="pointer-events: {{listselect}};display:{{listselectshow}}">
-    <select id="select" current="{{listcurrentmonth}}" defaultOption="{{mpdefaultoption}}" options="{{monthoptions}}" key="time_id" text="time_name" bindchange="mpchange"></select>
+    <select id="select" current="{{listcurrentmonth}}" defaultOption="{{mpdefaultoption}}" options="{{monthoptions}}"
+      key="time_id" text="time_name" bindchange="mpchange"></select>
   </view>
   <view class="accountlist_zj">
     <accountlist accountlist='{{costaccountlist}}' account-type="0"></accountlist>
-  
   </view>
-  <cover-image bindtap="makeaccount"class="makeaccount" src="../../images/makeaccount.png" mode='scaleToFill'></cover-image>
-  
+  <movable-area class="movearea" style="height:{{moveareaheight}}rpx">
+    <movable-view class="moveview" direction="all"damping="20" friction="1" animation="true">
+      <cover-image bindtap="makeaccount" class="makeaccount" src="../../images/makeaccount.png" mode='scaleToFill'>
+      </cover-image>
+    </movable-view>
+  </movable-area>
 </view>
