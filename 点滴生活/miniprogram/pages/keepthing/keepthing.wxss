@@ -21,6 +21,7 @@
   top: 35rpx;
   font-size: 35rpx;
   color: #959595;
+  width: auto;
 }
 .bottom_menu{
   position: absolute;
@@ -43,12 +44,31 @@
 }
 .bt_submit{
   position: relative;
-  width: 20rpx;
+  width: 0rpx;
   height: 60rpx;
   line-height: 55rpx;
+  vertical-align: middle;
   font-size: medium;
   background-color: #FFB5A0;
   color: #ffffff;
   margin-left: 200rpx;
   bottom: 55rpx;
+}
+.select_img{
+  position: relative;
+  top: 50rpx;
+  width: 100%;
+  height: auto;
+}
+.moods{
+  position: absolute;
+  width: 100%;
+  height: 300rpx;
+  bottom: 40rpx;
+  border-top: thin inherit #000000;
+}
+.moodImg{
+  float: left;
+  width: 23%;
+  height: 50%;
 }

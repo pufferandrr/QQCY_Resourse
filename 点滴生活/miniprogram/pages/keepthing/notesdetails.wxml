@@ -1,8 +1,14 @@
 <!--pages/keepthing/notesdetails.wxml-->
 
-<navbar navbar-data='{{nvabarData}}' bindnavback='backToNoteslist'></navbar>
-<view class="content">
+<navbar navbar-data='{{navbarData}}' bindnavback='backToNoteslist' id="nav"></navbar>
+
+<view class="main">
+    <view class="content">
     <text class="notes-titlt">记事标题</text>
     <view class="line"></view>
     <text class="notes-content">记事内容</text>
+    </view>
+
+    <image src="/images/edit.png" class="edit" mode="aspectFit"></image>
 </view>
+    

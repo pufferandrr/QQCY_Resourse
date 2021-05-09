@@ -17,7 +17,7 @@ Component({
       //图片路径，从数据库获取
       iconpath: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/mood-icon/8.png",
       //日记日期
-      notedate: "2020-10-07"
+      notedate: "2020-10-07",
     },
     
   },

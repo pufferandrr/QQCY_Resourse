@@ -6,6 +6,15 @@ Page({
    */
   data: {
 
+    // 组件所需的参数
+    navbarData: {
+      //图片路径，从数据库获取
+      iconpath: "",
+      //日记日期
+      notedate: ""
+    },
+    
+
   },
 
   /**

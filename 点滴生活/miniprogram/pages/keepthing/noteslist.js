@@ -70,6 +70,12 @@ Page({
     })
   },
 
+  toNotesdetail: function() {
+    wx.navigateTo({
+      url: '../keepthing/notesdetails',
+    })
+  },
+
   swInput: function (e) {
 
     this.setData({

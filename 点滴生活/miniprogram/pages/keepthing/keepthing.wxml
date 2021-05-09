@@ -1,18 +1,29 @@
-<navbar navbar-data='{{nvabarData}}' bindnavback='backToNoteslist'></navbar>
+<navbar navbar-data='{{navbarData}}' bindnavback='backToNoteslist' id="nav"></navbar>
 <view class="main">
 
     <view class="content">
-        <input class="notes-titlt" type="text" placeholder="请输入标题"/>
+        <input class="notes-titlt" type="text" placeholder="请输入标题" maxlength="25" bindtap="inputTitle"/>
         <view class="line"></view>
-        <input class="notes-content" type="text" placeholder="记录下今天的日常吧……" bindfocus="inputFocus" bindblur="inputBlur"/>
+        <textarea class="notes-content" placeholder="记录下今天的日常吧……" bindfocus="inputFocus" bindblur="inputBlur" maxlength="-1" auto-height="true" show-confirm-bar="{{false}}"></textarea>
+    </view>
+
+    <view class="select_img">
+        <uploadPic id="uploadPic"></uploadPic>
     </view>
     
-    <uploadPic id="uplode"></uploadPic>
-
     <view class="bottom_menu" style="bottom:{{inputBottom}}rpx">
         <image src="/images/image.png" class="img" id="picture" bindtap="selectImg"></image>
-        <image src="/images/moodmenu.png" class="img" id="mood" bindtap="click_mood"></image>  
-        <button class="bt_submit" bindtap="toNoteslist">发布</button>
+        <image src="/images/moodmenu.png" class="img" id="mood" bindtap="selectMood"></image>  
+        <button class="bt_submit" bindtap="toNoteslist" mode="scaleToFill">发布</button>
+    </view>
+
+    <!--flag==true显示组件-->
+    <view class="moods" wx:if="{{flag == true}}" id="moodsId">
+        <view wx:for="{{moods}}" wx:for-item="item" class="moodImg">
+            <image src="{{item.imgPath}}" style="width: 80%; height: 80%;" mode="aspectFit" id="{{item.imgId}}" bindtap="thisMood" data-url="{{item.imgPath}}">
+            </image>
+        </view>
+        
     </view>
         
 </view>
