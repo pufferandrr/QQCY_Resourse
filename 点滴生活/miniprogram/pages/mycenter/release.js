@@ -22,6 +22,8 @@ Page({
     slideposition:"0",//0表示此时滑块在左边，1表示在右边
     incomecolor:"",
     expendcolor:"",
+    condition:true,
+    condition1:false,
     chosenList:[],
     releaselist:[
       {
@@ -71,11 +73,19 @@ Page({
     this.animation.translate(px1).step()
     this.setData({animation: this.animation.export()})
     this.setData({slideposition:1,incomecolor:"#FFFFFF",expendcolor:"#909090"})
+    this.setData({
+      condition:false,
+      condition1:true
+    })
   }
     else{
       this.animation.translate(0).step()
       this.setData({animation: this.animation.export()})
       this.setData({slideposition:0,incomecolor:"#909090",expendcolor:"#FFFFFF"})
+      this.setData({
+        condition:true,
+        condition1:false
+      })
     }
   },
   getChosen(){

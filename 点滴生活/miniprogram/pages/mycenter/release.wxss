@@ -96,3 +96,25 @@ text-align: left;
    color: rgba(68, 68, 68, 100);
    /* overflow:scroll; */
 }
+.contenttype{
+  /* border:1px solid #CCC; */
+  position: absolute;
+  height: 40rpx;
+  width: 88rpx;
+  top: 40rpx;
+  right: 42rpx;
+  font-size: 28rpx;
+  color: rgba(242, 118, 103, 100);
+text-align: left;
+font-family: PingFangSC-regular;
+  float: left;
+}
+.right{
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  left: 70rpx;
+  top: 45rpx;
+  float: left;
+  /* border:1px solid #CCC; */
+}

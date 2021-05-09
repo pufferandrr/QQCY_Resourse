@@ -5,12 +5,21 @@
       <text class="income" style="color:{{incomecolor}}">未入选</text>
       <text class="expend" style="color:{{expendcolor}}">已入选</text>
     </view>
-    <block wx:for='{{chosenList}}' wx:key='id' wx:for-item="item">
+<block wx:if="{{condition}}" wx:for='{{chosenList}}' wx:key='id' wx:for-item="item">
     <image src="../../images/modification.png" class="modification"></image>
     <view class="content">
         <image src="../../images/beer.png" class="beer"></image>
         <view class="time">{{item.time}}</view>
         <view class="contenttype">{{item.type}}</view>
+        <view class="contenttext">{{item.content}}</view>
+    </view>
+</block>
+<block wx:if="{{condition1}}" wx:for='{{chosenList}}' wx:key='id' wx:for-item="item">
+    <image src="../../images/modification.png" class="modification"></image>
+    <view class="content">
+        <image src="../../images/right.png" class="right"></image>
+        <view class="time">{{item.time}}</view>
+        <view class="contenttype">已审核</view>
         <view class="contenttext">{{item.content}}</view>
     </view>
 </block>
