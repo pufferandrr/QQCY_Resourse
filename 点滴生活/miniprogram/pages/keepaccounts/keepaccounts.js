@@ -22,7 +22,10 @@ var nowYear = date.getFullYear().toString()
 var today = new Date(timestamp);
 var first = new Date(today.getFullYear(),0,1);
 var firstWeek = first.getDay();
-var today_week
+var nowmonth="1";
+
+var listdata=[];
+var today_week;
 var toYear = today.getFullYear();
 if(((toYear%4==0&&toYear%100!=0)||toYear%400==0)&&today.getMonth()>1){
   today_week = parseInt((days[today.getMonth()]+today.getDate()+1-8+firstWeek)/7+1);
@@ -323,6 +326,7 @@ Page({
       showcancel:0,//是否显示左上角关闭图标   1表示显示    0表示不显示
       title: '账本', //导航栏 中间的标题
     },
+    costaccountlist:[],
     listcurrentmonth:{name:""},
     slideposition:"0",//0表示此时滑块在左边，1表示在右边
     incomecolor:"",
@@ -339,6 +343,8 @@ Page({
     yearselect:"block",
     monthselect:"none",
     weekselect:"none",
+    listselect:"auto",
+    listselectshow:"block",
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
   },  
   accountedit(e){
@@ -364,7 +370,7 @@ Page({
       yeardata=res.result
       var total=0
       var avg=0
-      for(i=0;i<yeardata.length;i++)
+      for(var i=0;i<yeardata.length;i++)
       {
           total+=yeardata[i]
       }
@@ -377,53 +383,7 @@ Page({
       chart.setOption(getOption())
       console.log(yeardata)
     })
-  
-    var i=[{//账单数据
-      accountgroup:{
-        date:"1月5号",
-        vlheight:"340",
-        onedayaccountheight:"420",
-        account:[
-          {
-            type:"cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/餐饮.png",
-            num:"200",
-            remark:"奶茶",
-          },
-          {
-            type:"cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/餐饮.png",
-            num:"201",
-            remark:"奶茶2",
-          },
-          {
-            type:"cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/餐饮.png",
-            num:"204",
-            remark:"奶茶2",
-          },
-        ]
-      },
-    },
-    {//账单数据
-      accountgroup:{
-        date:"1月6号",
-        vlheight:"220",
-        onedayaccountheight:"300",//每个区块的高度，这个可以根据脚本在数据库获取数据时，根据数据量动态设置高度 公式：
-        account:[
-          {
-            type:"cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/餐饮.png",
-            num:"200",
-            remark:"火锅",
-          },
-          {
-            type:"cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/餐饮.png",
-            num:"201",
-            remark:"奶茶2",
-          },
-        ]
-      },
-    },
-  ];
-  
-  this.setData({costaccountlist:i});
+    this.getaccountlist(pickyear)
   },
 
 
@@ -434,12 +394,44 @@ Page({
     this.animation = wx.createAnimation({duration:300});
   },
 
-
+   getaccountlist(py){
+    
+     wx.cloud.callFunction({
+      name:'getyearrecordlist',
+      data:{
+        type:type,
+        year:py,
+      }
+    }).then(res=>{
+      console.log(1)
+      console.log(res.result)
+      for(var i=0;i<res.result.length;i++)
+      {
+        listdata.push(res.result[i]);
+      }
+      this.setaccountlist(nowmonth)
+    })
+    
+  },
+  setaccountlist(num){
+    var accountdata=[];
+    for(var i=0;i<listdata.length;i++)
+    {
+      var k=listdata[i].accountgroup.date;
+      k=k.split('月');
+      console.log()
+      if(k[0]==num)
+      {
+        accountdata.push(listdata[i]);
+      }
+    }
+    this.setData({costaccountlist:accountdata})
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.setaccountlist(nowmonth)
   },
   slidemove(){
     console.log("你点击了滑块",this.data.slideposition);
@@ -525,7 +517,9 @@ Page({
       weekborder:"solid",
       yearselect:"block",
       monthselect:"none",
-      weekselect:"none"
+      weekselect:"none",
+      listselectshow:"block",
+      listselect:"auto"
     })
   },
   
@@ -543,7 +537,9 @@ Page({
       weekborder:"solid",
       monthselect:"block",
       yearselect:"none",
-      weekselect:"none"
+      weekselect:"none",
+      listselectshow:"block",
+      listselect:"none"
     })
 
   },
@@ -562,7 +558,9 @@ Page({
       weekborder:"none",
       weekselect:"block",
       monthselect:"none",
-      yearselect:"none"
+      yearselect:"none",
+      listselectshow:"none",
+      listselect:"none"
     })
   },
   /**
@@ -611,7 +609,6 @@ Page({
       var s=this.data.selected.name
       var num=s.replace(/[^0-9]/ig,"")
       console.log(num)
-      
       wx.cloud.callFunction({
         name:'getWeekRecord',
         data:{
@@ -636,7 +633,6 @@ Page({
         chart.setOption(getOption())
         console.log(yeardata)
       })
-  
     }
     
     if(this.data.selected.id.substr(0,1)=="m")//选择以某一月
@@ -646,7 +642,7 @@ Page({
       var s=this.data.selected.name
       var num=s.replace(/[^0-9]/ig,"")
       console.log(num)
-  
+      this.setaccountlist(num);
       wx.cloud.callFunction({
         name:'getMonthRecord',
         data:{
@@ -693,7 +689,7 @@ Page({
     {
       console.log(this.data.selected.name);
       pickyear=this.data.selected.name.substr(0,4);
-  
+      this.getaccountlist(pickyear);
       wx.cloud.callFunction({
         name:'getYearRecord',
         data:{
@@ -728,6 +724,9 @@ Page({
       title: `${this.data.selected.id} - ${this.data.selected.name}`,
     })
       console.log(pickyear+"年 "+this.data.selected.name);
+      nowmonth=this.data.selected.name;
+      nowmonth=nowmonth.substr(0,1);
+      this.setaccountlist(nowmonth);
   },
    /**
    * 设置账单数据函数

@@ -4,8 +4,8 @@
 
 <view class="in_pay_tapbar" bindtap="slidemove" >
       <image class="slide" animation="{{animation}}"src="../../images/income.png" mode='scaleToFill' ></image>
-      <text class="income" style="color:{{incomecolor}}">支出</text>
-      <text class="expend" style="color:{{expendcolor}}">收入</text>
+      <text class="income" style="color:{{incomecolor}}">收入</text>
+      <text class="expend" style="color:{{expendcolor}}">支出</text>
 </view>
 <view class="border1"></view>
 

@@ -6,13 +6,13 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
   },
 
   /**
    * 组件的初始数据
    */
   data: {
+    hide:false,
     picBox:[],//图片上传暂存地址，预览需要使用
     picId:[]//图片上传后从云端数据中返回的id值，用于一会存入数据库中
   },
@@ -21,6 +21,24 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    
+    preview:function(e){
+      var url = e.currentTarget.dataset.src;
+      wx.previewImage({
+        current:url,
+        urls: this.data.picBox,
+      })
+    },
+
+    imgDelete1: function (e) {
+      let that = this;
+      let index = e.currentTarget.dataset.index;
+      let picBox = this.data.picBox;
+      picBox.splice(index, 1)
+      that.setData({
+        picBox: picBox
+      });
+    },
     addPic:function(e){
       var Box = this.data.picBox;//创建用于添加暂存图片的数组
       var n = 9;//设置默认可以上传的图片数
@@ -46,7 +64,7 @@ Component({
       })
     },
 
-    uploadPics:function(res){
+     uploadPics:async function(res){
       if(!this.data.picBox.length){
         wx.showToast({
           title: '还未选择图片',
@@ -55,6 +73,7 @@ Component({
       }else{
         wx.showLoading({
           title: '正在上传',
+          mask:true
         })
         let promiseArr = [];
         for (let index = 0; index < this.data.picBox.length; index++) {
@@ -79,17 +98,18 @@ Component({
             })
           }))
         }
-        Promise.all(promiseArr).then(res=>{
+        return await Promise.all(promiseArr).then(res=>{
           wx.hideLoading();
           wx.showToast({
             title: "上传成功",
           })
-          console.log(this.data.picId)
           this.setData({
             picBox: []//清空图片框
           })
+          return this.data.picId;
         })
       }
+      return [];
     }
   }
 })

@@ -1,5 +1,5 @@
-.content{
-  margin-top: 300rpx;
+.main{
+  margin-top: 350rpx;
   margin-left: 35rpx;
 }
 .notes-titlt{
@@ -21,4 +21,34 @@
   top: 35rpx;
   font-size: 35rpx;
   color: #959595;
+}
+.bottom_menu{
+  position: absolute;
+  width: 100%;
+  left: 30rpx;
+}
+.img{
+  position: relative;
+  width: 50rpx;
+  height: 50rpx;
+}
+#mood{
+  position: relative;
+  left: 20rpx;
+}
+#picture{
+  width: 48rpx;
+  height: 48rpx;
+  opacity: 80;
+}
+.bt_submit{
+  position: relative;
+  width: 20rpx;
+  height: 60rpx;
+  line-height: 55rpx;
+  font-size: medium;
+  background-color: #FFB5A0;
+  color: #ffffff;
+  margin-left: 200rpx;
+  bottom: 55rpx;
 }
