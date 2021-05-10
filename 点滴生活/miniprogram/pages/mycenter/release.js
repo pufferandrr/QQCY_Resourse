@@ -25,14 +25,7 @@ Page({
     condition:true,
     condition1:false,
     chosenList:[],
-    releaseList:[
-      {
-        id:'001',
-        time:"2021-04-08 12.12",
-        type:"未审核",
-        content:"省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招省钱小妙招"
-      },
-    ],
+    nonchosenList:[],
     
   },
 
@@ -44,12 +37,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.cloud.callFunction({
-      name: 'getUser',
-    }).then(res=>{
-      console.log('111', res)
-    })
     this.getChosen()
+    this.getNonChosen()
   },
 
   /**
@@ -91,7 +80,10 @@ Page({
   },
   getChosen(){
     wx.cloud.callFunction({
-      name:'getChosen',
+      name:'getPost',
+      data:{
+        state:'1',   //1表示入选
+      }
     }).then(res=>{
       console.log('入选请求成功', res)
       var content
@@ -107,6 +99,30 @@ Page({
     })
     .catch(err=>{
       console.log('已入选请求失败', err)
+    })
+  },
+  getNonChosen(){
+    wx.cloud.callFunction({
+      name:'getPost',
+      data:{
+        state:'0',   //0表示未入选
+      }
+    }).then(res=>{
+      console.log('未入选请求成功', res)
+      var content
+      for(var i=0;i<res.result.length;i++){
+        content = res.result[i].content
+        content = content.length>maxLenth?content.slice(0,maxLenth)+"...":content
+        this.setData({
+          ["nonchosenList["+i+"].content"]:content,
+          ["nonchosenList["+i+"].time"]:res.result[i].createTime,
+          ["nonchosenList["+i+"].id"]:res.result[i]._id
+        })
+      }
+      console.log("getnonchosen", res)
+    })
+    .catch(err=>{
+      console.log('未入选请求失败', err)
     })
   },
   /**
