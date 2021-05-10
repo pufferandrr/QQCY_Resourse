@@ -1,4 +1,4 @@
-const { log } = require("console")
+//const { log } = require("console")
 
 const app = getApp()
 Page({
@@ -76,9 +76,10 @@ Page({
       content,
     } = this.data.notedetail
 
+    console.log(year)
 
     wx.navigateTo({
-      url: '../keepthing/notesdetails?year${year}&day${day}&month${month}&week${week}&title${title}&content${content}&mood${mood}'
+      url: '../keepthing/notesdetails?year='+year+'&day='+day+'&month='+month+'&week='+week+'&title='+title+'&content='+content+'&mood='+mood
     })
   },
 

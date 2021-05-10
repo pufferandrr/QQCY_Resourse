@@ -4,9 +4,9 @@
 
 <view class="main">
     <view class="content">
-    <text class="notes-titlt" value="{{note_title}}">记事标题</text>
+    <text class="notes-titlt">{{note_title}}</text>
     <view class="line"></view>
-    <text class="notes-content" value="{{note_content}}">记事内容</text>
+    <text class="notes-content">{{note_content}}</text>
     </view>
 
     <image src="/images/edit.png" class="edit" mode="aspectFit"></image>

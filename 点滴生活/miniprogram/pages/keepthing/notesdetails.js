@@ -14,14 +14,11 @@ Page({
       notedate: ""
     },
 
-    //做需要的数据
-    note_mood:'',
-    note_day:'...',
-    note_week:'...',
-    note_year:'...',
-    note_month:'...',
+    //文章标题
     note_title:'...',
+    //文章内容
     note_content:'...'
+    
     
 
   },
@@ -31,16 +28,24 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    const{ mood,day,week,year,month,title,content,} = options;
+    //获取数据
+    const{ mood,day,week,year,month,title,content } = options;
     this.setData({
-      note_content: content,
-      note_day: day,
-      note_month: month,
-      note_mood: mood,
-      note_title: title,
-      note_week: week,
-      note_year: year,
+      note_content : content,   //内容
+      note_title: title         //标题
     })
+
+    var date = year+"-"+month+"-"+day
+    //日期和心情赋值
+    let nav = this.selectComponent('#nav');
+      nav.setData({
+        ['navbarData.notedate']: date,
+        ['navbarData.iconpath']:mood
+      })
+    
+    console.log(mood)
+
+
   },
   backToNoteslist(){
     wx.navigateBack();   //返回上一级
