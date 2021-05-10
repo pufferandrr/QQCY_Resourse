@@ -9,8 +9,8 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
     //结果集
     var ordinary = new Array();
+    //获取登录的openid
     await db.collection('diary').where({
-        //根据用户id获取
         userid: wxContext.OPENID
     })
     .get()

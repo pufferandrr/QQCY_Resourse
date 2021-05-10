@@ -13,6 +13,15 @@ Page({
       //日记日期
       notedate: ""
     },
+
+    //做需要的数据
+    note_mood:'',
+    note_day:'...',
+    note_week:'...',
+    note_year:'...',
+    note_month:'...',
+    note_title:'...',
+    note_content:'...'
     
 
   },
@@ -21,7 +30,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
+    const{ mood,day,week,year,month,title,content,} = options;
+    this.setData({
+      note_content: content,
+      note_day: day,
+      note_month: month,
+      note_mood: mood,
+      note_title: title,
+      note_week: week,
+      note_year: year,
+    })
   },
   backToNoteslist(){
     wx.navigateBack();   //返回上一级

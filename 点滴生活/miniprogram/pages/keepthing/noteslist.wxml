@@ -2,7 +2,7 @@
 <navbar navbar-data='{{nvabarData}}' bindnavedit='toKeepthing'></navbar>
 <view class="list">
     <block wx:for='{{noteslist}}' wx:key='list' wx:for-item="item">
-        <view class="note_item" bindtap="toNotesdetail">
+        <view class="note_item"  data-mood="{{item.mood}}" data-day="{{item.day}}" data-year="{{item.year}}" data-month="{{item.month}}" data-title="{{item.title}}" data-content="{{item.content}}" data-week="{{item.week}}" bindtap="toNotesdetail">
             <view class="line"></view>
             <view class="circle"></view>
             <image class="mood" src="{{item.mood}}" alt="alt" mode="scaleToFill"/>

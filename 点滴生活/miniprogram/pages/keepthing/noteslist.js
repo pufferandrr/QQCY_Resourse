@@ -1,3 +1,5 @@
+const { log } = require("console")
+
 const app = getApp()
 Page({
 
@@ -17,15 +19,25 @@ Page({
     
       noteslist:[
         {
-          mood:'../../images/mood1@3x.png',
-          day:'08',
-          week:'周四',
-          year:'2021',
-          month:'04',
-          title:'这是一个严谨的标题',
-          content:'一个不重要的日记内容'
+          mood:'',
+          day:'...',
+          week:'...',
+          year:'...',
+          month:'...',
+          title:'...',
+          content:'...'
         }
-      ]
+      ],
+
+      notedetail:{
+        mood:'',
+        day:'...',
+        week:'...',
+        year:'...',
+        month:'...',
+        title:'...',
+        content:'...'
+      }
     
 
   },
@@ -39,9 +51,34 @@ Page({
     })
   },
 
-  toNotesdetail: function() {
+  //跳转到详情页面
+  toNotesdetail: function(e) {
+
+    this.setData({
+      ['notedetail.year'] : e.currentTarget.dataset.year,
+      ['notedetail.month'] : e.currentTarget.dataset.month,
+      ['notedetail.day'] : e.currentTarget.dataset.day,
+      ['notedetail.mood'] : e.currentTarget.dataset.mood,
+      ['notedetail.title'] : e.currentTarget.dataset.title,
+      ['notedetail.content'] : e.currentTarget.dataset.content,
+      ['notedetail.week'] : e.currentTarget.dataset.week,
+    })
+
+    console.log(e.currentTarget.dataset.year)
+
+    const{
+      mood,
+      day,
+      week,
+      year,
+      month,
+      title,
+      content,
+    } = this.data.notedetail
+
+
     wx.navigateTo({
-      url: '../keepthing/notesdetails',
+      url: '../keepthing/notesdetails?year${year}&day${day}&month${month}&week${week}&title${title}&content${content}&mood${mood}'
     })
   },
 
