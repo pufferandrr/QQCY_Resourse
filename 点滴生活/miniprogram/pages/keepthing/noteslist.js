@@ -17,44 +17,13 @@ Page({
     
       noteslist:[
         {
-          note_mood:'../../images/mood1@3x.png',
-          note_day:'08',
-          note_weekday:'周四',
-          note_year:'2021-04',
-          note_title:'这是一个严谨的标题',
-          note_content:'一个不重要的日记内容'
-        },
-        {
-          note_mood:'../../images/mood1@3x.png',
-          note_day:'08',
-          note_weekday:'周四',
-          note_year:'2021-04',
-          note_title:'这是一个严谨的标题',
-          note_content:'一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容'
-        },
-        {
-          note_mood:'../../images/mood1@3x.png',
-          note_day:'08',
-          note_weekday:'周四',
-          note_year:'2021-04',
-          note_title:'这是一个严谨的标题',
-          note_content:'一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容'
-        },
-        {
-          note_mood:'../../images/mood1@3x.png',
-          note_day:'08',
-          note_weekday:'周四',
-          note_year:'2021-04',
-          note_title:'这是一个严谨的标题',
-          note_content:'一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容'
-        },
-        {
-          note_mood:'../../images/mood1@3x.png',
-          note_day:'08',
-          note_weekday:'周四',
-          note_year:'2021-04',
-          note_title:'这是一个严谨的标题',
-          note_content:'一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容一个不重要的日记内容'
+          mood:'../../images/mood1@3x.png',
+          day:'08',
+          week:'周四',
+          year:'2021',
+          month:'04',
+          title:'这是一个严谨的标题',
+          content:'一个不重要的日记内容'
         }
       ]
     

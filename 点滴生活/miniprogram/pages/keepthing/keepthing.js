@@ -15,8 +15,11 @@ Page({
     },
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
     inputBottom: 30,   //bottom_menu的位置
-    content: '',     //记事内容
     picId:[],     //图片
+
+    content_text:"",
+    content_title:"",
+
 
     //是否显示心情
     flag: false,
@@ -55,7 +58,24 @@ Page({
         imgPath: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/mood-icon/1.png",
         imgId: "mood1",
       },
-    ]
+    ],
+
+    //当天日记内容
+    message:
+      {
+        mood:'../../images/mood1@3x.png',
+        day:'08',
+        week:'周四',
+        year:'2021',
+        month:'04',
+        title:'这是一个严谨的标题',
+        content:'一个不重要的日记内容',
+        userid:'',
+        picArrary:['','']
+      },
+
+      
+    
   },
 
   /**
@@ -86,7 +106,7 @@ Page({
   },
 
   //输入标题
-  inputTitle: function() {
+  inputTitle: function(e) {
     this.setData({
       flag: false,
     })
@@ -110,11 +130,69 @@ Page({
     })
   },
 
-  //发布成功跳转到文章列表
-  toNoteslist: function() {
-    wx.switchTab({
-      url: '../keepthing/noteslist',
-      flag: false,
+  //点击发布
+  toNoteslist: function(e) {
+
+    var today = new Date();
+    var weekArray = new Array("周日", "周一", "周二", "周三", "周四", "周五", "周六")
+    //今天的日期
+    var date = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+    //判断今天周几
+    var week = weekArray[new Date(date).getDay()]  
+    
+    this.setData({
+      ['message.year'] : today.getFullYear(),
+      ['message.month'] : today.getMonth() + 1,
+      ['message.day'] : today.getDate(),
+      ['message.week'] : week,
+      ['message.content'] : this.data.content_text,
+      ['message.title'] : this.data.title_text,
+    })
+
+    //传入数据库
+    wx.cloud.callFunction({
+      name:'addOrdinary',
+      data:{
+        title:this.data.title_text,
+        content:this.data.content_text,
+        year:today.getFullYear(),
+        week:week,
+        day:today.getDate(),
+        month:today.getMonth() + 1,
+        mood:this.data.message.mood,
+      }
+    }).then(res=>{
+      console.log(res.result);
+    })
+
+    //弹窗提示
+    wx.showToast({
+      title: '发布成功！', // 标题
+      icon: 'success',  // 图标类型，默认success
+      duration: 1500  // 提示窗停留时间，默认1500ms
+    })
+
+    //延时
+    setTimeout(function () {
+        //跳转
+        wx.switchTab({
+        url: '../keepthing/noteslist',
+        flag: false,
+      })
+     }, 1500) //延迟时间 这里是1.5秒
+  },
+  
+  //文章标题发生变化
+  titlechange:function(e){
+    this.setData({
+      title_text: e.detail.value,
+    })
+  },
+
+  //文章内容发视变化
+  contentchange:function(e){
+    this.setData({
+      content_text: e.detail.value,
     })
   },
 
@@ -152,6 +230,9 @@ Page({
     let nav = this.selectComponent('#nav');
       nav.setData({
         ['navbarData.iconpath']: url,
+      })
+      this.setData({
+        ['message.mood']: url,
       })
   },
 
