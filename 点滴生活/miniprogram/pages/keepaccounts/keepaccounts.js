@@ -363,7 +363,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getaccountlist(pickyear)
     var heights = wx.getSystemInfoSync().windowHeight
     var widths = wx.getSystemInfoSync().windowWidth
     var k = 750 / widths
@@ -399,7 +398,6 @@ Page({
   },
 
   getaccountlist(py) {
-    listdata = []
     wx.cloud.callFunction({
       name: 'getyearrecordlist',
       data: {
@@ -407,14 +405,13 @@ Page({
         year: py,
       }
     }).then(res => {
-      console.log(1)
-      console.log(res.result)
+      listdata = new Array()
       for (var i = 0; i < res.result.length; i++) {
         listdata.push(res.result[i]);
       }
+      console.log(listdata)
       this.setaccountlist(nowmonth)
     })
-
   },
   setaccountlist(num) {
     var accountdata = [];
@@ -451,6 +448,7 @@ Page({
 
     this.getaccountlist(pickyear)
     this.setaccountlist(nowmonth)
+    
   },
   slidemove() {
     console.log("你点击了滑块", this.data.slideposition);
