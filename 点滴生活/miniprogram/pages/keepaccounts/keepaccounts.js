@@ -447,30 +447,7 @@ Page({
     }
     else {
       //这里填写饼图的数据切换
-    }/*
-    wx.cloud.callFunction({
-      name:'getYearRecord',
-      data:{
-        type:type,
-        Year:nowYear,
-      }
-    }).then(res=>{
-      yeardata=res.result
-      var total=0
-      var avg=0
-      for(var i=0;i<yeardata.length;i++)
-      {
-          total+=yeardata[i]
-      }
-      avg=(total/yeardata.length).toFixed(2)
-      this.setData({
-        totalAccount:total,
-        avgAccount:avg,
-      })
-      yeardata=res.result
-      chart.setOption(getOption())
-      console.log(yeardata)
-    })*/
+    }
 
     this.getaccountlist(pickyear)
     this.setaccountlist(nowmonth)

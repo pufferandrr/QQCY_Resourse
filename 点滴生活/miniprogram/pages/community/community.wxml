@@ -1,2 +1,4 @@
 // 'navbar-data'中navbar是自定义导航栏标题
 <navbar navbar-data='{{nvabarData}}'></navbar>
+
+<view class="word" style="color: #FFC8A1">社区功能正在开发中，敬请期待~</view>
