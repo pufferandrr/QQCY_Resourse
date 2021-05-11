@@ -1,7 +1,7 @@
 // pages/keepaccounts/keepaccounts.js
 import * as echarts from '../../components/hb/ec-canvas/echarts';
 
-const app = getApp()
+const app = getApp() 
 let chart =null;
 var pickyear="2021";
 var pixelRatio1 = 750 / wx.getSystemInfoSync().windowWidth;
@@ -32,13 +32,16 @@ if(((toYear%4==0&&toYear%100!=0)||toYear%400==0)&&today.getMonth()>1){
 }else{
   today_week = parseInt((days[today.getMonth()]+today.getDate()-8+firstWeek)/7+1);
 }
-
+var pieData = []
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    tempYearSelected: {id:"y001",name:"2021年"},
+    tempMonthSelected: {id:"m001",name:"1月"},
+    tempWeekSelected: {id:"w001",name:"第1周"},
     totalAccount:0,
     avgAccount:0,
     chartchange: true,  //图表改变判断，true为折线图，false为饼图
@@ -366,7 +369,25 @@ Page({
     var k=750/widths
     heights=heights-this.data.height
     this.setData({moveareaheight:heights*k})
-
+    //-----分割线，下面是饼图相关代码
+    let data = processSelected(this.data.selected, type)
+    wx.cloud.callFunction({
+      name: 'getPieData',
+      data: {
+        recordType: data.recordType,
+        timeType: data.timeType,
+        value: data.value,
+        year: pickyear
+      },
+      success: res => {
+        pieData = res.result.pieData
+        console.log(pieData)
+      },
+      fail: err => {
+        console.log(err)
+        console.log("查找失败")
+      }
+    })
   },
 
 
@@ -476,6 +497,7 @@ Page({
     }
     else{
       //这里写饼图的收入支出切换。
+      this.changePieTable();
     }
     
 
@@ -548,6 +570,13 @@ Page({
       listselectshow:"block",
       listselect:"auto"
     })
+    //饼图改变数据
+    if(!this.data.chartchange) {
+      this.setData({
+        selected: this.data.tempYearSelected
+      })
+      this.changePieTable()
+    }
   },
   
   monthselect(e){
@@ -568,7 +597,13 @@ Page({
       listselectshow:"none",
       listselect:"none"
     })
-
+    //饼图改变数据
+    if(!this.data.chartchange) {
+      this.setData({
+        selected: this.data.tempMonthSelected
+      })
+      this.changePieTable()
+    }
   },
   
   weekselect(e){
@@ -589,6 +624,13 @@ Page({
       listselectshow:"none",
       listselect:"none"
     })
+    //饼图改变数据
+    if(!this.data.chartchange) {
+      this.setData({
+        selected: this.data.tempWeekSelected
+      })
+      this.changePieTable()
+    }
   },
   /**
    * 图表切换点击事件处理
@@ -605,7 +647,11 @@ Page({
       chartchange: !chartchange,
       imageSrc: chartchange ? imageLine : imagePie
     })
-    chart.setOption(option);
+    if(!this.data.chartchange) {
+      this.changePieTable()
+    } else {
+      chart.setOption(option);
+    }
   },
 
   /**
@@ -619,14 +665,31 @@ Page({
     console.log({//弹出对话框
       title: `${this.data.selected.id} - ${this.data.selected.name}`,
     })
+
     if(this.data.chartchange==true)
     {
       this.changeLineTable();
     }
     else{
       //这里填写饼图的数据切换
+      this.changePieTable();
     }
-    
+    //储存最近选择的年月周
+    let data = processSelected(this.data.selected, type);
+    if(data.timeType == 'year') {
+      pickyear = data.value
+      this.setData({
+        tempYearSelected: this.data.selected
+      })
+    } else if(data.timeType == 'month') {
+      this.setData({
+      tempMonthSelected: this.data.selected
+      })
+    } else {
+      this.setData({
+      tempWeekSelected: this.data.selected
+      })
+        }
   },
   changeLineTable() {
     if(this.data.selected.id.substr(0,1)=="w")//选择以某一周查看账单
@@ -743,6 +806,34 @@ Page({
         console.log(yeardata)
       })
     }
+  },
+
+  changePieTable() {
+    let data = processSelected(this.data.selected, type)
+    wx.cloud.callFunction({
+      name: 'getPieData',
+      data: {
+        recordType: data.recordType,
+        timeType: data.timeType,
+        value: data.value,
+        year: pickyear
+      },
+      success: res => {
+        // console.log(res.result)
+        pieData = res.result.pieData
+        chart.setOption(getOptionPie());
+        if(pieData[0].name == '无') {
+          wx.showToast({
+            title: '没有记录',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      },
+      fail: err => {
+        console.log(err)
+      }
+    })
   },
 
   mpchange (e) {
@@ -943,8 +1034,9 @@ function getOptionPie(){
             center: ['30%','50%'],
             avoidLabelOverlap: false,
             itemStyle: {
-              borderWidth: 1,
+              borderWidth: 0,
               borderColor:'#ffffff',
+              borderRadius: 10
             },
             label: {
                 show: false,
@@ -963,104 +1055,124 @@ function getOptionPie(){
             labelLine: {
                 show: false
             },
-            data: [
-                {
-                  value: 969.564, 
-                  name: '搜索',
-                  itemStyle: {
-                    color: {
-                      type: 'linear',
-                      x: 0,
-                      y: 0,
-                      x2: 0,
-                      y2: 1,
-                      colorStops: [{
-                          offset: 0, color: '#F6494C' // 0% 处的颜色
-                      }, {
-                          offset: 0.6, color: '#FE9451' // 100% 处的颜色
-                      }],
-                      global: false // 缺省为 false
-                    }
-                  }},
-                {
-                  value: 735, 
-                  name: '直接',
-                  itemStyle: {
-                    color: {
-                      type: 'linear',
-                      x: 0,
-                      y: 0,
-                      x2: 0,
-                      y2: 1,
-                      colorStops: [{
-                          offset: 0, color: '#FFFF20' // 0% 处的颜色
-                      }, {
-                          offset: 0.6, color: '#FCBF4C' // 100% 处的颜色
-                      }],
-                      global: false // 缺省为 false
-                    }
-                  }
-                },
-                {
-                  value: 580, 
-                  name: '邮件',
-                  itemStyle: {
-                    color: {
-                      type: 'linear',
-                      x: 0,
-                      y: 0,
-                      x2: 0,
-                      y2: 1,
-                      colorStops: [{
-                          offset: 0, color: '#4E26B6' // 0% 处的颜色
-                      }, {
-                          offset: 0.6, color: '#566EE8' // 100% 处的颜色
-                      }],
-                      global: false // 缺省为 false
-                    }
-                  }
-                },
-                {
-                  value: 484, 
-                  name: '联告',
-                  itemStyle: {
-                    color: {
-                      type: 'linear',
-                      x: 0,
-                      y: 0,
-                      x2: 0,
-                      y2: 1,
-                      colorStops: [{
-                          offset: 0, color: '#6BDE8F' // 0% 处的颜色
-                      }, {
-                          offset: 0.6, color: '#58EBD4' // 100% 处的颜色
-                      }],
-                      global: false // 缺省为 false
-                    }
-                  }
-                },
-                {
-                  value: 300, 
-                  name: '视频',
-                  itemStyle: {
-                    color: {
-                      type: 'linear',
-                      x: 0,
-                      y: 0,
-                      x2: 0,
-                      y2: 1,
-                      colorStops: [{
-                          offset: 0, color: '#457EF9' // 0% 处的颜色
-                      }, {
-                          offset: 0.6, color: '#53A2F2' // 100% 处的颜色
-                      }],
-                      global: false // 缺省为 false
-                    }
-                  }
-                }
-            ]
+            data: pieData
+            // [
+            //     {
+            //       value: 969.564, 
+            //       name: '搜索',
+            //       itemStyle: {
+            //         color: {
+            //           type: 'linear',
+            //           x: 0,
+            //           y: 0,
+            //           x2: 0,
+            //           y2: 1,
+            //           colorStops: [{
+            //               offset: 0, color: '#F6494C' // 0% 处的颜色
+            //           }, {
+            //               offset: 0.6, color: '#FE9451' // 100% 处的颜色
+            //           }],
+            //           global: false // 缺省为 false
+            //         }
+            //       }},
+            //     {
+            //       value: 735, 
+            //       name: '直接',
+            //       itemStyle: {
+            //         color: {
+            //           type: 'linear',
+            //           x: 0,
+            //           y: 0,
+            //           x2: 0,
+            //           y2: 1,
+            //           colorStops: [{
+            //               offset: 0, color: '#FFFF20' // 0% 处的颜色
+            //           }, {
+            //               offset: 0.6, color: '#FCBF4C' // 100% 处的颜色
+            //           }],
+            //           global: false // 缺省为 false
+            //         }
+            //       }
+            //     },
+            //     {
+            //       value: 580, 
+            //       name: '邮件',
+            //       itemStyle: {
+            //         color: {
+            //           type: 'linear',
+            //           x: 0,
+            //           y: 0,
+            //           x2: 0,
+            //           y2: 1,
+            //           colorStops: [{
+            //               offset: 0, color: '#4E26B6' // 0% 处的颜色
+            //           }, {
+            //               offset: 0.6, color: '#566EE8' // 100% 处的颜色
+            //           }],
+            //           global: false // 缺省为 false
+            //         }
+            //       }
+            //     },
+            //     {
+            //       value: 484, 
+            //       name: '联告',
+            //       itemStyle: {
+            //         color: {
+            //           type: 'linear',
+            //           x: 0,
+            //           y: 0,
+            //           x2: 0,
+            //           y2: 1,
+            //           colorStops: [{
+            //               offset: 0, color: '#6BDE8F' // 0% 处的颜色
+            //           }, {
+            //               offset: 0.6, color: '#58EBD4' // 100% 处的颜色
+            //           }],
+            //           global: false // 缺省为 false
+            //         }
+            //       }
+            //     },
+            //     {
+            //       value: 300, 
+            //       name: '视频',
+            //       itemStyle: {
+            //         color: {
+            //           type: 'linear',
+            //           x: 0,
+            //           y: 0,
+            //           x2: 0,
+            //           y2: 1,
+            //           colorStops: [{
+            //               offset: 0, color: '#457EF9' // 0% 处的颜色
+            //           }, {
+            //               offset: 0.6, color: '#53A2F2' // 100% 处的颜色
+            //           }],
+            //           global: false // 缺省为 false
+            //         }
+            //       }
+            //     }
+            // ]
         }
     ]
   }
   return option;
+}
+
+function processSelected(selected, type) {
+  let data = {}
+  let length = selected.name.length
+  data.recordType = type
+  if(selected.id.substr(0, 1) == 'y') {
+    data.timeType = 'year'
+    data.value = selected.name.substr(0, 4)
+  } 
+  else if(selected.id.substr(0, 1) == 'm') {
+    data.timeType = 'month'
+    data.value = selected.name.substr(0, length - 1)
+  }
+  else {
+    data.timeType = 'week'
+    data.value = selected.name.substr(1, length - 1)
+  }
+  return data
 }

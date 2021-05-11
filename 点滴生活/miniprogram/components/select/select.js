@@ -32,7 +32,7 @@ Component({
   methods: {
     optionTap(e) {
       let dataset = e.target.dataset
-      console.log("当前选择"+dataset)
+      console.log("当前选择"+JSON.stringify(dataset))
       this.setData({
         current: dataset,
         isShow: false
