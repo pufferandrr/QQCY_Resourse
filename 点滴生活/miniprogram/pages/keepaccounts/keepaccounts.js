@@ -363,6 +363,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.cloud.callFunction({ //查看用户是否存在用户表
+      name: 'searchUser',
+    }).then(res => {
+      if(res.result==0)
+      {
+        wx.cloud.callFunction({
+          name: 'addUser',
+        }).then(res => {
+          
+        })
+      }
+    })
+
     var heights = wx.getSystemInfoSync().windowHeight
     var widths = wx.getSystemInfoSync().windowWidth
     var k = 750 / widths

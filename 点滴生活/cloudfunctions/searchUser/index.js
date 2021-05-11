@@ -6,14 +6,20 @@ const db = cloud.database();
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  var limit = new Array();
+  var data=0
   await db.collection("user")
   .where({
-    userid:wxContext.OPENID
+    userid:wxContext.OPENID,
   })
   .get()
   .then(res=>{
-    limit = res.data[0].userlimit
+    if(res.data.length!=0)
+    {
+      data=1
+    }
+    else{
+      data=0
+    }
   })
-  return limit
+  return data
 }
