@@ -13,7 +13,8 @@
     
     <view class="bottom_menu" style="bottom:{{inputBottom}}rpx">
         <image src="/images/image.png" class="img" id="picture" bindtap="selectImg"></image>
-        <image src="/images/moodmenu.png" class="img" id="mood" bindtap="selectMood"></image>  
+        <image src="/images/moodmenu.png" class="img" id="mood" bindtap="selectMood"></image>
+        <image  src="/images/上传2.png" class="img" id="upload" bindtap="uploadImg" style="margin-left:25rpx"></image>
         <button  class="bt_submit" bindtap="toNoteslist">发布</button>
     </view>
 

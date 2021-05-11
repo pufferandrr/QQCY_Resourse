@@ -71,7 +71,7 @@ Page({
         title:'这是一个严谨的标题',
         content:'一个不重要的日记内容',
         userid:'',
-        picArrary:['','']
+        picArrary:[]
       },
 
       
@@ -132,7 +132,7 @@ Page({
 
   //点击发布
   toNoteslist: function(e) {
-
+    console.log(this.data.picId);
     var today = new Date();
     var weekArray = new Array("周日", "周一", "周二", "周三", "周四", "周五", "周六")
     //今天的日期
@@ -147,6 +147,7 @@ Page({
       ['message.week'] : week,
       ['message.content'] : this.data.content_text,
       ['message.title'] : this.data.title_text,
+      
     })
 
     //传入数据库
@@ -160,6 +161,7 @@ Page({
         day:today.getDate(),
         month:today.getMonth() + 1,
         mood:this.data.message.mood,
+        picArray:this.data.picId
       }
     }).then(res=>{
       console.log(res.result);
@@ -205,7 +207,7 @@ Page({
   },
 
   //上传图片
-  uploadImg: function(){
+  uploadImg: async function(){
     this.upload.uploadPics().then(res=>{
       this.setData({
         picId:this.data.picId.concat(res)
