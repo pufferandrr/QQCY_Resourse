@@ -31,7 +31,7 @@ Page({
     rtype:[{des:"投资",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/投资.png"},
           {des:"工资",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/工资.png"},
           {des:"其他",url: "cloud://cloud1-2g1cvw78a2d7648f.636c-cloud1-2g1cvw78a2d7648f-1305707823/其他.png"}],
-    keyNumber:[7,8,9,'日期',4,5,6,'+',1,2,3,'-','.',0,'删除','确认'],
+    keyNumber:[7,8,9,'日期',4,5,6,'+',1,2,3,'💖','.',0,'删除','确认'],
     numberText:'',
     isShow:false,
     selectedType:'',
@@ -202,13 +202,11 @@ Page({
           })
         }
         break;
-      case '-':
-        if(arrval.length==0){
-          arrval.push(val);
-          this.setData({
-            numberText:arrval.join(''),
-          })
-        }
+      case '💖':
+        wx.showToast({
+          title: '这是一颗没有用的爱心',
+          icon:"none"
+        })
         break;
       case '.':
         if(arrval.length!=0&&!arrval.includes('.')){

@@ -8,7 +8,7 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   return await db.collection("user")
   .where({
-    userid:"test01"//后期要改为openid才可对应到相应的用户
+    userid:wxContext.OPENID//后期要改为openid才可对应到相应的用户
   })
   .update({
     data:{

@@ -21,6 +21,7 @@ Page({
       total:'-', //记账总天数
       accounts:'-', //记账总笔数
     },
+    limit:'',
   },
 
   setLimit:function(e){//设置月消费额度
@@ -84,6 +85,13 @@ Page({
    */
   onShow: function () {
     var userInfo 
+    wx.cloud.callFunction({
+      name:'getLimit',
+    }).then(res=>{
+      this.setData({
+        limit:res.result[0]
+      })
+    })
 
     //目前阶段getUser云函数目前只搜索openid为test01的用户
     wx.cloud.callFunction({
