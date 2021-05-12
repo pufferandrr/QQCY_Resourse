@@ -1,9 +1,13 @@
 
 <view class="all">
   <view class="maintain">
-    <open-data type="userAvatarUrl" mode="aspectFill" class="pic"></open-data>
+    <image src="{{userInfo.avatarUrl}}"  class="pic" mode="aspectFill" bindtap="getUserProfile"></image>
+    <!-- <open-data type="userAvatarUrl" mode="aspectFill" class="pic"></open-data> -->
     <view class="personal">
-      <view class="name"><open-data type="userNickName" lang="zh_CN"></open-data></view>
+      <view class="name">
+        <text>{{userInfo.nickName}}</text>
+        <!-- <open-data type="userNickName" lang="zh_CN"></open-data> -->
+      </view>
       <view class="nums">
         <view class="nums1">
           <view class="continuationnum">{{userData.continuous}}</view>

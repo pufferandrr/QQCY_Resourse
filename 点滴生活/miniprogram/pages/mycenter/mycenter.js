@@ -10,9 +10,11 @@ Page({
    */
   data: {
     list:[],
+    hasUserInfo: false,
+    canIUseGetUserProfile: false,
     userInfo:{
-      nickName:"",  //用户昵称
-      avatorUrl:"",  //用户头像
+      nickName:"用户昵称",  //用户昵称
+      avatarUrl:"../../images/moren2.jpg",  //用户头像
     },
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
     // 用户基本数据
@@ -22,6 +24,31 @@ Page({
       accounts:'-', //记账总笔数
     },
     limit:'',
+  },
+
+  getUserProfile(e) {
+    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    if(!this.data.hasUserInfo){
+       wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+        wx.cloud.callFunction({
+          name:'addUser',
+          data:{
+            userPic:this.data.userInfo.avatarUrl,
+            userName:this.data.userInfo.nickName
+          }
+        })
+      }
+    })
+    }
+   
   },
 
   setLimit:function(e){//设置月消费额度

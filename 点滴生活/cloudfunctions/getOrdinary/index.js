@@ -10,7 +10,9 @@ exports.main = async (event, context) => {
     //结果集
     var ordinary = new Array();
     //获取登录的openid
-    await db.collection('diary').where({
+    await db.collection('diary')
+    .orderBy('id','asc')
+    .where({
         userid: wxContext.OPENID
     })
     .get()

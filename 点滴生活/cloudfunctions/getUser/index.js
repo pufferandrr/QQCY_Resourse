@@ -8,7 +8,7 @@ const db = cloud.database();
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  var openid = 'test01'
+  var openid = wxContext.OPENID
   //wxContext.OPENID
   var rest
   var sum
