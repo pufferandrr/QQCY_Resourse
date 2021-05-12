@@ -38,7 +38,17 @@ exports.main = async (event, context) => {
       'userTotalRecord':_.inc(1)
     }
   })
-  }
+  }else{
+    await db.collection('user')
+  .where({
+    userid:wxContext.OPENID
+  })
+  .update({
+    data:{
+      'userTotalRecord':_.inc(1)
+    }
+  })
+
   
   return await db.collection(type).add({
     data:{

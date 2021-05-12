@@ -15,7 +15,7 @@
   border-color: rgba(165, 155, 155, 0.452);
   width: 200rpx;
   height: 200rpx;
-  margin-left: 35rpx;
+  margin-left: 15rpx;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
   position: relative;

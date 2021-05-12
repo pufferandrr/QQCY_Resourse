@@ -38,3 +38,25 @@
   top: 900rpx;
   left: 550rpx;
 }
+
+.pic{
+  border: 5rpx;
+  width: 200rpx;
+  height: 200rpx;
+  margin-left: 15rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+.picItem{
+  width: 100%;
+  height: 100%;
+}
+.picList{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  background-color: white;
+}

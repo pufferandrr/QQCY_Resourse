@@ -25,7 +25,8 @@ Page({
           year:'...',
           month:'...',
           title:'...',
-          content:'...'
+          content:'...',
+          picArray:[]
         }
       ],
 
@@ -36,7 +37,8 @@ Page({
         year:'...',
         month:'...',
         title:'...',
-        content:'...'
+        content:'...',
+        picArray:[]
       }
     
 
@@ -53,7 +55,7 @@ Page({
 
   //跳转到详情页面
   toNotesdetail: function(e) {
-
+    var index = e.currentTarget.dataset.index
     this.setData({
       ['notedetail.year'] : e.currentTarget.dataset.year,
       ['notedetail.month'] : e.currentTarget.dataset.month,
@@ -64,7 +66,7 @@ Page({
       ['notedetail.week'] : e.currentTarget.dataset.week,
     })
 
-    console.log(e.currentTarget.dataset.year)
+    console.log(this.data.noteslist[index])
 
     const{
       mood,
@@ -77,9 +79,8 @@ Page({
     } = this.data.notedetail
 
     console.log(year)
-
     wx.navigateTo({
-      url: '../keepthing/notesdetails?year='+year+'&day='+day+'&month='+month+'&week='+week+'&title='+title+'&content='+content+'&mood='+mood
+      url: '../keepthing/notesdetails?year='+year+'&day='+day+'&month='+month+'&week='+week+'&title='+title+'&content='+content+'&mood='+mood+'&picArray='+JSON.stringify(this.data.noteslist[index].picArray)
     })
   },
 

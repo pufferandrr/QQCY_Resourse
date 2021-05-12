@@ -17,10 +17,20 @@ Page({
     //文章标题
     note_title:'...',
     //文章内容
-    note_content:'...'
+    note_content:'...',
+
+    pic:[]
     
     
 
+  },
+
+  preview:function(e){
+    var url = e.currentTarget.dataset.src;
+    wx.previewImage({
+      current:url,
+      urls: this.data.pic,
+    })
   },
 
   /**
@@ -29,12 +39,18 @@ Page({
   onLoad: function (options) {
     console.log(options);
     //获取数据
-    const{ mood,day,week,year,month,title,content } = options;
+    const{ mood,day,week,year,month,title,content,picArray } = options;
+    console.log(picArray);
+    if(typeof(picArray)==undefined){
+      this.setData({
+        pic:JSON.parse(picArray)
+      })
+    }
     this.setData({
       note_content : content,   //内容
-      note_title: title         //标题
+      note_title: title    ,     //标题
     })
-
+    console.log(this.data.pic);
     var date = year+"-"+month+"-"+day
     //日期和心情赋值
     let nav = this.selectComponent('#nav');
