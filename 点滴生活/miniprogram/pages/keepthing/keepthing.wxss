@@ -5,7 +5,7 @@
 .notes-titlt{
   font-size: larger;
   padding-left: 2rpx;
-  color: #959595;
+  color: #0c0c0c;
   font-weight: bold;
 }
 .line{
@@ -20,7 +20,7 @@
   padding-left: 2rpx;
   top: 35rpx;
   font-size: 35rpx;
-  color: #959595;
+  color: #0c0c0c;
   width: auto;
 }
 .bottom_menu{
