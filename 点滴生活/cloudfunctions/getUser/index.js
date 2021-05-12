@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
   var openid = wxContext.OPENID
   //wxContext.OPENID
   var rest
-  var sum
+  // var sum
   await db.collection('user')
   .where({
     userid:openid  //测试用，后面test01要改成openid
@@ -21,17 +21,14 @@ exports.main = async (event, context) => {
     rest = res.data[0]
   })
   //获取记账总笔数
-  await db.collection('rRecord')
-  .where({
-    userid: openid //测试用，后面userid的值要改成openid
-  })
-  .count()
-  .then(res=>{
-    sum = res.total
-  })
-  var data={
-    user: rest,
-    accounts: sum,
-  }
-  return data
+  // await db.collection('cRecord')
+  // .where({
+  //   userid: openid //测试用，后面userid的值要改成openid
+  // })
+  // .count()
+  // .then(res=>{
+  //   sum = res.total
+  // })
+
+  return rest
 }

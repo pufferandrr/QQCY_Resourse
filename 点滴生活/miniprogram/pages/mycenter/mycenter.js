@@ -11,7 +11,6 @@ Page({
   data: {
     list:[],
     hasUserInfo: false,
-    canIUseGetUserProfile: false,
     userInfo:{
       nickName:"用户昵称",  //用户昵称
       avatarUrl:"../../images/moren2.jpg",  //用户头像
@@ -111,27 +110,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var userInfo 
-    wx.cloud.callFunction({
-      name:'getLimit',
-    }).then(res=>{
-      this.setData({
-        limit:res.result[0]
-      })
-    })
 
     //目前阶段getUser云函数目前只搜索openid为test01的用户
     wx.cloud.callFunction({
       name: 'getUser',
-    }).then(res=>{
-      console.log(res.result)
-      userInfo = res.result.user
-      console.log(userInfo)
-      if(userInfo!=null){
+    }).then(rest=>{
+      console.log(rest);
+      if(rest.result!=null){
         this.setData({
-          'userData.total': userInfo.userTotalDays,
-          'userData.continuous': userInfo.userDuration,
-          'userData.accounts': res.result.accounts
+          'userData.total': rest.result.userTotalDays,
+          'userData.continuous': rest.result.userDuration,
+          'userData.accounts': rest.result.userTotalRecord,
+          ['userInfo.avatarUrl']:rest.result.userPic,
+          ['userInfo.nickName']:rest.result.userName,
+          limit:rest.result.userlimit[0],
+          hasUserInfo:true,
         })
       }
     })

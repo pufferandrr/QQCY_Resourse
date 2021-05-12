@@ -27,15 +27,19 @@ exports.main = async (event, context) => {
     today_week = parseInt((days[today.getMonth()]+today.getDate()-8+firstWeek)/7+1);
   }
   var week = today.getDay();
-  await db.collection('user')
+  if(type==='cRecord'){
+    await db.collection('user')
   .where({
     userid:wxContext.OPENID
   })
   .update({
     data:{
-      "userlimit.1":_.inc(num)
+      "userlimit.1":_.inc(num),
+      'userTotalRecord':_.inc(1)
     }
   })
+  }
+  
   return await db.collection(type).add({
     data:{
       number:num,

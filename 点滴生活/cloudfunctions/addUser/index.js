@@ -21,12 +21,13 @@ exports.main = async (event, context) => {
   if(!haveProfie){
     await db.collection('user').add({
       data:{
-        userDuration:"0",
+        userDuration:0,
         userlimit:[0,0],//这个l的大小写需要注意一下
-        userTotalDays:"0", 
+        userTotalDays:0, 
         userid:wxContext.OPENID,
         userName:event.userName,
         userPic:event.userPic,
+        userTotalRecord:0
       }
     })
   }
