@@ -61,7 +61,7 @@
     <accountlist accountlist='{{costaccountlist}}' account-type="0"></accountlist>
   </view>
   <movable-area class="movearea" style="height:{{moveareaheight}}rpx">
-    <movable-view class="moveview" direction="all"damping="20" friction="1" animation="true">
+    <movable-view class="moveview" >
       <cover-image bindtap="makeaccount" class="makeaccount" src="../../images/makeaccount.png" mode='scaleToFill'>
       </cover-image>
     </movable-view>

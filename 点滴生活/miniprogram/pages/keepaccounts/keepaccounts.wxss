@@ -127,7 +127,7 @@
   position: absolute;
   top:1050rpx;
   left:25rpx;
-  padding: 0rpx 0rpx 200rpx 0rpx;
+  padding: 0rpx 0rpx 400rpx 0rpx;
 }
 .statistic{
   display: flex;

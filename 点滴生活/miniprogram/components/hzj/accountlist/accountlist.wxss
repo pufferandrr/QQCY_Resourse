@@ -21,14 +21,12 @@
   float: left;
 }
 .verticalline{
-  width: 2rpx;
+  width: 4rpx;
   height:100rpx;
   position: absolute;
   top:60rpx;
   left:26rpx;
   background-color:rgba(187, 187, 187, 39);
-  filter:blur(2rpx);
-  opacity: 39%;
   float: left;
 }
 .date{
@@ -77,11 +75,9 @@
   float: left;
 }
 .bottomline{
-  height:2rpx;
+  height:4rpx;
   width:606rpx;
   background-color: #BBBBBB;
-  opacity: 36%;
-  filter:blur(1rpx);
   position: absolute;
   top:118rpx;
   left:62rpx;
