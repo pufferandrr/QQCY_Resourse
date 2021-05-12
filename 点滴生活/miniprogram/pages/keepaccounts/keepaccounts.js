@@ -32,6 +32,9 @@ if (((toYear % 4 == 0 && toYear % 100 != 0) || toYear % 400 == 0) && today.getMo
 } else {
   today_week = parseInt((days[today.getMonth()] + today.getDate() - 8 + firstWeek) / 7 + 1);
 }
+var ctiptext='总支出：'
+var rtiptext='总收入：'
+var tiptext=ctiptext
 var pieData = []
 Page({
 
@@ -472,6 +475,14 @@ Page({
     else {
       type = 'cRecord'
     }//还需要重新获取数据
+    if(tiptext==ctiptext)
+    {
+      tiptext=rtiptext
+    }
+    else
+    {
+      tiptext=ctiptext
+    }
 
     if (this.data.chartchange == true) {
       pickyear = "2021"
@@ -956,7 +967,7 @@ function getOption() {
         var tip = "";
         if (params != null && params.length > 0) {
           for (var i = 0; i < params.length; i++) {
-            tip += "总支出：" + params[i].value;
+            tip += tiptext + params[i].value;
           }
         }
         return tip;
