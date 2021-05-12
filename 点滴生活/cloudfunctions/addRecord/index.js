@@ -3,6 +3,7 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 const db = cloud.database();
+const _ = db.command
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
@@ -26,6 +27,15 @@ exports.main = async (event, context) => {
     today_week = parseInt((days[today.getMonth()]+today.getDate()-8+firstWeek)/7+1);
   }
   var week = today.getDay();
+  await db.collection('user')
+  .where({
+    userid:wxContext.OPENID
+  })
+  .update({
+    data:{
+      "userlimit.1":_.inc(num)
+    }
+  })
   return await db.collection(type).add({
     data:{
       number:num,
