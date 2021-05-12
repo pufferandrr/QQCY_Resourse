@@ -156,7 +156,7 @@ exports.main = async (event, context) => {
             },
             {
               createTime:db.RegExp({
-                regexp:Year+'-0'+Month+'-0'+i,
+                regexp:Year+'-0'+Month+'-'+i,
                 options:'i',
               })
             }
@@ -311,7 +311,7 @@ exports.main = async (event, context) => {
           },
           {
             createTime:db.RegExp({
-              regexp:Year+'-0'+Month+'-0'+i,
+              regexp:Year+'-0'+Month+'-'+i,
               options:'i',
             })
           }

@@ -34,6 +34,7 @@ Component({
             percent : (res.result[1]/res.result[0])*100,
             remain :(res.result[0]-res.result[1]).toFixed(2),
             progresscolor : "#33FFCC",
+            noticetext : "额度还在计划之内，但也别挥霍哟~"
           })
         }
         else if((res.result[1]/res.result[0])*100<=75)

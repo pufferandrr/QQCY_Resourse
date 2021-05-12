@@ -456,6 +456,7 @@ Page({
       this.changeLineTable();
     }
     else {
+      this.changePieTable();
       //这里填写饼图的数据切换
     }
 
@@ -473,6 +474,14 @@ Page({
     }//还需要重新获取数据
 
     if (this.data.chartchange == true) {
+      pickyear = "2021"
+      this.setData({
+        selected: {
+          id: 'y001',
+          name: '2021年'
+        }
+      })
+
       this.changeLineTable();
     }
     else {
@@ -606,6 +615,14 @@ Page({
       listselectshow: "block",
       listselect: "auto"
     })
+    //折线图切换数据
+    if (this.data.chartchange) {
+      this.setData({
+        selected: this.data.tempYearSelected
+      })
+      this.changeLineTable()
+    }
+
     //饼图改变数据
     if (!this.data.chartchange) {
       this.setData({
@@ -633,6 +650,14 @@ Page({
       listselectshow: "none",
       listselect: "none"
     })
+    //折线图改变数据
+    if (this.data.chartchange) {
+      this.setData({
+        selected: this.data.tempMonthSelected
+      })
+      this.changeLineTable()
+    }
+
     //饼图改变数据
     if (!this.data.chartchange) {
       this.setData({
@@ -660,6 +685,14 @@ Page({
       listselectshow: "none",
       listselect: "none"
     })
+    //折线图改变数据
+    if (this.data.chartchange) {
+      this.setData({
+        selected: this.data.tempWeekSelected
+      })
+      this.changeLineTable()
+    }
+
     //饼图改变数据
     if (!this.data.chartchange) {
       this.setData({
