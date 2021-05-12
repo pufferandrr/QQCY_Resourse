@@ -41,7 +41,7 @@ Page({
     //获取数据
     const{ mood,day,week,year,month,title,content,picArray } = options;
     console.log(picArray);
-    if(typeof(picArray)==undefined){
+    if(typeof(picArray)!=undefined){
       this.setData({
         pic:JSON.parse(picArray)
       })
