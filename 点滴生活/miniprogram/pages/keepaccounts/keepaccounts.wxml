@@ -37,7 +37,8 @@
     <view class="week" bindtap="weekselect"
       style="border-style:{{weekborder}};background-color:{{weekbackcolor}};color:{{weekcolor}}">周</view>
 
-    <ec-canvas force-use-old-canvas="true" class="datatable" id="mychart-dom" canvas-id="mychart" ec="{{ec}}">
+    <!-- 去掉属性 force-use-old-canvas="true"，使用新版canvas -->
+    <ec-canvas  class="datatable" id="mychart-dom" canvas-id="mychart" ec="{{ec}}">
     </ec-canvas>
 
     <view class="statistic">

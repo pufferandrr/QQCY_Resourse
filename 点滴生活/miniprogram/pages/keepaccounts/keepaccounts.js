@@ -477,6 +477,14 @@ Page({
     }
     else {
       //这里写饼图的收入支出切换。
+      //饼图根据当前的pickyear、selected、type来获取数据
+      pickyear = "2021"
+      this.setData({
+        selected: {
+          id: 'y001',
+          name: '2021年'
+        }
+      })
       this.changePieTable();
     }
 
@@ -1028,7 +1036,7 @@ function getOptionPie() {
         fontSize: 28 / pixelRatio1,
         fontFamily: 'Bahnschrift'
       },
-      top: '15%',
+      top: '11%',
       right: '7%',
       orient: 'vertical',
       icon: 'circle',
@@ -1070,7 +1078,13 @@ function getOptionPie() {
             formatter: '{c}\n(元)',
             color: '#EE7364',
             fontFamily: 'Bahnschrift'
-          }
+          },
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          },
+          scaleSize: 8
         },
         labelLine: {
           show: false
