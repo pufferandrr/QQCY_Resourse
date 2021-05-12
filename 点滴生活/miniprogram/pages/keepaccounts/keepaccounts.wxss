@@ -183,9 +183,9 @@
   top:179rpx;
 }
 .moveview{
-  position: absolute;
+  position: fixed;
   pointer-events: none;
-  top:1086rpx;
+  top:1286rpx;
   left:600rpx;
   width:152rpx;
   height:158rpx;

@@ -5,9 +5,9 @@ cloud.init()
 const db = cloud.database();
 const $ = db.command.aggregate;
 
-var colId = "createTime"
+var colId = "date"
 var desc = function (x, y) {
-  return (x[colId] < y[colId]) ? 1 : -1
+  return (x.colId< y.colId) ? 1 : -1
 }
 //对json进行升序排序函数
 var asc = function (x, y) {
@@ -129,7 +129,7 @@ exports.main = async (event, context) => {
         }
       }
     })
-
+  data.sort(desc)
   console.log(data);
   return data;
 }
