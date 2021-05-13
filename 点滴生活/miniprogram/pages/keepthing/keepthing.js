@@ -132,7 +132,6 @@ Page({
 
   //点击发布
   toNoteslist: function(e) {
-    console.log(this.data.picId);
     var today = new Date();
     var weekArray = new Array("周日", "周一", "周二", "周三", "周四", "周五", "周六")
     //今天的日期
@@ -149,8 +148,44 @@ Page({
       ['message.title'] : this.data.title_text,
       
     })
-
-    //传入数据库
+    //上传图片
+      wx.showLoading({
+        title: '正在上传',
+        mask:true
+      })
+      let promiseArr = [];
+      for (let index = 0; index < this.upload.data.picBox.length; index++) {
+        promiseArr.push(new Promise((reslove,reject)=>{
+          let item = this.upload.data.picBox[index];
+          let suffix = /\.\w+$/.exec(item)[0];//正则表达式返回文件的扩展名
+          wx.cloud.uploadFile({
+            cloudPath: new Date().getTime() + index +suffix, // 上传至云端的路径
+            filePath: item,
+            success: res=>{
+              this.setData({
+                picId:this.data.picId.concat(res.fileID)
+              })
+              reslove();
+            },
+            fail: res=>{
+              wx.hideLoading();
+              wx.showToast({
+                title: "上传失败",
+              })
+            }
+          })
+        }))
+      }
+       Promise.all(promiseArr).then(res=>{
+        console.log(this.data.picId)
+        wx.hideLoading();
+        wx.showToast({
+          title: "上传成功",
+        })
+        this.upload.setData({
+          picBox:[],
+        })
+        //传入数据库
     wx.cloud.callFunction({
       name:'addOrdinary',
       data:{
@@ -164,6 +199,7 @@ Page({
         picArray:this.data.picId
       }
     }).then(res=>{
+      console.log(this.data.picId);
       console.log(res.result);
     })
 
@@ -182,6 +218,40 @@ Page({
         flag: false,
       })
      }, 1500) //延迟时间 这里是1.5秒
+      })
+
+    // //传入数据库
+    // wx.cloud.callFunction({
+    //   name:'addOrdinary',
+    //   data:{
+    //     title:this.data.title_text,
+    //     content:this.data.content_text,
+    //     year:today.getFullYear(),
+    //     week:week,
+    //     day:today.getDate(),
+    //     month:today.getMonth() + 1,
+    //     mood:this.data.message.mood,
+    //     picArray:this.data.picId
+    //   }
+    // }).then(res=>{
+    //   console.log(res.result);
+    // })
+
+    // //弹窗提示
+    // wx.showToast({
+    //   title: '发布成功！', // 标题
+    //   icon: 'success',  // 图标类型，默认success
+    //   duration: 1500  // 提示窗停留时间，默认1500ms
+    // })
+
+    // //延时
+    // setTimeout(function () {
+    //     //跳转
+    //     wx.switchTab({
+    //     url: '../keepthing/noteslist',
+    //     flag: false,
+    //   })
+    //  }, 1500) //延迟时间 这里是1.5秒
   },
   
   //文章标题发生变化
