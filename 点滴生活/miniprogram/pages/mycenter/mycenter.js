@@ -13,7 +13,7 @@ Page({
     hasUserInfo: false,
     userInfo:{
       nickName:"用户昵称",  //用户昵称
-      avatarUrl:"../../images/moren2.jpg",  //用户头像
+      avatarUrl:"../../images/tt3x.png",  //用户头像
     },
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
     // 用户基本数据
