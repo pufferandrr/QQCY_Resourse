@@ -604,9 +604,32 @@ Page({
 
   },
   makeaccount() {
-    wx.navigateTo({
-      url: '../makeaccount/makeaccount',
+    wx.cloud.callFunction({
+      name:'haveUserProfile',
     })
+    .then(haveProfile=>{
+      if(!haveProfile){
+        wx.showModal({
+          title:'提示',
+          content:'您还未授权，请到个人中心点击头像授权',
+          cancelColor: 'cancelColor',
+          success(res){
+            if(res.confirm){
+              wx.reLaunch({
+                url: '../mycenter/mycenter',
+              })
+            }else if(res.cancel){
+              console.log("取消");
+            }
+          }
+        })
+      }else{
+        wx.navigateTo({
+              url: '../makeaccount/makeaccount',
+            })
+      }
+    })
+   
   },
   yearselect(e) {
     console.log("你选择了逐年展示")
