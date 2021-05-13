@@ -817,6 +817,7 @@ Page({
           total += yeardata[k]
         }
         avg = (total / yeardata.length).toFixed(2)
+        total = total.toFixed(2)
         this.setData({
           totalAccount: total,
           avgAccount: avg,
@@ -863,6 +864,7 @@ Page({
           total += yeardata[k]
         }
         avg = (total / yeardata.length).toFixed(2)
+        total = total.toFixed(2)
         this.setData({
           totalAccount: total,
           avgAccount: avg,
@@ -894,6 +896,7 @@ Page({
           total += yeardata[k]
         }
         avg = (total / yeardata.length).toFixed(2)
+        total = total.toFixed(2)
         this.setData({
           totalAccount: total,
           avgAccount: avg,
