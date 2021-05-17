@@ -6,7 +6,7 @@ const db = cloud.database();
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  var haveProfile;
+  var haveProfile = false;
   await db.collection('user')
   .where({
     userid:wxContext.OPENID,
