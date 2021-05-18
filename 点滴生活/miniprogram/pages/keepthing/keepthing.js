@@ -16,7 +16,7 @@ Page({
     height: app.globalData.height * 2 + 20 , // 此页面 页面内容距最顶部的距离
     inputBottom: 30,   //bottom_menu的位置
     picId:[],     //图片
-
+    title_text:"",
     content_text:"",
     content_title:"",
 
@@ -119,14 +119,51 @@ Page({
       flag: false,
     })
   },
-  
-  //失去焦点，位置下移
+  //标题失去焦点
+  titleBlur(e){
+    if(this.data.title_text!="")
+    wx.cloud.callFunction({
+      name: 'msgesc',
+      data: {
+        text: this.data.title_text,
+      }
+    }).then(res => {console.log(res.result)
+      if(res.result.errCode==0){
+
+      }else{
+        wx.showToast({
+          title: '你的标题含有违规内容,请重新编辑',
+          icon:'none',
+        })
+        this.setData({addtext:""})//这一步是清空输入框
+        this.setData({title_text:""})
+      }
+    })
+  },
+  //正文失去焦点，位置下移
   inputBlur(e) {
     var that = this;
-    this.setData({
-      content: e.detail.value,
-      inputBottom: 0,
-      flag: false,
+    if(this.data.content_text!="")
+    wx.cloud.callFunction({
+      name: 'msgesc',
+      data: {
+        text: this.data.content_text,
+      }
+    }).then(res => {console.log(res.result)
+      if(res.result.errCode==0){
+        this.setData({
+          content: e.detail.value,
+          inputBottom: 0,
+          flag: false,
+        })
+      }else{
+        wx.showToast({
+          title: '你的正文含有违规内容,请重新编辑',
+          icon:'none',
+        })
+        this.setData({addcontent:""})
+        this.setData({content_text:""})
+      }
     })
   },
 
@@ -366,11 +403,5 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  
 })
