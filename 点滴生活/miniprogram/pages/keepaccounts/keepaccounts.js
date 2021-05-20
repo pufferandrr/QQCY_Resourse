@@ -608,7 +608,7 @@ Page({
       name:'haveUserProfile',
     })
     .then(haveProfile=>{
-      if(!haveProfile){
+      if(!haveProfile.result){
         wx.showModal({
           title:'提示',
           content:'您还未授权，请到个人中心点击头像授权',

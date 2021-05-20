@@ -54,6 +54,9 @@
   color: #ffffff;
   margin-left: 200rpx;
   bottom: 55rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .select_img{
   position: relative;
