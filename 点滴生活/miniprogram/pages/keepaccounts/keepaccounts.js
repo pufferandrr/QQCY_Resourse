@@ -754,6 +754,7 @@ Page({
       this.changePieTable()
     } else {
       chart.setOption(option);
+      this.changeLineTable();
     }
   },
 
@@ -799,6 +800,7 @@ Page({
       console.log(pickyear + "年 " + this.data.selected.name);//pickyear表示选择的是哪一年
       var s = this.data.selected.name
       var num = s.replace(/[^0-9]/ig, "")
+      num=num-1
       console.log(num)
       this.setaccountlistbyweek(num)
       wx.cloud.callFunction({
