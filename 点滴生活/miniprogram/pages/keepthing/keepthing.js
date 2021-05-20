@@ -109,6 +109,7 @@ Page({
   inputTitle: function(e) {
     this.setData({
       flag: false,
+      inputBottom: 0,
     })
   },
 
@@ -119,8 +120,16 @@ Page({
       flag: false,
     })
   },
+
   //标题失去焦点
   titleBlur(e){
+
+    //底部元素位置
+    this.setData({
+      flag: false,
+      inputBottom: 0,
+    })
+
     if(this.data.title_text!="")
     wx.cloud.callFunction({
       name: 'msgesc',
@@ -143,10 +152,13 @@ Page({
   //正文失去焦点，位置下移
   inputBlur(e) {
     var that = this;
-    this.setData({
-      content: e.detail.value,
-      inputBottom: 0
-    })/*
+    if (!this.data.flag) {
+      this.setData({
+        inputBottom: 0,
+      })
+    }
+  
+    /*
     if(this.data.content_text!="")
     wx.cloud.callFunction({
       name: 'msgesc',
@@ -414,7 +426,8 @@ Page({
     this.upload.addPic();
     this.setData({
       flag: false,
-    })
+      inputBottom: 0,
+       })
   },
 
   //上传图片
