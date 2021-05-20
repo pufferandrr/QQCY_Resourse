@@ -608,7 +608,7 @@ Page({
       name:'haveUserProfile',
     })
     .then(haveProfile=>{
-      if(!haveProfile){
+      if(!haveProfile.result){
         wx.showModal({
           title:'提示',
           content:'您还未授权，请到个人中心点击头像授权',
@@ -817,6 +817,7 @@ Page({
           total += yeardata[k]
         }
         avg = (total / yeardata.length).toFixed(2)
+        total = total.toFixed(2)
         this.setData({
           totalAccount: total,
           avgAccount: avg,
@@ -863,6 +864,7 @@ Page({
           total += yeardata[k]
         }
         avg = (total / yeardata.length).toFixed(2)
+        total = total.toFixed(2)
         this.setData({
           totalAccount: total,
           avgAccount: avg,
@@ -894,6 +896,7 @@ Page({
           total += yeardata[k]
         }
         avg = (total / yeardata.length).toFixed(2)
+        total = total.toFixed(2)
         this.setData({
           totalAccount: total,
           avgAccount: avg,
