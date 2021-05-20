@@ -1276,7 +1276,7 @@ function processSelected(selected, type) {
   }
   else {
     data.timeType = 'week'
-    data.value = selected.name.substr(1, length - 1)
+    data.value = parseInt(selected.name.substr(1, length - 1)) - 1 
   }
   return data
 }
