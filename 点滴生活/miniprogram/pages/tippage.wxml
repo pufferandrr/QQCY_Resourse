@@ -1,0 +1,12 @@
+<!--pages/tippage.wxml-->
+<navbar navbar-data='{{nvabarData}}'></navbar>
+<view class="main-area">
+<view class="content-area">
+  <view class="publisher-message-area">
+    <image class="publisher-head" src="{{headSrc}}"></image>
+    <view class="publisher-message"></view>
+  </view>
+  
+</view>
+<view class="comment-area">1</view>
+</view>
